@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LinearLayout organiza elementos en fila o columna. Esta columna separa la cabecera
+    del detalle desplazable. ActividadDetalleTarea.kt carga y completa esta pantalla.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tarea_raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- include inserta el diseño de tarea_cabecera.xml con los botones Volver, Editar y Eliminar. -->
+    <include
+        layout="@layout/tarea_cabecera" />
+
+    <!--
+        ScrollView permite desplazarse verticalmente cuando el contenido no cabe.
+        El alto 0dp y el peso 1 le dan el espacio que queda debajo de la cabecera.
+    -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:background="@color/marfil">
+
+        <!--
+            Esta columna empieza vacía. ActividadDetalleTarea.kt utiliza su id para añadir
+            los datos de la tarea y los controles para completarla, posponerla y escuchar muestras.
+        -->
+        <LinearLayout
+            android:id="@+id/tarea_detalle_contenido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp" />
+
+    </ScrollView>
+
+</LinearLayout>

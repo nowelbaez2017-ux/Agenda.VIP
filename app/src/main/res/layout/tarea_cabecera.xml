@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LinearLayout coloca elementos en una fila cuando orientation es horizontal.
+    Esta cabecera se incluye desde los XML de formulario y detalle de una tarea.
+    Al quedar fuera del ScrollView, sus botones siguen visibles al desplazar el contenido.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp"
+    android:background="@color/ciruela">
+
+    <!--
+        Button es un botón que responde al tocarlo. ActividadEditarTarea.kt y
+        ActividadDetalleTarea.kt conectan tarea_volver con el regreso a la pantalla anterior.
+    -->
+    <Button
+        android:id="@+id/tarea_volver"
+        android:layout_width="48dp"
+        android:layout_height="52dp"
+        android:background="@drawable/fondo_enlace_acceso"
+        android:text="‹"
+        android:textSize="32sp"
+        android:textColor="@color/marfil"
+        android:contentDescription="Volver" />
+
+    <!--
+        TextView muestra el título. Las actividades lo cambian por Nueva tarea, Editar tarea
+        o Detalles. layout_weight="1" le da el ancho libre que dejan los botones de esta fila.
+    -->
+    <TextView
+        android:id="@+id/tarea_pantalla_titulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Nueva tarea"
+        android:textSize="23sp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:textColor="@color/marfil"
+        android:accessibilityHeading="true" />
+
+    <!--
+        visibility="gone" lo oculta y no reserva espacio. ActividadDetalleTarea.kt
+        lo muestra para que el usuario pueda abrir la edición de la tarea.
+    -->
+    <Button
+        android:id="@+id/tarea_editar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="60dp"
+        android:minHeight="48dp"
+        android:text="Editar"
+        android:textAllCaps="false"
+        android:background="@drawable/fondo_enlace_acceso"
+        android:textColor="@color/marfil"
+        android:visibility="gone" />
+
+    <!-- ActividadDetalleTarea.kt muestra este botón y pide confirmar antes de eliminar la tarea. -->
+    <Button
+        android:id="@+id/tarea_eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="64dp"
+        android:minHeight="48dp"
+        android:text="Eliminar"
+        android:textAllCaps="false"
+        android:background="@drawable/fondo_enlace_acceso"
+        android:textColor="@color/melocoton"
+        android:visibility="gone" />
+
+</LinearLayout>

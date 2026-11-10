@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vector es un dibujo que mantiene sus líneas al cambiar de tamaño. Este candado acompaña a los campos de contraseña del inicio de sesión y del registro. -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- pathData describe el candado y strokeColor toma el color de sus líneas de colores.xml. -->
+    <path
+        android:fillColor="@color/transparente"
+        android:strokeColor="@color/ciruela"
+        android:strokeWidth="1.7"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M7,10V7a5,5 0,0 1,10 0v3M6,10h12a1,1 0,0 1,1 1v10H5V11a1,1 0,0 1,1 -1Z" />
+
+</vector>

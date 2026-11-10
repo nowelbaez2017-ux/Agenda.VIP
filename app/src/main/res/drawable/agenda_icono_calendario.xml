@@ -1,0 +1,18 @@
+<!-- vector es un dibujo que puede cambiar de tamaño sin perder nitidez. Este calendario aparece sobre el botón Agenda de pantalla_agenda.xml. -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- path describe las líneas del calendario. fillColor deja el interior transparente y strokeColor da color al trazo. -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#351546"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M4,5h16v16h-16zM8,3v5M16,3v5M4,11h16M8,15h2M14,15h2" />
+
+</vector>

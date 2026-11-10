@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- resources reúne las medidas con nombre. Cada dimen guarda una dimensión que los layouts y estilos leen con @dimen/nombre. dp adapta las medidas a la densidad de cada pantalla. -->
+
+    <!-- Estas medidas dejan margen alrededor del formulario y reservan espacio para su cabecera. -->
+    <dimen
+        name="margen_formulario">24dp</dimen>
+    <dimen
+        name="alto_cabecera">196dp</dimen>
+
+    <!-- Los estilos de acceso usan estas alturas para que los campos y los botones tengan suficiente espacio para pulsarlos. -->
+    <dimen
+        name="alto_control">52dp</dimen>
+    <dimen
+        name="objetivo_tactil">48dp</dimen>
+
+    <!-- Los fondos de drawable usan estos radios para redondear las esquinas de campos y botones. -->
+    <dimen
+        name="radio_campo">12dp</dimen>
+    <dimen
+        name="radio_boton">16dp</dimen>
+</resources>
+

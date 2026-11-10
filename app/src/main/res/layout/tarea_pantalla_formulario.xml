@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LinearLayout organiza elementos en fila o columna. Esta columna separa la cabecera,
+    el formulario desplazable y el botón Guardar. ActividadEditarTarea.kt carga la pantalla;
+    FormularioTarea.kt conecta los campos y los botones para preparar los datos de la tarea.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tarea_raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- include inserta la cabecera de tarea_cabecera.xml, incluido el botón para volver. -->
+    <include
+        layout="@layout/tarea_cabecera" />
+
+    <!--
+        ScrollView permite desplazarse verticalmente cuando el contenido no cabe.
+        Aquí deja recorrer todos los campos, también cuando aparece el teclado.
+        El alto 0dp y el peso 1 ocupan el espacio que dejan la cabecera y Guardar.
+    -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:background="@color/marfil">
+
+        <!-- Esta columna coloca cada pregunta y su control debajo de los anteriores. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="8dp">
+
+            <!--
+                TextView muestra texto. labelFor relaciona esta pregunta con el título.
+                @style toma su aspecto de tarea_estilos.xml y @string busca un texto con nombre.
+            -->
+            <TextView
+                style="@style/TareaEtiqueta"
+                android:layout_marginTop="0dp"
+                android:text="@string/tarea_etiqueta_titulo"
+                android:labelFor="@id/tarea_titulo_input" />
+
+            <!--
+                EditText permite escribir. maxLength limita a 160 caracteres y singleLine
+                usa una sola línea. FormularioTarea.kt lee este control mediante su id.
+            -->
+            <EditText
+                android:id="@+id/tarea_titulo_input"
+                style="@style/TareaCampo"
+                android:hint="@string/tarea_ayuda_titulo"
+                android:inputType="textCapSentences"
+                android:maxLength="160"
+                android:singleLine="true" />
+
+            <!--
+                Esta fila reúne Fecha y Hora. FormularioTarea.kt mide el espacio disponible
+                y cambia la orientación a columna si la pantalla o la letra lo necesitan.
+                Los datos se escriben directamente: no abre un calendario ni un reloj.
+            -->
+            <LinearLayout
+                android:id="@+id/tarea_fecha_hora_fila"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:gravity="top">
+
+                <!-- Esta columna mantiene unida la etiqueta Fecha, su entrada y la ayuda. -->
+                <LinearLayout
+                    android:id="@+id/tarea_fecha_columna"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- La etiqueta sigue visible aunque el campo ya contenga una fecha. -->
+                    <TextView
+                        style="@style/TareaEtiquetaCompacta"
+                        android:text="@string/tarea_etiqueta_fecha"
+                        android:labelFor="@id/tarea_fecha_input" />
+
+                    <!--
+                        inputType pide un teclado de fecha y digits acepta números y barras.
+                        maxLength reserva los diez caracteres de dd/MM/aaaa.
+                        FormularioTarea.kt comprueba que el día realmente exista al guardar.
+                    -->
+                    <EditText
+                        android:id="@+id/tarea_fecha_input"
+                        style="@style/TareaCampoCompacto"
+                        android:hint="@string/tarea_ayuda_fecha"
+                        android:inputType="date"
+                        android:digits="0123456789/"
+                        android:maxLength="10"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext" />
+
+                    <!-- La ayuda recuerda el orden día, mes y año debajo del campo. -->
+                    <TextView
+                        style="@style/TareaAyuda"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/tarea_ayuda_fecha" />
+
+                </LinearLayout>
+
+                <!--
+                    Este bloque mantiene juntos Hora y a. m./p. m. Si el texto crece mucho,
+                    FormularioTarea.kt también puede colocar el período debajo de la hora.
+                -->
+                <LinearLayout
+                    android:id="@+id/tarea_hora_bloque"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="top">
+
+                    <!-- Esta columna mantiene la etiqueta Hora sobre su campo editable. -->
+                    <LinearLayout
+                        android:id="@+id/tarea_hora_columna"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <!-- Esta etiqueta identifica el campo de hora para todos los lectores. -->
+                        <TextView
+                            style="@style/TareaEtiquetaCompacta"
+                            android:text="@string/tarea_etiqueta_hora"
+                            android:labelFor="@id/tarea_hora_input" />
+
+                        <!--
+                            El teclado de hora permite escribir números y dos puntos.
+                            Se puede escribir 5 o 5:30; Guardar completa 5 como 5:00.
+                            El máximo de cinco caracteres permite escribir hasta 12:59.
+                        -->
+                        <EditText
+                            android:id="@+id/tarea_hora_input"
+                            style="@style/TareaCampoCompacto"
+                            android:hint="@string/tarea_ayuda_hora"
+                            android:inputType="time"
+                            android:digits="0123456789:"
+                            android:maxLength="5"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext" />
+
+                    </LinearLayout>
+
+                    <!-- El período queda separado de la entrada y siempre permanece visible. -->
+                    <LinearLayout
+                        android:id="@+id/tarea_periodo_columna"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:orientation="vertical">
+
+                        <!-- Momento distingue si la hora pertenece a antes o después del mediodía. -->
+                        <TextView
+                            style="@style/TareaEtiquetaCompacta"
+                            android:text="@string/tarea_etiqueta_periodo"
+                            android:labelFor="@id/tarea_periodo_group" />
+
+                        <!--
+                            RadioGroup reúne dos opciones para que solo una quede elegida.
+                            FormularioTarea.kt convierte esa elección a una hora de LocalTime.
+                        -->
+                        <RadioGroup
+                            android:id="@+id/tarea_periodo_group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <!-- a. m. indica antes del mediodía; 12 a. m. es medianoche. -->
+                            <RadioButton
+                                android:id="@+id/tarea_periodo_am"
+                                style="@style/TareaOpcion"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:text="@string/tarea_am"
+                                android:contentDescription="@string/tarea_am_descripcion" />
+
+                            <!-- p. m. empieza al mediodía; 12 p. m. es mediodía. -->
+                            <RadioButton
+                                android:id="@+id/tarea_periodo_pm"
+                                style="@style/TareaOpcion"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="2dp"
+                                android:text="@string/tarea_pm"
+                                android:contentDescription="@string/tarea_pm_descripcion" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Introduce la elección de los días en los que se repetirá la tarea. -->
+            <TextView
+                style="@style/TareaEtiqueta"
+                android:text="@string/tarea_etiqueta_repetir" />
+
+            <!-- FormularioTarea.kt abre las opciones de repetición y muestra aquí la elegida. -->
+            <Button
+                android:id="@+id/tarea_repetir_button"
+                style="@style/TareaBoton" />
+
+            <!-- Esta línea fina separa los datos de la tarea de las opciones de sonido. -->
+            <View
+                style="@style/TareaSeparador" />
+
+            <!--
+                Switch es un interruptor que activa o desactiva una opción.
+                FormularioTarea.kt usa este para decidir si habrá voz y mostrar sus campos.
+                dp mide espacios y sp mide texto respetando el tamaño elegido en el teléfono.
+            -->
+            <Switch
+                android:id="@+id/tarea_voz_switch"
+                style="@style/TareaInterruptor"
+                android:text="@string/tarea_etiqueta_voz" />
+
+            <!-- Esta columna reúne los controles que FormularioTarea.kt muestra al activar la voz. -->
+            <LinearLayout
+                android:id="@+id/tarea_voz_contenido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Explica qué se escribe en el campo de mensaje de voz. -->
+                <TextView
+                    style="@style/TareaEtiqueta"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/tarea_etiqueta_mensaje"
+                    android:labelFor="@id/tarea_mensaje_input" />
+
+                <!-- Esta fila presenta el mensaje y un botón pequeño para escucharlo. -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- textMultiLine permite varias líneas y el peso 1 ocupa el ancho libre. -->
+                    <EditText
+                        android:id="@+id/tarea_mensaje_input"
+                        style="@style/TareaCampo"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:hint="@string/tarea_ayuda_mensaje"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:maxLength="500"
+                        android:minLines="1" />
+
+                    <!-- ImageButton muestra un altavoz y reproduce la muestra al tocarlo. -->
+                    <ImageButton
+                        android:id="@+id/tarea_escuchar"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:padding="12dp"
+                        android:background="@drawable/tarea_fondo_campo"
+                        android:src="@drawable/tarea_icono_escuchar"
+                        android:contentDescription="@string/tarea_accion_escuchar" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Presenta la elección de una canción para acompañar el aviso. -->
+            <TextView
+                style="@style/TareaEtiqueta"
+                android:layout_marginTop="8dp"
+                android:text="@string/tarea_etiqueta_musica" />
+
+            <!-- Button abre Sin música o Seleccionar música. El nombre completo sigue en la biblioteca; dos líneas evitan un botón enorme. -->
+            <Button
+                android:id="@+id/tarea_musica_button"
+                style="@style/TareaBoton"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="@string/tarea_accion_cancion" />
+
+            <!-- Este botón sin fondo permite volver a Aleatoria después de elegir canción o silencio. Su zona de toque mide al menos 48 dp. -->
+            <Button
+                android:id="@+id/tarea_musica_aleatoria_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="8dp"
+                android:gravity="start|center_vertical"
+                android:fontFamily="serif"
+                android:textSize="14sp"
+                android:textColor="@color/ciruela"
+                android:textAllCaps="false"
+                android:text="@string/tarea_musica_restablecer_aleatoria"
+                android:visibility="gone" />
+
+            <!-- TextView explica la decisión musical actual; Kotlin cambia esta ayuda al elegir otra opción. -->
+            <TextView
+                android:id="@+id/tarea_musica_ayuda"
+                style="@style/TareaAyuda"
+                android:layout_marginTop="5dp"
+                android:text="@string/tarea_ayuda_musica" />
+
+            <!-- Esta línea separa el sonido del seguimiento, que repite avisos pendientes. -->
+            <View
+                style="@style/TareaSeparador" />
+
+            <!-- Este interruptor permite pedir más avisos mientras la tarea siga pendiente. -->
+            <Switch
+                android:id="@+id/tarea_seguimiento_switch"
+                style="@style/TareaInterruptor"
+                android:text="@string/tarea_etiqueta_seguimiento" />
+
+            <!--
+                Esta columna reúne las opciones de seguimiento. visibility="gone" empieza
+                ocultándola sin dejar un hueco; FormularioTarea.kt la muestra al activarlo.
+                El fondo sigue siendo el de la página para conservar las líneas limpias.
+            -->
+            <LinearLayout
+                android:id="@+id/tarea_seguimiento_contenido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- Presenta el tiempo que debe pasar entre dos avisos pendientes. -->
+                <TextView
+                    style="@style/TareaEtiqueta"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/tarea_etiqueta_intervalo" />
+
+                <!--
+                    RadioGroup agrupa opciones para que solo una quede elegida.
+                    FormularioTarea.kt consulta cuál de estos tres botones está seleccionado.
+                -->
+                <RadioGroup
+                    android:id="@+id/tarea_intervalo_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Esta opción fija cinco minutos entre avisos. -->
+                    <RadioButton
+                        android:id="@+id/tarea_intervalo_cinco"
+                        style="@style/TareaOpcion"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/tarea_intervalo_cinco"
+                        android:contentDescription="@string/tarea_intervalo_cinco_descripcion" />
+
+                    <!-- Esta opción fija diez minutos entre avisos. -->
+                    <RadioButton
+                        android:id="@+id/tarea_intervalo_diez"
+                        style="@style/TareaOpcion"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/tarea_intervalo_diez"
+                        android:contentDescription="@string/tarea_intervalo_diez_descripcion" />
+
+                    <!-- Esta opción muestra el campo de minutos personalizado. -->
+                    <RadioButton
+                        android:id="@+id/tarea_intervalo_otro"
+                        style="@style/TareaOpcion"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/tarea_intervalo_otro" />
+
+                </RadioGroup>
+
+                <!--
+                    Campo numérico que aparece al elegir Otro intervalo.
+                    El hint explica cuántos minutos admite; Kotlin lee el número escrito.
+                -->
+                <EditText
+                    android:id="@+id/tarea_intervalo_otro_input"
+                    style="@style/TareaCampo"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/tarea_ayuda_intervalo"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:visibility="gone" />
+
+                <!-- La fila mantiene juntos el nombre del límite y su campo numérico. -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- La etiqueta aclara que se indica un número total de avisos. -->
+                    <TextView
+                        style="@style/TareaEtiqueta"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/tarea_etiqueta_limite"
+                        android:labelFor="@id/tarea_limite_input" />
+
+                    <!-- El límite incluye el primer aviso; se revisa antes de guardar. -->
+                    <EditText
+                        android:id="@+id/tarea_limite_input"
+                        style="@style/TareaCampo"
+                        android:layout_width="104dp"
+                        android:hint="@string/tarea_ayuda_limite"
+                        android:inputType="number"
+                        android:maxLength="2" />
+
+                </LinearLayout>
+
+                <!-- Presenta el mensaje que se podrá escuchar en los avisos siguientes. -->
+                <TextView
+                    style="@style/TareaEtiqueta"
+                    android:text="@string/tarea_etiqueta_mensaje_seguimiento"
+                    android:labelFor="@id/tarea_mensaje_seguimiento_input" />
+
+                <!-- EditText permite escribir un seguimiento distinto. Vacío conserva la frase automática y la voz activada. -->
+                <EditText
+                    android:id="@+id/tarea_mensaje_seguimiento_input"
+                    style="@style/TareaCampo"
+                    android:hint="@string/tarea_ayuda_mensaje_seguimiento"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:minLines="1"
+                    android:maxLength="500" />
+
+                <!-- Explica cuándo termina el seguimiento y por qué Android puede demorarlo. -->
+                <TextView
+                    style="@style/TareaAyuda"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/tarea_ayuda_seguimiento" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Este contenedor queda fuera del ScrollView para mantener Guardar al alcance del usuario. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="18dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="18dp"
+        android:paddingBottom="12dp"
+        android:background="@color/marfil">
+
+        <!-- ActividadEditarTarea.kt conecta este botón con la revisión y el guardado de la tarea. -->
+        <Button
+            android:id="@+id/tarea_guardar"
+            style="@style/TareaGuardar"
+            android:text="@string/tarea_accion_guardar" />
+
+    </LinearLayout>
+
+</LinearLayout>

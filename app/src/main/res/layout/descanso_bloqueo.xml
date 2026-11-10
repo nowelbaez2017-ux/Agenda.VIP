@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ScrollView permite desplazarse cuando el mensaje no cabe, por ejemplo con letras grandes.
+    Esta es la capa de Agenda.VIP sobre una app elegida; no reemplaza el bloqueo del teléfono.
+-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/descanso_bloqueo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/ciruela">
+
+    <!-- LinearLayout coloca el saludo, el tiempo disponible y los botones uno debajo de otro. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:padding="28dp">
+
+        <!-- TextView muestra la identidad de la app para que se reconozca quién presenta la capa. -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AGENDA.VIP · DESCANSO"
+            android:textColor="@color/melocoton"
+            android:textSize="15sp" />
+
+        <!-- Este título explica la acción sin culpar al usuario por haber abierto una aplicación. -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Es hora de descansar"
+            android:textColor="@color/marfil"
+            android:textSize="30sp"
+            android:fontFamily="serif"
+            android:textStyle="bold" />
+
+        <!-- Aquí se actualiza el mensaje personal y el tiempo real que queda hasta la hora de levantarse. -->
+        <TextView
+            android:id="@+id/descanso_bloqueo_mensaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/marfil"
+            android:textSize="21sp"
+            android:accessibilityLiveRegion="polite" />
+
+        <!-- Indica la aplicación elegida cuya interacción quedó cubierta. -->
+        <TextView
+            android:id="@+id/descanso_bloqueo_aplicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/melocoton"
+            android:textSize="15sp" />
+
+        <!-- Esta aclaración distingue tiempo disponible de una medición del sueño. -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Es tiempo disponible para descansar. Agenda.VIP no mide cuánto duermes. Llamadas y ajustes siguen disponibles."
+            android:textColor="@color/marfil"
+            android:textSize="13sp" />
+
+        <!-- Este botón lleva al escritorio de Android, donde siguen las aplicaciones permitidas. -->
+        <Button
+            android:id="@+id/descanso_bloqueo_inicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:minHeight="48dp"
+            android:text="Voy a descansar · Ir al inicio"
+            android:textAllCaps="false"
+            android:textColor="@color/ciruela"
+            android:backgroundTint="@color/melocoton" />
+
+        <!-- Silenciar termina únicamente la voz que está sonando, conservando el horario y la capa. -->
+        <Button
+            android:id="@+id/descanso_bloqueo_silenciar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Silenciar este aviso"
+            android:textAllCaps="false"
+            android:textColor="@color/ciruela"
+            android:backgroundTint="@color/marfil" />
+
+        <!-- La pausa aparece solo si fue permitida y todavía no se utilizó durante esta noche. -->
+        <Button
+            android:id="@+id/descanso_bloqueo_pausa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Pausar 5 minutos · Una vez esta noche"
+            android:textAllCaps="false"
+            android:textColor="@color/ciruela"
+            android:backgroundTint="@color/marfil" />
+
+        <!-- Solicita una segunda decisión antes de suspender toda la noche. -->
+        <Button
+            android:id="@+id/descanso_bloqueo_cancelar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Tengo un imprevisto"
+            android:textAllCaps="false"
+            android:textColor="@color/ciruela"
+            android:backgroundTint="@color/marfil" />
+
+        <!-- Este grupo se muestra solo al pedir cancelar; sus botones evitan una cancelación accidental. -->
+        <LinearLayout
+            android:id="@+id/descanso_bloqueo_confirmacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- Explica el alcance de cancelar: afecta solo a esta noche y no borra el horario. -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="¿Suspender el descanso solo por esta noche? Mañana seguirá tu horario habitual."
+                android:textColor="@color/marfil"
+                android:textSize="15sp" />
+
+            <!-- Confirma expresamente que el usuario quiere usar sus aplicaciones esta noche. -->
+            <Button
+                android:id="@+id/descanso_bloqueo_confirmar_cancelacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="Sí, suspender por esta noche"
+                android:textAllCaps="false"
+                android:textColor="@color/ciruela"
+                android:backgroundTint="@color/melocoton" />
+
+            <!-- Devuelve la pantalla a su estado normal sin modificar ninguna decisión guardada. -->
+            <Button
+                android:id="@+id/descanso_bloqueo_mantener"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="Mantener descanso"
+                android:textAllCaps="false"
+                android:textColor="@color/ciruela"
+                android:backgroundTint="@color/marfil" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Este recuadro en melocotón reúne los iconos con los colores del resto de Agenda.VIP. -->
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/agenda_melocoton_suave" />
+    <corners android:radius="10dp" />
+
+</shape>

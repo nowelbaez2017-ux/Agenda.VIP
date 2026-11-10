@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Estas frases mantienen juntos los títulos y detalles breves del menú personal. -->
+<resources>
+
+    <string name="menu_personal_nombre_sin_datos">Tu espacio personal</string>
+
+    <string name="menu_personal_perfil">Perfil</string>
+    <string name="menu_personal_perfil_detalle">Tu foto y tus datos</string>
+
+    <string name="menu_personal_configuracion">Configuración</string>
+    <string name="menu_personal_configuracion_detalle">Avisos, descanso y seguridad</string>
+
+    <string name="menu_personal_creditos">Créditos</string>
+    <string name="menu_personal_creditos_detalle">Sobre Agenda.VIP</string>
+
+</resources>

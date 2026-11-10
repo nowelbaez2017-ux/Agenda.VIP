@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Textos propios de Descanso: el diseño XML y su actividad los comparten mediante sus nombres. -->
+    <string
+        name="descanso_titulo">Descanso</string>
+
+    <string
+        name="descanso_explicacion">Recibe un aviso 10 minutos antes del inicio.</string>
+
+    <string
+        name="descanso_activar">Activar Modo Descanso</string>
+
+    <string
+        name="descanso_inicio_etiqueta">Dejar el celular a las</string>
+
+    <string
+        name="descanso_fin_etiqueta">Levantarme a las</string>
+
+    <string
+        name="descanso_hora_ayuda">8:30</string>
+
+    <string
+        name="descanso_am">a. m.</string>
+
+    <string
+        name="descanso_pm">p. m.</string>
+
+    <string
+        name="descanso_dias_etiqueta">Noches seleccionadas</string>
+
+    <string
+        name="descanso_dias_ayuda">Cada noche incluye la madrugada siguiente.</string>
+
+    <string
+        name="descanso_restringir">Restringir las apps elegidas</string>
+
+    <string
+        name="descanso_aplicaciones">Elegir aplicaciones</string>
+
+    <string
+        name="descanso_aplicaciones_etiqueta">Apps que distraen</string>
+
+    <string
+        name="descanso_mensaje_etiqueta">Mensaje personal (opcional)</string>
+
+    <string
+        name="descanso_mensaje_ayuda">¿Qué quieres recordar antes de dormir?</string>
+
+    <string
+        name="descanso_voz">Leer el aviso en voz alta</string>
+
+    <string
+        name="descanso_pausa">Permitir una pausa de 5 minutos</string>
+
+    <string
+        name="descanso_previa">Ver y escuchar un ejemplo</string>
+
+    <string
+        name="descanso_permisos_titulo">Permisos para los avisos</string>
+
+    <string
+        name="descanso_accesibilidad">Autorizar restricción de aplicaciones</string>
+
+    <string
+        name="descanso_notificaciones">Permitir notificaciones</string>
+
+    <string
+        name="descanso_alarmas">Permitir avisos a la hora elegida</string>
+
+    <string
+        name="descanso_historial_titulo">Uso de apps por noche</string>
+
+    <string
+        name="descanso_guardar">Guardar rutina</string>
+
+    <string
+        name="descanso_cargando">Cargando tu rutina…</string>
+
+    <!-- Estado de los permisos y rutas que se muestran al abrir los ajustes del teléfono. -->
+    <string
+        name="descanso_horario_titulo">Horario</string>
+
+    <string
+        name="descanso_aviso_titulo">Aviso y pausa</string>
+
+    <string
+        name="descanso_restriccion_permitida">Accesibilidad autorizada</string>
+
+    <string
+        name="descanso_restriccion_pendiente">Accesibilidad pendiente. Este permiso habilita la restricción de apps.</string>
+
+    <string
+        name="descanso_revisar_accesibilidad">Revisar permiso en Android</string>
+
+    <string
+        name="descanso_dialogo_accesibilidad_titulo">Autorizar la restricción de apps</string>
+
+    <string
+        name="descanso_dialogo_accesibilidad_texto">Durante la rutina, Agenda.VIP identifica la app visible para mostrar la pantalla de descanso sobre las apps que elijas. El servicio no lee mensajes ni contenido de pantallas. Llamadas, emergencias y apps esenciales siguen disponibles.\n\nEn Accesibilidad, activa «Descanso de Agenda.VIP». Si Android dice que el acceso fue denegado, abre «Información de la app» y busca «Permitir ajustes restringidos» en el menú ⋮. Después vuelve a Accesibilidad.</string>
+
+    <string
+        name="descanso_dialogo_accesibilidad_cancelar">Ahora no</string>
+
+    <string
+        name="descanso_dialogo_accesibilidad_abrir">Abrir Accesibilidad</string>
+
+    <string
+        name="descanso_dialogo_accesibilidad_info">Información de la app</string>
+
+    <string
+        name="descanso_dialogo_accesibilidad_ruta">Busca Accesibilidad → Aplicaciones descargadas → Descanso de Agenda.VIP.</string>
+
+    <string
+        name="descanso_dialogo_accesibilidad_ruta_info">Busca Agenda.VIP en Ajustes → Aplicaciones → Información de la aplicación.</string>
+
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ScrollView permite deslizar el menú si la pantalla es pequeña o la letra es grande. -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbarStyle="insideOverlay">
+
+    <!-- Esta columna mantiene la cabecera personal encima de las tres opciones. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!-- La cabecera usa los colores de Agenda.VIP para distinguir la identidad de los botones. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:background="@drawable/menu_personal_fondo_cabecera"
+            android:screenReaderFocusable="true">
+
+            <!-- ImageView muestra la foto guardada o el icono de usuario que prepara FotoPerfil. -->
+            <ImageView
+                android:id="@+id/menu_personal_foto"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="centerInside"
+                android:background="@drawable/configuracion_fondo_icono"
+                android:padding="5dp"
+                android:importantForAccessibility="no" />
+
+            <!-- Esta columna deja que el nombre y el saludo usen el ancho libre junto a la foto. -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <!-- ActividadAgenda coloca aquí el saludo personalizado de la persona. -->
+                <TextView
+                    android:id="@+id/menu_personal_saludo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/melocoton"
+                    android:textSize="13sp" />
+
+                <!-- El nombre visible es el del perfil; editarlo se hace desde la fila Perfil. -->
+                <TextView
+                    android:id="@+id/menu_personal_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold"
+                    android:textColor="@color/marfil"
+                    android:textSize="21sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- ActividadAgenda añade aquí Perfil, Configuración y Créditos con sus iconos y flechas. -->
+        <LinearLayout
+            android:id="@+id/menu_personal_opciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="vertical"
+            android:divider="@drawable/configuracion_separador"
+            android:dividerPadding="10dp"
+            android:showDividers="middle" />
+
+    </LinearLayout>
+
+</ScrollView>

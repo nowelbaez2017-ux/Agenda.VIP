@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Android 8.1 o posterior permite iconos oscuros sobre la barra inferior clara.
+         Android elige esta variante automáticamente; el resto del diseño viene del tema base. -->
+    <style
+        name="Tema.AgendaVip"
+        parent="@style/TemaBaseAgendaVip">
+
+        <item
+            name="android:windowLightNavigationBar">true</item>
+
+    </style>
+
+</resources>

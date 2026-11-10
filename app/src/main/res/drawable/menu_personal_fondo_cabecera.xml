@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- shape dibuja la tarjeta que destaca la foto y el nombre en el menú personal. -->
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- El degradado pasa de ciruela a un tono más claro de la misma paleta. -->
+    <gradient
+        android:angle="0"
+        android:startColor="@color/ciruela"
+        android:endColor="@color/ciruela_presionado" />
+
+    <!-- corners redondea las esquinas del fondo. -->
+    <corners
+        android:radius="13dp" />
+
+</shape>

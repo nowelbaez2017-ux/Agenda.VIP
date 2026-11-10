@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- selector destaca el destino inferior elegido y deja suaves los otros dos. -->
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- El destino actual conserva el fondo melocotón de la opción 1. -->
+    <item
+        android:state_selected="true">
+        <shape
+            android:shape="rectangle">
+            <solid
+                android:color="@color/agenda_melocoton_suave" />
+            <corners
+                android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- La pulsación también muestra respuesta en los destinos que no están activos. -->
+    <item
+        android:state_pressed="true">
+        <shape
+            android:shape="rectangle">
+            <solid
+                android:color="@color/agenda_melocoton_suave" />
+            <corners
+                android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- En reposo el botón se integra con el fondo de la navegación. -->
+    <item>
+        <shape
+            android:shape="rectangle">
+            <solid
+                android:color="@color/transparente" />
+        </shape>
+    </item>
+
+</selector>

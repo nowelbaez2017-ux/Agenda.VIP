@@ -1,0 +1,14 @@
+<!-- Este vector dibuja el símbolo de pausa. ActividadSelectorMusica.kt y AdaptadorMusica.kt lo muestran en el botón que permite detener temporalmente una muestra que está sonando. -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- path dibuja las dos barras verticales del símbolo de pausa. -->
+    <path
+        android:fillColor="#351546"
+        android:pathData="M6,5h4v14H6zM14,5h4v14h-4z" />
+
+</vector>

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    AndroidManifest.xml le dice a Android qué pantallas y funciones contiene la aplicación.
+    Cada android:name señala una clase Kotlin o una función de Android que se usará.
+    Los permisos de abajo permiten trabajar con avisos, voz y música del teléfono.
+-->
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- La conexión opcional con la PC usa HTTPS en la red local, después de vincularla. -->
+    <uses-permission
+        android:name="android.permission.INTERNET" />
+
+    <!-- Android consulta la red disponible para decidir cuándo puede ejecutar la sincronización. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- La cámara se solicita solo al abrir el lector QR del panel. -->
+    <uses-permission
+        android:name="android.permission.CAMERA" />
+
+    <!-- La app también funciona en equipos que no tienen cámara. -->
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="false" />
+
+    <!-- uses-permission declara un permiso. Este permite pedir al usuario que se muestren notificaciones. -->
+    <uses-permission
+        android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Permite solicitar avisos a una hora concreta; GestorRecordatorios.kt programa esos avisos. -->
+    <uses-permission
+        android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <!-- Permite recibir el aviso de que el teléfono terminó de arrancar para volver a programar las tareas. -->
+    <uses-permission
+        android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Permite que ServicioAviso.kt trabaje mostrando una notificación mientras atiende un aviso. -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <!-- Indica que ese servicio puede reproducir el sonido del aviso. -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+
+    <!-- La pantalla de respuestas pide el micrófono solo después de que pulses Activar voz. -->
+    <uses-permission
+        android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Permite continuar el modo de voz elegido al bloquear el teléfono, con notificación visible. -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+
+    <!-- La huella o el bloqueo del teléfono protegen la apertura si la persona lo activa. -->
+    <uses-permission
+        android:name="android.permission.USE_BIOMETRIC" />
+
+    <!-- Android concede este acceso especial solo al elegirlo en los ajustes de Acceso de uso. -->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- El control de uso elegido muestra una notificación mientras supervisa las apps seleccionadas. -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <!-- Permite mantener el teléfono despierto durante el tiempo necesario para atender el aviso. -->
+    <uses-permission
+        android:name="android.permission.WAKE_LOCK" />
+
+    <!-- ActividadSelectorMusica.kt pide este permiso para leer la biblioteca de audio en Android 13 o posterior. -->
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_AUDIO" />
+
+    <!-- Es el permiso de lectura usado en versiones anteriores. maxSdkVersion="32" limita su uso a Android 12L o anterior. -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <!--
+        queries indica qué servicios de otras aplicaciones necesita encontrar esta app.
+        Aquí permite encontrar los motores instalados que convierten el mensaje escrito en voz.
+    -->
+    <queries>
+
+        <!-- intent describe el servicio buscado; action nombra la función de lectura en voz alta de Android. -->
+        <intent>
+
+            <action
+                android:name="android.intent.action.TTS_SERVICE" />
+
+        </intent>
+
+        <!-- Permite elegir aplicaciones con icono de inicio, sin pedir acceso a todos los paquetes. -->
+        <intent>
+            <action
+                android:name="android.intent.action.MAIN" />
+            <category
+                android:name="android.intent.category.LAUNCHER" />
+        </intent>
+
+        <!-- Reconoce aplicaciones esenciales para mantenerlas fuera de la restricción nocturna. -->
+        <intent>
+            <action
+                android:name="android.intent.action.MAIN" />
+            <category
+                android:name="android.intent.category.HOME" />
+        </intent>
+
+        <intent>
+            <action
+                android:name="android.intent.action.DIAL" />
+            <data
+                android:scheme="tel" />
+        </intent>
+
+        <intent>
+            <action
+                android:name="android.intent.action.SET_ALARM" />
+        </intent>
+
+        <intent>
+            <action
+                android:name="android.intent.action.SHOW_ALARMS" />
+        </intent>
+
+    </queries>
+
+    <!--
+        application agrupa las pantallas y componentes de Agenda.VIP.
+        @mipmap/icono_aplicacion adapta la forma del icono y @string/nombre_aplicacion
+        toma el nombre de values/cadenas.xml. @style/Tema.AgendaVip aplica el aspecto de temas.xml.
+    -->
+    <application
+        android:name=".seguridad.AplicacionAgenda"
+        android:allowBackup="false"
+        android:icon="@mipmap/icono_aplicacion"
+        android:roundIcon="@mipmap/icono_aplicacion"
+        android:label="@string/nombre_aplicacion"
+        android:supportsRtl="true"
+        android:theme="@style/Tema.AgendaVip"
+        android:enableOnBackInvokedCallback="true">
+
+        <!--
+            activity declara una pantalla. ActividadAcceso.kt muestra inicio de sesión y registro,
+            y permite entrar a la agenda local. adjustResize adapta el espacio al aparecer el teclado.
+            exported="true" permite que Android la abra desde el icono de la aplicación.
+        -->
+        <activity
+            android:name=".presentacion.acceso.ActividadAcceso"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true">
+
+            <!-- MAIN y LAUNCHER identifican la pantalla que se abre al tocar el icono de Agenda.VIP. -->
+            <intent-filter>
+
+                <action
+                    android:name="android.intent.action.MAIN" />
+
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+
+        </activity>
+
+        <!--
+            ActividadAgenda.kt muestra Inicio, Agenda y Enfoque con pantalla_agenda.xml.
+            singleTop permite entregar una nueva apertura a esta misma pantalla si ya está arriba.
+            exported="false" reserva su apertura a los recorridos de esta aplicación.
+        -->
+        <activity
+            android:name=".presentacion.agenda.ActividadAgenda"
+            android:exported="false"
+            android:launchMode="singleTop" />
+
+        <!-- ActividadCuenta.kt abre el perfil, los ajustes o los créditos usando pantalla_cuenta_local.xml. -->
+        <activity
+            android:name=".presentacion.cuenta.ActividadCuenta"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ActividadEditarTarea.kt carga tarea_pantalla_formulario.xml para crear o modificar una tarea. -->
+        <activity
+            android:name=".presentacion.tareas.ActividadEditarTarea"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ActividadDetalleTarea.kt carga tarea_pantalla_detalle.xml para consultar y gestionar una tarea. -->
+        <activity
+            android:name=".presentacion.tareas.ActividadDetalleTarea"
+            android:exported="false" />
+
+        <!-- ActividadSelectorMusica.kt abre musica_pantalla_selector.xml para elegir y escuchar música local. -->
+        <activity
+            android:name=".presentacion.musica.ActividadSelectorMusica"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!--
+            receiver declara una clase que recibe avisos de Android sin abrir una pantalla.
+            ReceptorRecordatorios.kt recibe la hora programada y pone en marcha el aviso de la tarea.
+        -->
+        <receiver
+            android:name=".recordatorios.ReceptorRecordatorios"
+            android:exported="false" />
+
+        <!--
+            ReceptorReinicio.kt vuelve a programar avisos cuando cambia el teléfono o la aplicación.
+            Tras reiniciar, espera al arranque normal; este receptor no reproduce directamente la música.
+        -->
+        <receiver
+            android:name=".recordatorios.ReceptorReinicio"
+            android:exported="false">
+
+            <!-- Este intent-filter enumera los cambios de Android que debe recibir ReceptorReinicio.kt. -->
+            <intent-filter>
+
+                <!-- El teléfono terminó de arrancar. -->
+                <action
+                    android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <!-- Se instaló una actualización de esta aplicación. -->
+                <action
+                    android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+
+                <!-- Cambió la hora del teléfono. -->
+                <action
+                    android:name="android.intent.action.TIME_SET" />
+
+                <!-- Cambió la zona horaria del teléfono. -->
+                <action
+                    android:name="android.intent.action.TIMEZONE_CHANGED" />
+
+                <!-- Android avisa de un cambio en el permiso para programar avisos a una hora concreta. -->
+                <action
+                    android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+
+            </intent-filter>
+
+        </receiver>
+
+        <!--
+            service declara una clase que trabaja sin ser una pantalla.
+            ServicioAviso.kt coordina la voz y la canción del recordatorio; mediaPlayback
+            indica a Android que su trabajo incluye reproducir audio.
+        -->
+        <service
+            android:name=".recordatorios.ServicioAviso"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
+        <!-- Pantalla que permite ver completa la foto elegida desde Perfil. -->
+        <activity
+            android:name=".presentacion.cuenta.ActividadFotoPerfil"
+            android:exported="false" />
+
+        <!-- Pantallas propias de Enfoque: crear actividad, consultar su tiempo y responder hablando. -->
+        <activity
+            android:name=".presentacion.enfoque.ActividadEditarEnfoque"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".presentacion.enfoque.ActividadDetalleEnfoque"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentacion.enfoque.ActividadRespuestaEnfoque"
+            android:exported="false" />
+
+        <!-- Prepara el archivo de voz que Enfoque usa para transcribir sin Internet. -->
+        <activity
+            android:name=".presentacion.asistente.ActividadModelosLocales"
+            android:exported="false" />
+
+        <!-- Recibe el comienzo y final del bloque incluso sin una pantalla abierta. -->
+        <receiver
+            android:name=".recordatorios.enfoque.ReceptorEnfoque"
+            android:exported="false" />
+
+        <!-- La voz se habilita desde una pantalla visible; el aviso por sí solo no abre el micrófono. -->
+        <service
+            android:name=".recordatorios.enfoque.ServicioEnfoque"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback|microphone" />
+
+        <!-- Permite reintentar una restauración interrumpida sin mostrar datos incompletos. -->
+        <activity
+            android:name=".presentacion.acceso.ActividadRecuperacion"
+            android:exported="false"
+            android:launchMode="singleTop" />
+
+        <!-- El bloqueo se superpone sin destruir la tarea o el formulario que se estaba usando. -->
+        <activity
+            android:name=".presentacion.acceso.ActividadDesbloqueo"
+            android:exported="false"
+            android:excludeFromRecents="true" />
+
+        <!-- Pantalla para autorizar y revisar la conexión opcional con la computadora. -->
+        <activity
+            android:name=".presentacion.servidor.ActividadConexionPC"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- JobService permite una revisión periódica de red que Android puede retrasar. -->
+        <service
+            android:name=".servidor.TrabajoConexionPC"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false" />
+
+        <!-- Pantallas personales: seguridad, respaldo y objetivos voluntarios de uso. -->
+        <activity
+            android:name=".presentacion.cuenta.ActividadSeguridad"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".presentacion.cuenta.ActividadRespaldo"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".presentacion.uso.ActividadLimitesUso"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Se inicia desde su pantalla y permanece visible; Pausar termina la supervisión. -->
+        <service
+            android:name=".recordatorios.uso.ServicioLimitesUso"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="User-initiated on-device app usage monitoring with persistent pause notification and daily time-limit reminders" />
+        </service>
+
+        <!-- Descanso permite configurar una rutina personal sin cambiar los otros recordatorios. -->
+        <activity
+            android:name=".presentacion.descanso.ActividadDescanso"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Recibe exclusivamente las alarmas y los botones internos del horario nocturno. -->
+        <receiver
+            android:name=".recordatorios.descanso.ReceptorDescanso"
+            android:exported="false" />
+
+        <!-- La voz de Descanso permanece visible como reproducción mientras lee el aviso. -->
+        <service
+            android:name=".recordatorios.descanso.ServicioVozDescanso"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
+        <!--
+            Android solo conecta este servicio si el usuario lo habilita en Accesibilidad.
+            BIND_ACCESSIBILITY_SERVICE reserva la conexión al sistema. El archivo XML
+            limita los eventos al nombre de la aplicación; no permite leer su contenido.
+        -->
+        <service
+            android:name=".recordatorios.descanso.ServicioAccesibilidadDescanso"
+            android:label="Descanso de Agenda.VIP"
+            android:exported="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+
+            <intent-filter>
+                <action
+                    android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/servicio_descanso" />
+
+        </service>
+
+    </application>
+
+</manifest>

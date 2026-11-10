@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ScrollView es un contenedor que permite desplazarse verticalmente cuando el contenido no cabe en la
+    pantalla. Aquí permite recorrer el formulario de acceso, también al abrir el teclado.
+-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/desplazamiento_acceso"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:clipToPadding="true"
+    android:background="@drawable/fondo_pantalla_acceso">
+
+    <!--
+        LinearLayout coloca sus elementos en una fila o columna. orientation="vertical" forma aquí una
+        columna con la cabecera, los campos y el crédito. VentanaAcceso.kt ajusta el espacio de las barras
+        del teléfono.
+    -->
+    <LinearLayout
+        android:id="@+id/contenido_acceso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--
+            include inserta el contenido de cabecera_acceso.xml: la marca y el nombre de Agenda.VIP
+            compartidos por los dos formularios.
+        -->
+        <include
+            layout="@layout/cabecera_acceso" />
+
+        <!--
+            Esta columna agrupa los campos y botones del formulario. match_parent ocupa el ancho del
+            contenedor; wrap_content usa la altura que necesita el contenido. @dimen lee una medida de
+            values/dimensiones.xml.
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/margen_formulario"
+            android:paddingEnd="@dimen/margen_formulario"
+            android:paddingTop="8dp"
+            android:background="@color/marfil">
+
+            <!--
+                TextView muestra texto que el usuario no escribe. Este es el título;
+                @string/titulo_inicio_sesion toma las palabras de values/cadenas.xml.
+            -->
+            <TextView
+                style="@style/TituloAcceso"
+                android:text="@string/titulo_inicio_sesion" />
+
+            <!-- Este TextView añade una frase bajo el título para explicar la entrada a la agenda. -->
+            <TextView
+                style="@style/SubtituloAcceso"
+                android:text="@string/subtitulo_inicio_sesion" />
+
+            <!--
+                Esta etiqueta sigue visible al escribir. labelFor la relaciona con campo_usuario para indicar
+                a qué entrada corresponde.
+            -->
+            <TextView
+                style="@style/EtiquetaAcceso"
+                android:labelFor="@id/campo_usuario"
+                android:text="@string/etiqueta_usuario" />
+
+            <!--
+                Este LinearLayout forma una fila para el icono y la entrada de datos. @style/FilaCampoAcceso
+                reúne su aspecto en values/temas.xml.
+            -->
+            <LinearLayout
+                style="@style/FilaCampoAcceso">
+
+                <!--
+                    ImageView muestra una imagen. Este icono ayuda a reconocer el campo de datos personales;
+                    @drawable busca el dibujo guardado en la carpeta drawable.
+                -->
+                <ImageView
+                    style="@style/IconoCampoAcceso"
+                    android:src="@drawable/icono_usuario" />
+
+                <!--
+                    EditText es un campo donde se puede escribir. ActividadAcceso.kt lee el usuario para
+                    revisar el formulario. @+id crea el nombre del control que Kotlin busca después.
+                -->
+                <EditText
+                    android:id="@+id/campo_usuario"
+                    style="@style/EntradaAcceso"
+                    android:hint="@string/ayuda_usuario"
+                    android:inputType="text|textNoSuggestions"
+                    android:imeOptions="actionNext"
+                    android:autofillHints="username" />
+
+            </LinearLayout>
+
+            <!--
+                Esta etiqueta identifica la contraseña y labelFor la relaciona con el campo situado debajo.
+            -->
+            <TextView
+                style="@style/EtiquetaAcceso"
+                android:labelFor="@id/campo_contrasena"
+                android:text="@string/etiqueta_contrasena" />
+
+            <!-- Esta segunda fila reúne el candado, la contraseña y el botón con forma de ojo. -->
+            <LinearLayout
+                style="@style/FilaCampoAcceso">
+
+                <!--
+                    La imagen del candado acompaña al campo de contraseña. No es un botón: el control para
+                    mostrarla está al final de esta fila.
+                -->
+                <ImageView
+                    style="@style/IconoCampoAcceso"
+                    android:src="@drawable/icono_candado" />
+
+                <!--
+                    Este EditText recibe la contraseña. textPassword oculta los caracteres;
+                    ActividadAcceso.kt revisa si está escrita. saveEnabled="false" evita que Android copie
+                    esta contraseña al guardar la pantalla.
+                -->
+                <EditText
+                    android:id="@+id/campo_contrasena"
+                    style="@style/EntradaAcceso"
+                    android:hint="@string/ayuda_contrasena"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionDone"
+                    android:autofillHints="password"
+                    android:saveEnabled="false" />
+
+                <!--
+                    ImageButton es un botón con imagen. ActividadAcceso.kt lo conecta con
+                    VisibilidadContrasena.kt para mostrar u ocultar el texto del campo de contraseña.
+                -->
+                <ImageButton
+                    android:id="@+id/boton_visibilidad_contrasena"
+                    style="@style/VisibilidadContrasena"
+                    android:contentDescription="@string/mostrar_contrasena" />
+
+            </LinearLayout>
+
+            <!--
+                Button es un botón que ejecuta una acción al tocarlo. ActividadAcceso.kt conecta Entrar con
+                la comprobación real de usuario y contraseña. El botón muestra la espera mientras trabaja.
+            -->
+            <Button
+                android:id="@+id/boton_entrar"
+                style="@style/BotonPrincipalAcceso"
+                android:text="@string/accion_entrar" />
+
+            <!-- Este texto aparece cuando el repositorio informa que el acceso no pudo completarse. -->
+            <TextView
+                android:id="@+id/estado_cuentas_acceso"
+                style="@style/EstadoCuentasAcceso" />
+
+            <!-- Abre la ayuda de acceso y permite buscar el usuario tras verificar el teléfono. -->
+            <Button
+                android:id="@+id/enlace_ayuda_acceso"
+                style="@style/EnlaceAcceso"
+                android:text="@string/cuentas_acceso_ayuda_credenciales" />
+
+            <!--
+                Este botón pide a ActividadAcceso.kt cambiar al formulario definido en pantalla_registro.xml.
+            -->
+            <Button
+                android:id="@+id/enlace_registro"
+                style="@style/EnlaceAcceso"
+                android:text="@string/enlace_registro" />
+
+        </LinearLayout>
+
+        <!--
+            ActividadAcceso.kt conecta este botón con la apertura de la agenda local, que permite empezar a
+            usarla sin una cuenta.
+        -->
+        <Button
+            android:id="@+id/boton_agenda_local"
+            style="@style/EnlaceAcceso"
+            android:background="@color/marfil"
+            android:text="@string/agenda_continuar_local" />
+
+        <!--
+            Este texto explica dónde se guardarán las tareas. @color/texto_secundario toma el color de
+            values/colores.xml.
+        -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:gravity="center"
+            android:text="@string/cuentas_acceso_ayuda_local"
+            android:textSize="13sp"
+            android:textColor="@color/texto_secundario"
+            android:background="@color/marfil" />
+
+        <!--
+            View es un elemento básico de la pantalla. Este se usa como espacio vacío: su alto 0dp y su peso
+            1 lo hacen crecer con la altura sobrante y empujan el crédito hacia abajo.
+        -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/marfil"
+            android:importantForAccessibility="no" />
+
+        <!--
+            Este TextView muestra el crédito del autor. dp mide tamaños y espacios adaptados a la pantalla;
+            sp mide el texto y respeta el tamaño de letra elegido en el teléfono.
+        -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:gravity="center"
+            android:text="@string/credito_autor"
+            android:textSize="12sp"
+            android:textColor="@color/texto_secundario"
+            android:background="@color/marfil" />
+
+    </LinearLayout>
+
+</ScrollView>
+
+

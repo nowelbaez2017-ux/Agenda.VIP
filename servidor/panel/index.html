@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Agenda.VIP · Mi computadora</title>
+    <link rel="stylesheet" href="/panel/estilos.css">
+    <script src="/panel/panel.js" defer></script>
+</head>
+<body>
+    <!-- El acceso verifica la clave administrativa y permite elegir cuánto dura la sesión. -->
+    <main id="acceso" class="acceso">
+        <section class="tarjeta-acceso" aria-labelledby="titulo-acceso">
+            <div class="marca marca-acceso"><span class="simbolo" aria-hidden="true">A</span><span>Agenda.VIP</span></div>
+            <p class="sobrelinea">TU AGENDA, DESDE TU COMPUTADORA</p>
+            <h1 id="titulo-acceso">Todo tu día.<br>Un lugar para organizarlo.</h1>
+            <p class="texto-suave">Conecta tu celular para administrar los recordatorios y guardar sus copias de seguridad.</p>
+            <form id="formulario-acceso" method="post">
+                <label for="clave-administrador">Clave de administrador</label>
+                <input id="clave-administrador" name="password" type="password" autocomplete="current-password" required maxlength="256" placeholder="Consulta la ventana Acceso al panel">
+                <!-- La casilla solicita una sesión más larga cuando la persona la marca. -->
+                <label class="fila-interruptor" for="recordar-acceso">
+                    <span>Mantener sesión en esta PC</span>
+                    <input id="recordar-acceso" type="checkbox" autocomplete="off" aria-describedby="ayuda-recordar-acceso">
+                </label>
+                <p id="ayuda-recordar-acceso" class="nota">La sesión puede durar hasta 30 días en este navegador.</p>
+                <button class="boton principal" type="submit">Entrar al panel <span aria-hidden="true">→</span></button>
+            </form>
+            <p id="error-acceso" class="mensaje error" role="alert" hidden></p>
+            <p class="nota">Tu clave de Agenda.VIP en el celular es independiente de este acceso.</p>
+            <p class="credito">Creada por Nowel Baez</p>
+        </section>
+    </main>
+
+    <!-- La barra lateral conserva las cuentas y los accesos mientras cambia el contenido. -->
+    <div id="aplicacion" class="aplicacion" hidden>
+        <aside class="lateral" aria-label="Cuentas y navegación">
+            <div class="marca"><span class="simbolo" aria-hidden="true">A</span><span>Agenda.VIP</span></div>
+            <span class="etiqueta-servidor">MI COMPUTADORA</span>
+            <div class="encabezado-lateral"><h2>Cuentas vinculadas</h2><button id="boton-vincular" class="boton-icono" title="Vincular un celular" aria-label="Vincular un celular">+</button></div>
+            <div id="cuentas" class="lista-cuentas"></div>
+            <p id="sin-cuentas" class="nota">Vincula tu celular para ver aquí su agenda.</p>
+            <div class="pie-lateral">
+                <p><span class="punto" aria-hidden="true"></span><span id="nombre-servidor">Servidor local</span></p>
+                <button id="boton-salir" class="enlace">Cerrar sesión del panel</button>
+                <small>Creada por Nowel Baez</small>
+            </div>
+        </aside>
+
+        <main class="contenido">
+            <header class="barra-superior">
+                <div><span class="sobrelinea">PANEL DE ADMINISTRACIÓN</span><p>Una vista más amplia de tu día</p></div>
+                <button id="boton-actualizar" class="boton secundario"><span aria-hidden="true">↻</span> Actualizar</button>
+            </header>
+
+            <p id="mensaje-global" class="mensaje" role="status" aria-live="polite" hidden></p>
+
+            <!-- Este estado explica por qué no hay tareas antes de conectar la primera cuenta. -->
+            <section id="bienvenida" class="bienvenida tarjeta" aria-labelledby="titulo-bienvenida">
+                <span class="ilustracion" aria-hidden="true">⌁</span>
+                <p class="sobrelinea">TU CELULAR Y TU PC, CONECTADOS</p>
+                <h1 id="titulo-bienvenida">Haz espacio para lo importante.</h1>
+                <p>Vincula una cuenta de Agenda.VIP para organizar sus tareas desde aquí. El teléfono conservará su agenda y sus avisos cuando se desconecte.</p>
+                <button id="boton-vincular-bienvenida" class="boton principal">Vincular mi celular</button>
+            </section>
+
+            <section id="cuenta-seleccionada" hidden>
+                <div class="cabecera-cuenta">
+                    <div>
+                        <p id="usuario-cuenta" class="sobrelinea"></p>
+                        <h1 id="nombre-cuenta"></h1>
+                        <p id="detalle-cuenta" class="texto-suave"></p>
+                    </div>
+                    <button id="boton-desvincular" class="boton discreto">Desvincular</button>
+                </div>
+                <div class="resumen">
+                    <div class="tarjeta cifra"><span class="texto-suave">Recordatorios</span><strong id="cantidad-tareas">0</strong></div>
+                    <div class="tarjeta cifra"><span class="texto-suave">Cambios pendientes</span><strong id="cantidad-pendientes">0</strong></div>
+                    <div class="tarjeta cifra cifra-conexion"><span class="texto-suave">Última sincronización</span><strong id="ultima-conexion">Sin datos</strong><span id="estado-conexion" class="nota"></span></div>
+                </div>
+
+                <!-- Las pestañas seleccionan una vista sin recargar ni perder el formulario abierto. -->
+                <nav class="pestanas" aria-label="Información de la cuenta">
+                    <button id="tab-tareas" class="pestana activa" data-vista="tareas" aria-current="page">Tareas</button>
+                    <button id="tab-actividad" class="pestana" data-vista="actividad">Actividad del panel</button>
+                    <button id="tab-respaldos" class="pestana" data-vista="respaldos">Copias de seguridad</button>
+                </nav>
+
+                <section id="vista-tareas">
+                    <div class="titulo-seccion">
+                        <div><h2>Su agenda, en orden</h2><p class="texto-suave">Datos confirmados por el celular</p></div>
+                        <div class="acciones-tareas">
+                            <button id="boton-editar-xml" class="boton secundario">Editar XML</button>
+                            <button id="boton-exportar-xml" class="boton secundario">Exportar XML</button>
+                            <button id="boton-nueva-tarea" class="boton principal">+ Nueva tarea</button>
+                        </div>
+                    </div>
+                    <p class="aviso-inline">Los cambios del panel se aplican cuando el celular se sincroniza. Podrás ver la confirmación en Actividad del panel.</p>
+                    <div id="lista-tareas" class="lista-tareas"></div>
+                    <p id="sin-tareas" class="vacio tarjeta">Esta cuenta todavía no tiene recordatorios.</p>
+                </section>
+
+                <section id="vista-actividad" hidden>
+                    <div class="titulo-seccion"><div><h2>El estado de cada cambio</h2><p class="texto-suave">Pendiente, aplicado, en conflicto o con error</p></div></div>
+                    <div id="lista-actividad" class="lista-tareas"></div>
+                    <p id="sin-actividad" class="vacio tarjeta">Los cambios que hagas desde el panel aparecerán aquí.</p>
+                </section>
+
+                <section id="vista-respaldos" hidden>
+                    <div class="titulo-seccion"><div><h2>Una copia para volver a empezar</h2><p class="texto-suave">Tareas, perfil, historial y preferencias de la cuenta</p></div><button id="boton-crear-respaldo" class="boton principal">Crear copia</button></div>
+                    <p class="aviso-inline">El teléfono enviará la copia al conectarse. Al descargarla elegirás una contraseña para restaurarla desde Agenda.VIP, incluso en otra instalación.</p>
+                    <div id="lista-respaldos" class="lista-tareas"></div>
+                    <p id="sin-respaldos" class="vacio tarjeta">Todavía no se ha solicitado una copia para esta cuenta.</p>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <!-- dialog crea una ventana centrada con foco de teclado y cierre mediante Escape. -->
+    <dialog id="dialogo-vincular" aria-labelledby="titulo-vincular">
+        <form id="formulario-vincular" class="contenido-dialogo">
+            <div class="encabezado-dialogo"><div><p class="sobrelinea">CONEXIÓN AUTORIZADA</p><h2 id="titulo-vincular">Conecta tu celular</h2></div><button type="button" class="boton-icono cerrar-dialogo" aria-label="Cerrar">×</button></div>
+            <ol class="pasos">
+                <li>Conecta la computadora y el celular a la misma Wi‑Fi.</li>
+                <li>En Agenda.VIP abre Configuración → Mi computadora.</li>
+                <li>Pulsa Escanear QR y apunta a este dibujo.</li>
+            </ol>
+
+            <!-- La imagen contiene el permiso temporal y se genera dentro de esta PC. -->
+            <div class="qr-vinculacion">
+                <img
+                    id="imagen-vinculacion"
+                    width="304"
+                    height="304"
+                    alt="Código QR para vincular Agenda.VIP con esta computadora"
+                    hidden>
+                <p id="estado-qr" class="nota" role="status">Preparando el QR…</p>
+            </div>
+            <p id="caducidad-codigo" class="nota caducidad-qr"></p>
+            <p class="nota">El celular te pedirá confirmar el acceso a la cuenta que tienes abierta. El permiso vence a los cinco minutos.</p>
+
+            <!-- details deja la opción manual disponible sin quitar espacio al QR. -->
+            <details id="vinculacion-manual" class="opciones-avanzadas">
+                <summary>Usar dirección y código manualmente</summary>
+                <label for="codigo-vinculacion">Código de vinculación</label>
+                <textarea id="codigo-vinculacion" rows="4" readonly spellcheck="false"></textarea>
+                <p id="direccion-servidor" class="nota seleccionable"></p>
+                <button id="boton-copiar-codigo" type="button" class="boton secundario">Copiar código</button>
+            </details>
+
+            <div class="acciones-dialogo">
+                <button id="boton-renovar-codigo" type="submit" class="boton principal">Generar nuevo QR</button>
+            </div>
+            <p id="error-vincular" class="mensaje error" role="alert" hidden></p>
+        </form>
+    </dialog>
+
+    <dialog id="dialogo-tarea" aria-labelledby="titulo-tarea">
+        <form id="formulario-tarea" class="contenido-dialogo">
+            <div class="encabezado-dialogo"><div><p class="sobrelinea">RECORDATORIO EN EL CELULAR</p><h2 id="titulo-tarea">Nueva tarea</h2></div><button type="button" class="boton-icono cerrar-dialogo" aria-label="Cerrar">×</button></div>
+            <label for="tarea-titulo">¿Qué hay que hacer?</label>
+            <input id="tarea-titulo" required maxlength="200" placeholder="Por ejemplo, preparar la tarea de matemáticas">
+            <div class="campos-horario">
+                <div><label for="tarea-fecha">Fecha de inicio</label><input id="tarea-fecha" type="date" required></div>
+                <div><label for="tarea-hora">Hora</label><input id="tarea-hora" type="text" inputmode="numeric" required pattern="(0?[1-9]|1[0-2]):[0-5][0-9]" placeholder="8:30" maxlength="5" aria-describedby="ayuda-hora"></div>
+                <div><label for="tarea-periodo">Período</label><select id="tarea-periodo"><option value="AM">a. m.</option><option value="PM">p. m.</option></select></div>
+            </div>
+            <p id="ayuda-hora" class="nota">Escribe la hora en formato de 12 horas, por ejemplo 8:30.</p>
+            <label for="tarea-repeticion">Repetición</label>
+            <select id="tarea-repeticion"><option value="UNA_VEZ">Solo una vez</option><option value="DIARIA">Todos los días</option><option value="DIAS_SEMANA">Días de la semana</option></select>
+            <fieldset id="dias-semana" class="dias" hidden><legend>Elige los días</legend><label><input type="checkbox" value="1">Lun</label><label><input type="checkbox" value="2">Mar</label><label><input type="checkbox" value="3">Mié</label><label><input type="checkbox" value="4">Jue</label><label><input type="checkbox" value="5">Vie</label><label><input type="checkbox" value="6">Sáb</label><label><input type="checkbox" value="7">Dom</label></fieldset>
+            <label class="fila-interruptor" for="tarea-voz"><span>Aviso por voz</span><input id="tarea-voz" type="checkbox" checked></label>
+            <label for="tarea-mensaje">Mensaje que dirá el teléfono</label>
+            <textarea id="tarea-mensaje" rows="2" maxlength="1000" placeholder="Si lo dejas vacío, leerá el nombre de la tarea."></textarea>
+            <label for="tarea-musica">Música del aviso</label>
+            <select id="tarea-musica"><option value="ALEATORIA">Aleatoria del celular</option><option value="SIN_MUSICA">Sin música</option></select>
+            <p class="nota">La canción concreta se elige dentro de Agenda.VIP, desde la biblioteca del teléfono.</p>
+            <details class="opciones-avanzadas">
+                <summary>Seguimiento del recordatorio</summary>
+                <label class="fila-interruptor" for="tarea-seguimiento"><span>Repetir si sigue pendiente</span><input id="tarea-seguimiento" type="checkbox"></label>
+                <div class="dos-campos"><div><label for="tarea-intervalo">Cada cuántos minutos</label><input id="tarea-intervalo" type="number" min="1" max="1440" value="5" required></div><div><label for="tarea-limite">Total de avisos</label><input id="tarea-limite" type="number" min="1" max="20" value="3" required></div></div>
+                <label for="tarea-mensaje-seguimiento">Mensaje de seguimiento</label>
+                <textarea id="tarea-mensaje-seguimiento" rows="2" maxlength="1000" placeholder="Puedes dejarlo vacío."></textarea>
+            </details>
+            <p id="error-tarea" class="mensaje error" role="alert" hidden></p>
+            <div class="acciones-dialogo"><button class="boton principal" type="submit">Enviar al celular</button><button type="button" class="boton secundario cerrar-dialogo">Cancelar</button></div>
+        </form>
+    </dialog>
+
+    <!-- El editor permite abrir un XML, revisarlo y confirmar las órdenes que recibirá el celular. -->
+    <dialog id="dialogo-xml" class="dialogo-xml" aria-labelledby="titulo-xml">
+        <form id="formulario-xml" class="contenido-dialogo">
+            <div class="encabezado-dialogo">
+                <div>
+                    <p class="sobrelinea">RECORDATORIOS EN UN ARCHIVO</p>
+                    <h2 id="titulo-xml">Editar XML</h2>
+                    <p id="cuenta-xml" class="texto-suave"></p>
+                </div>
+                <button type="button" class="boton-icono cerrar-dialogo" aria-label="Cerrar">×</button>
+            </div>
+            <p class="nota">Puedes editar el texto de esta cuenta o abrir un archivo XML guardado en tu computadora. Revisa los cambios antes de enviarlos.</p>
+
+            <!-- El selector solo abre el archivo elegido. La edición permanece en el navegador hasta confirmar. -->
+            <div class="barra-editor-xml">
+                <div>
+                    <label for="archivo-xml">Abrir archivo XML</label>
+                    <input id="archivo-xml" type="file" accept=".xml,application/xml,text/xml">
+                </div>
+                <button id="boton-exportar-editor-xml" type="button" class="boton secundario">Exportar XML actual</button>
+            </div>
+            <p id="archivo-xml-elegido" class="nota" role="status"></p>
+
+            <!-- textarea muestra XML como texto. El servidor comprueba los campos al pulsar Revisar cambios. -->
+            <label for="contenido-xml">Contenido del archivo</label>
+            <textarea id="contenido-xml" class="editor-xml" rows="15" spellcheck="false" wrap="off" aria-describedby="ayuda-xml" placeholder="Preparando los recordatorios de esta cuenta…"></textarea>
+            <p id="ayuda-xml" class="nota">Conserva el id y la revision de un recordatorio existente. Para crear uno, usa un id nuevo y omite revision. Para eliminar, escribe accion=&quot;eliminar&quot; en ese recordatorio.</p>
+
+            <!-- El ejemplo es texto de consulta y no se agrega a la agenda al abrir este apartado. -->
+            <details class="opciones-avanzadas">
+                <summary>Ver un ejemplo de recordatorio nuevo</summary>
+                <p class="nota">La fecha usa año-mes-día y la hora se escribe en doce horas. Cambia los valores del ejemplo antes de usarlo.</p>
+                <pre class="ejemplo-xml">&lt;agenda formato="1"&gt;
+    &lt;recordatorio id="estudiar_ingles" accion="guardar"&gt;
+        &lt;titulo&gt;Practicar inglés&lt;/titulo&gt;
+        &lt;fecha&gt;2026-11-05&lt;/fecha&gt;
+        &lt;hora&gt;08:30&lt;/hora&gt;
+        &lt;periodo&gt;PM&lt;/periodo&gt;
+        &lt;repeticion&gt;diaria&lt;/repeticion&gt;
+        &lt;voz activa="true"&gt;
+            &lt;mensaje&gt;Dedica un momento a tu inglés.&lt;/mensaje&gt;
+        &lt;/voz&gt;
+        &lt;musica modo="sin_musica" /&gt;
+    &lt;/recordatorio&gt;
+&lt;/agenda&gt;</pre>
+            </details>
+
+            <p id="error-xml" class="mensaje error" role="alert" hidden></p>
+            <p id="estado-xml" class="nota" role="status" aria-live="polite"></p>
+            <section id="vista-previa-xml" class="vista-previa-xml" aria-labelledby="titulo-preview-xml" hidden>
+                <h3 id="titulo-preview-xml">Cambios que recibirá el celular</h3>
+                <p id="resumen-xml"></p>
+                <ul id="advertencias-xml" class="notas-xml" hidden></ul>
+                <ul id="cambios-xml" class="lista-cambios-xml"></ul>
+                <p class="nota">Los cambios quedarán pendientes en el panel hasta que el teléfono los revise y confirme.</p>
+            </section>
+
+            <div class="acciones-dialogo acciones-editor-xml">
+                <button id="boton-revisar-xml" type="button" class="boton secundario">Revisar cambios</button>
+                <button id="boton-aplicar-xml" type="submit" class="boton principal" disabled>Enviar cambios al celular</button>
+                <button type="button" class="boton secundario cerrar-dialogo">Cerrar</button>
+            </div>
+        </form>
+    </dialog>
+
+
+    <dialog id="dialogo-confirmar" aria-labelledby="titulo-confirmar">
+        <form id="formulario-confirmar" class="contenido-dialogo">
+            <h2 id="titulo-confirmar"></h2>
+            <p id="texto-confirmar"></p>
+            <p id="error-confirmar" class="mensaje error" role="alert" hidden></p>
+            <div class="acciones-dialogo"><button id="aceptar-confirmacion" class="boton peligro" type="submit">Confirmar</button><button type="button" class="boton secundario cerrar-dialogo">Cancelar</button></div>
+        </form>
+    </dialog>
+
+    <dialog id="dialogo-descargar" aria-labelledby="titulo-descargar">
+        <form id="formulario-descargar" class="contenido-dialogo">
+            <div class="encabezado-dialogo"><div><p class="sobrelinea">COPIA PORTÁTIL</p><h2 id="titulo-descargar">Protege tu descarga</h2></div><button type="button" class="boton-icono cerrar-dialogo" aria-label="Cerrar">×</button></div>
+            <p>Elige una contraseña para este archivo y guárdala. Agenda.VIP la pedirá cuando restaures la copia desde el celular.</p>
+            <label for="contrasena-respaldo">Contraseña del archivo</label>
+            <input id="contrasena-respaldo" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
+            <label for="confirmar-contrasena-respaldo">Repite la contraseña</label>
+            <input id="confirmar-contrasena-respaldo" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
+            <p class="nota">La contraseña de este archivo se utiliza para preparar la descarga. No cambia tu contraseña de acceso.</p>
+            <p id="error-descargar" class="mensaje error" role="alert" hidden></p>
+            <div class="acciones-dialogo"><button class="boton principal" type="submit">Descargar copia .avip</button><button type="button" class="boton secundario cerrar-dialogo">Cancelar</button></div>
+        </form>
+    </dialog>
+</body>
+</html>

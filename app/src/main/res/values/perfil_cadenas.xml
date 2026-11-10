@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- resources reúne textos que el formulario y el visor de Perfil muestran al usuario. -->
+<resources>
+
+    <!-- Los campos indican qué dato pide el formulario; solo Nombre es obligatorio. -->
+    <string name="perfil_nombre_etiqueta">Nombre</string>
+    <string name="perfil_nombre_indicacion">Tu nombre</string>
+    <string name="perfil_apellido_etiqueta">Apellido</string>
+    <string name="perfil_apellido_indicacion">Tu apellido (opcional)</string>
+    <string name="perfil_correo_etiqueta">Correo</string>
+    <string name="perfil_correo_indicacion">Tu correo (opcional)</string>
+    <string name="perfil_celular_etiqueta">Celular</string>
+    <string name="perfil_celular_indicacion">Tu número (opcional)</string>
+
+    <!-- Estos textos acompañan a la identidad y al guardado local. -->
+    <string name="perfil_nombre_sin_datos">Tu perfil</string>
+    <string name="perfil_etiqueta_local">En este teléfono</string>
+    <string name="perfil_guardar">Guardar cambios</string>
+    <string name="perfil_datos_guardados">Cambios guardados en este teléfono.</string>
+
+    <!-- Las descripciones permiten conocer las acciones de imagen al usar un lector de pantalla. -->
+    <string name="perfil_foto_descripcion">Foto de perfil. Toca o mantén pulsado para ver sus opciones.</string>
+    <string name="perfil_foto_vacia_descripcion">Perfil sin foto. Toca o mantén pulsado para elegir una imagen.</string>
+    <string name="perfil_acciones_foto">Opciones de la foto de perfil</string>
+    <string name="perfil_ver_foto">Ver foto</string>
+    <string name="perfil_cambiar_foto">Cambiar foto</string>
+    <string name="perfil_quitar_foto">Quitar foto</string>
+    <string name="perfil_quitar_foto_titulo">¿Quitar tu foto?</string>
+    <string name="perfil_quitar_foto_ayuda">Se quitará del perfil. El archivo original seguirá en tu teléfono.</string>
+    <string name="perfil_cancelar">Cancelar</string>
+    <string name="perfil_foto_guardando">Guardando la foto elegida…</string>
+    <string name="perfil_foto_guardada">Foto actualizada en este teléfono.</string>
+    <string name="perfil_foto_quitada">Foto quitada del perfil.</string>
+
+    <!-- Los errores explican cómo corregir los datos sin borrar lo que se escribió. -->
+    <string name="perfil_error_nombre">Escribe el nombre que quieres usar.</string>
+    <string name="perfil_error_correo">Revisa el correo; por ejemplo, nombre@correo.com. También puedes dejarlo vacío.</string>
+    <string name="perfil_error_celular">Usa de 7 a 15 números y, si hace falta, + al inicio. También puedes dejarlo vacío.</string>
+    <string name="perfil_foto_no_disponible">No se pudo guardar esa foto. Elige una imagen de hasta 32 MB desde la galería.</string>
+    <string name="perfil_selector_no_disponible">No hay una galería disponible para seleccionar fotos en este teléfono.</string>
+
+    <!-- El visor muestra la fotografía completa, con una espera y una explicación si no se puede leer. -->
+    <string name="perfil_visor_titulo">Foto de perfil</string>
+    <string name="perfil_visor_volver">Volver al perfil</string>
+    <string name="perfil_visor_imagen">Foto de perfil completa</string>
+    <string name="perfil_visor_cargando">Cargando foto…</string>
+    <string name="perfil_visor_error">No se pudo mostrar esta foto. Vuelve a Perfil y elige otra imagen.</string>
+
+    <!-- El usuario de acceso se lee aparte del perfil y se puede copiar para volver a entrar. -->
+    <string name="perfil_usuario_titulo">Usuario de acceso</string>
+    <string name="perfil_usuario_cargando">Consultando cuenta…</string>
+    <string name="perfil_usuario_invitado">Agenda sin cuenta</string>
+    <string name="perfil_usuario_no_disponible">Usuario no disponible</string>
+    <string name="perfil_usuario_ayuda">Úsalo para iniciar sesión. Editar el perfil conserva tu usuario de acceso.</string>
+    <string name="perfil_usuario_copiar">Copiar</string>
+    <string name="perfil_usuario_copiar_descripcion">Copiar nombre de usuario</string>
+    <string name="perfil_usuario_copiado">Usuario copiado.</string>
+
+    <!-- Textos para distinguir la ficha personal del modo de edición. -->
+    <string name="perfil_datos_personales">Datos personales</string>
+    <string name="perfil_editar">Editar</string>
+    <string name="perfil_dato_pendiente">Sin agregar</string>
+    <string name="perfil_error_guardar">No se pudieron guardar los datos. Vuelve a abrir tu perfil.</string>
+    <string name="perfil_confirmar_titulo">¿Guardar los cambios del perfil?</string>
+    <string name="perfil_confirmar_ayuda">Se actualizarán tus datos personales en este teléfono. Tus datos de entrada se conservan.</string>
+    <string name="perfil_seguir_editando">Seguir editando</string>
+    <string name="perfil_confirmar">Confirmar</string>
+
+</resources>

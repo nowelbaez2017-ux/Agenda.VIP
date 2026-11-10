@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    adaptive-icon permite que Android adapte la forma del icono al teléfono.
+    background conserva el ciruela de la marca y foreground coloca el calendario con margen.
+    Se utiliza desde Android 8, que también es la versión mínima de Agenda.VIP.
+-->
+<adaptive-icon
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <background
+        android:drawable="@color/ciruela" />
+
+    <foreground
+        android:drawable="@drawable/frente_icono_agenda" />
+
+</adaptive-icon>

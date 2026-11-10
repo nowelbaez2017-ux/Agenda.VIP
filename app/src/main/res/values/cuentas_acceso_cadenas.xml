@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Los formularios explican las reglas antes de guardar una cuenta local. -->
+    <string
+        name="cuentas_acceso_ayuda_usuario">De 3 a 40 letras o números. También puedes usar punto, guion y guion bajo; sin espacios.</string>
+    <string
+        name="cuentas_acceso_ayuda_contrasena">Usa de 15 a 128 caracteres. Una frase larga es fácil de recordar; puedes incluir espacios.</string>
+    <string
+        name="cuentas_acceso_ayuda_local">Las cuentas y la agenda sin cuenta se guardan por separado en este teléfono.</string>
+    <string
+        name="cuentas_acceso_copiar_agenda">Copiar mi agenda sin cuenta</string>
+    <string
+        name="cuentas_acceso_copiar_explicacion">Conserva las tareas y el perfil que ya tengo en este teléfono</string>
+
+    <!-- Los botones muestran estas acciones mientras la cola consulta o guarda datos. -->
+    <string
+        name="cuentas_acceso_comprobando">Comprobando sesión…</string>
+    <string
+        name="cuentas_acceso_entrando">Comprobando acceso…</string>
+    <string
+        name="cuentas_acceso_creando">Creando cuenta…</string>
+    <string
+        name="cuentas_acceso_abriendo_invitado">Abriendo mi agenda…</string>
+
+    <!-- ActividadAcceso señala el campo correspondiente sin borrar lo escrito. -->
+    <string
+        name="cuentas_acceso_usuario_invalido">Usa de 3 a 40 letras o números, punto, guion o guion bajo, sin espacios.</string>
+    <string
+        name="cuentas_acceso_nombre_largo">Usa un nombre de hasta 120 caracteres.</string>
+    <string
+        name="cuentas_acceso_contrasena_corta">Escribe al menos 15 caracteres. Puedes usar una frase con espacios.</string>
+    <string
+        name="cuentas_acceso_contrasena_larga">Usa una contraseña de hasta 128 caracteres.</string>
+    <string
+        name="cuentas_acceso_usuario_duplicado">Este usuario ya está ocupado. Elige otro o inicia sesión si ya tienes esa cuenta.</string>
+
+    <!-- Textos de la ayuda que se abre desde el formulario de inicio de sesión. -->
+    <string
+        name="cuentas_acceso_ayuda_credenciales">¿Olvidaste tus datos de acceso?</string>
+
+    <string
+        name="cuentas_acceso_ayuda_detalle">Confirma tu huella o PIN del teléfono para ver los usuarios guardados aquí. Si olvidaste tu contraseña, revisa si la guardaste en el gestor de contraseñas de Android. Agenda.VIP no puede mostrarla.</string>
+
+    <string
+        name="cuentas_acceso_buscar_usuario">Buscar mi usuario</string>
+
+    <string
+        name="cuentas_acceso_buscando_usuario">Buscando usuarios…</string>
+
+    <string
+        name="cuentas_acceso_sin_usuarios">Todavía no hay cuentas guardadas en esta instalación.</string>
+
+    <!-- Este resultado nunca confirma si existe un usuario ni revela detalles internos. -->
+    <string
+        name="cuentas_acceso_credenciales_incorrectas">No pudimos iniciar sesión. Revisa el usuario y la contraseña. Si ya hiciste varios intentos, espera 60 segundos y vuelve a probar.</string>
+    <string
+        name="cuentas_acceso_datos_no_validos">Revisa los datos del formulario. El nombre admite hasta 120 caracteres.</string>
+    <string
+        name="cuentas_acceso_error_guardado">No pudimos leer o guardar el acceso. Vuelve a intentarlo; tus datos siguen en el teléfono.</string>
+    <string
+        name="cuentas_acceso_cuenta_no_disponible">La cuenta de esa sesión ya no está disponible. Inicia sesión de nuevo o continúa sin cuenta.</string>
+    <string
+        name="cuentas_acceso_sesion_cambio">La sesión cambió mientras entrabas. Vuelve a intentarlo.</string>
+    <string
+        name="cuentas_acceso_registro_guardado_sin_entrada">Tu cuenta ya está creada. Inicia sesión con tu usuario y contraseña para continuar. Si quedó una copia pendiente, se intentará al entrar. Tu agenda sin cuenta se conserva.</string>
+
+</resources>

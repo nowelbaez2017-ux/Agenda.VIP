@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LinearLayout es un contenedor que ordena sus elementos en fila o en columna. Aquí orientation="vertical"
+    coloca la cabecera, la biblioteca y la elección final uno debajo de otro.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/musica_raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/marfil"
+    android:focusableInTouchMode="true">
+
+    <!--
+        Esta fila reúne el botón de volver y los títulos. match_parent ocupa todo el ancho disponible;
+        wrap_content adapta el alto a lo que contiene.
+    -->
+    <LinearLayout
+        android:id="@+id/musica_cabecera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/ciruela"
+        android:paddingStart="8dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="18dp">
+
+        <!--
+            ImageButton es un botón que muestra una imagen. ActividadSelectorMusica.kt conecta esta flecha
+            con cancelar(), que vuelve al formulario sin confirmar otra canción.
+        -->
+        <ImageButton
+            android:id="@+id/musica_regresar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/musica_icono_flecha"
+            android:tint="@color/marfil"
+            android:padding="12dp"
+            android:contentDescription="@string/musica_regresar" />
+
+        <!--
+            Esta columna mantiene juntos el título y el nombre de la tarea. Con ancho 0dp y layout_weight="1"
+            recibe el espacio que queda después de la flecha.
+        -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!--
+                TextView muestra texto que el usuario no escribe. @string busca el texto en
+                musica_cadenas.xml y @color busca el color en los recursos de colores. sp permite adaptar el
+                tamaño del texto a la preferencia del teléfono.
+            -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/musica_titulo"
+                android:fontFamily="serif"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                android:textColor="@color/marfil"
+                android:accessibilityHeading="true" />
+
+            <!--
+                conectarControles() escribe aquí para qué tarea se está eligiendo música. @+id crea el nombre
+                que Kotlin usa mediante R.id.musica_para para encontrar este texto.
+            -->
+            <TextView
+                android:id="@+id/musica_para"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                android:textColor="@color/melocoton"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--
+        Esta columna agrupa las pestañas, la búsqueda y los avisos. onCreate() de ActividadSelectorMusica.kt
+        la coloca al principio de musica_lista para que estos controles se desplacen con las canciones.
+    -->
+    <LinearLayout
+        android:id="@+id/musica_controles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--
+            Esta fila coloca las dos pestañas una junto a otra. Las medidas dp conservan un tamaño parecido
+            en pantallas de distinta densidad.
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="12dp">
+
+            <!--
+                Button es un botón con texto. Al pulsar Canciones, conectarControles() pide mostrar todas las
+                canciones sin agruparlas por carpetas. Ambos botones tienen el mismo peso para repartirse el
+                ancho.
+            -->
+            <Button
+                android:id="@+id/musica_tab_canciones"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="@string/musica_canciones"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:backgroundTint="@null" />
+
+            <!--
+                Este botón cambia a la vista de carpetas. decorarPestana() de Kotlin cambia el aspecto de las
+                pestañas para señalar cuál está activa.
+            -->
+            <Button
+                android:id="@+id/musica_tab_carpetas"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="@string/musica_carpetas"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:backgroundTint="@null" />
+
+        </LinearLayout>
+
+        <!--
+            Esta fila reúne el campo de búsqueda y su botón para borrar. Tras una pausa breve al escribir,
+            Kotlin filtra las canciones ya cargadas sin detener los botones ni el desplazamiento.
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- EditText recibe la búsqueda; el cálculo se hace después de una pausa breve al escribir. -->
+            <EditText
+                android:id="@+id/musica_busqueda"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/musica_fondo_campo"
+                android:paddingStart="16dp"
+                android:paddingEnd="12dp"
+                android:hint="@string/musica_buscar"
+                android:contentDescription="@string/musica_buscar"
+                android:textColor="@color/ciruela"
+                android:textColorHint="@color/texto_secundario"
+                android:textSize="15sp"
+                android:inputType="text"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no" />
+
+            <!-- Este botón permite borrar la búsqueda con un toque sin volver a escribir. -->
+            <ImageButton
+                android:id="@+id/musica_limpiar_busqueda"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:tint="@color/ciruela"
+                android:padding="12dp"
+                android:visibility="invisible"
+                android:contentDescription="@string/musica_limpiar_busqueda" />
+
+        </LinearLayout>
+
+        <!--
+            Esta columna contiene la explicación del permiso y su botón. visibility="gone" la oculta y evita
+            que ocupe espacio; mostrarPermiso() la hace aparecer cuando se necesita.
+        -->
+        <LinearLayout
+            android:id="@+id/musica_aviso_permiso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:visibility="gone">
+
+            <!--
+                mostrarPermiso() cambia este texto según se pida acceso a los audios, se haya denegado o no
+                se pueda leer la biblioteca.
+            -->
+            <TextView
+                android:id="@+id/musica_texto_permiso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/musica_permiso"
+                android:textSize="13sp"
+                android:textColor="@color/texto_secundario" />
+
+            <!--
+                Este botón solicita el permiso de audio. Si Android ya no permite preguntarlo de nuevo,
+                conectarControles() abre los ajustes de la aplicación.
+            -->
+            <Button
+                android:id="@+id/musica_boton_permiso"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/musica_permitir"
+                android:textAllCaps="false"
+                android:textColor="@color/ciruela"
+                android:background="?android:attr/selectableItemBackground" />
+
+        </LinearLayout>
+
+        <!--
+            Esta fila reúne la explicación del uso de audio local y la opción de abrir un archivo individual.
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="16dp">
+
+            <!-- Este texto informa cuántas canciones están disponibles sin volver a contarlas al dibujar. -->
+            <TextView
+                android:id="@+id/musica_resumen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/musica_conexion"
+                android:textSize="12sp"
+                android:textColor="@color/texto_secundario" />
+
+            <!-- Actualizar permite volver a consultar el catálogo cuando la persona lo necesita. -->
+            <ImageButton
+                android:id="@+id/musica_actualizar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_popup_sync"
+                android:tint="@color/ciruela"
+                android:padding="12dp"
+                android:contentDescription="@string/musica_actualizar" />
+
+            <!--
+                importarCancion() abre el selector de archivos de Android para elegir un audio. Este botón
+                también sirve cuando no se da permiso para leer toda la biblioteca.
+            -->
+            <Button
+                android:id="@+id/musica_importar"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@string/musica_importar"
+                android:textAllCaps="false"
+                android:textSize="13sp"
+                android:textColor="@color/ciruela"
+                android:background="?android:attr/selectableItemBackground" />
+
+        </LinearLayout>
+
+        <!--
+            actualizarPantalla() muestra esta fila al elegir la pestaña Carpetas. Reúne la flecha para subir
+            y la ruta de la carpeta abierta.
+        -->
+        <LinearLayout
+            android:id="@+id/musica_navegacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="20dp"
+            android:visibility="gone">
+
+            <!--
+                Al pulsar esta flecha, subirCarpeta() vuelve un nivel y actualiza la lista. Kotlin la
+                desactiva cuando ya se está al principio de la biblioteca.
+            -->
+            <ImageButton
+                android:id="@+id/musica_subir"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="12dp"
+                android:src="@drawable/musica_icono_flecha"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/musica_subir" />
+
+            <!--
+                Kotlin escribe aquí la ruta de la carpeta. ellipsize="start" recorta el principio si es
+                demasiado larga, para dejar visible su parte final.
+            -->
+            <TextView
+                android:id="@+id/musica_ruta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/ciruela"
+                android:textSize="13sp"
+                android:maxLines="2"
+                android:ellipsize="start"
+                android:accessibilityHeading="true" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--
+        FrameLayout es un contenedor que permite colocar elementos uno encima de otro. Reserva la zona de la
+        biblioteca; con alto 0dp y peso 1 ocupa el espacio vertical que queda entre los controles superiores
+        e inferiores.
+    -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:minHeight="64dp">
+
+        <!--
+            ListView es una lista por la que se puede desplazar. AdaptadorMusica.kt crea sus filas de
+            canciones, carpetas y Sin música; ActividadSelectorMusica.kt le entrega los resultados de la
+            búsqueda.
+        -->
+        <ListView
+            android:id="@+id/musica_lista"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="8dp" />
+
+        <!--
+            Este texto informa de la carga o de la falta de resultados. onCreate() lo coloca al final de
+            musica_lista y actualizarPantalla() decide cuándo mostrarlo y qué mensaje escribir.
+        -->
+        <TextView
+            android:id="@+id/musica_estado_lista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="24dp"
+            android:textColor="@color/texto_secundario"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <!--
+        Esta fila permanece debajo de la lista para controlar la muestra aunque la canción que suena haya
+        quedado fuera de la parte visible.
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <!--
+            actualizarPreescucha() escribe aquí el nombre y el tiempo de la muestra, o indica que se está
+            preparando o que está en pausa.
+        -->
+        <TextView
+            android:id="@+id/musica_estado_muestra"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="@string/musica_ayuda_muestra"
+            android:textColor="@color/texto_secundario"
+            android:textSize="13sp"
+            android:maxLines="2" />
+
+        <!--
+            Este botón pausa o reanuda la muestra. actualizarPreescucha() cambia su imagen y su descripción
+            según esté sonando o detenida.
+        -->
+        <ImageButton
+            android:id="@+id/musica_pausa_muestra"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/musica_icono_pausa"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="12dp"
+            android:contentDescription="Pausar muestra"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!--
+        ProgressBar muestra el avance de la muestra como una barra horizontal. actualizarPreescucha() pone
+        los segundos transcurridos y la hace visible; max="30" corresponde a los 30 segundos de muestra.
+    -->
+    <ProgressBar
+        android:id="@+id/musica_progreso_muestra"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:max="30"
+        android:progressTint="@color/ciruela"
+        android:visibility="gone" />
+
+    <!--
+        View es un elemento básico sin texto ni botón. Su altura de 1dp y su color forman la línea que separa
+        la muestra de la elección final.
+    -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/borde_campo" />
+
+    <!-- Esta columna reúne la canción elegida y el botón que la devuelve al formulario de la tarea. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="12dp">
+
+        <!-- Esta etiqueta presenta el nombre de la elección que aparece justo debajo. -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/musica_seleccionado"
+            android:textColor="@color/texto_secundario"
+            android:textSize="12sp" />
+
+        <!--
+            actualizarPantalla() muestra aquí la canción seleccionada, Sin música o la indicación de elegir.
+            Elegir una fila actualiza este texto antes de confirmar.
+        -->
+        <TextView
+            android:id="@+id/musica_elegida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ciruela"
+            android:textSize="16sp"
+            android:fontFamily="serif"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginTop="3dp"
+            android:accessibilityLiveRegion="polite" />
+
+        <!--
+            confirmar() devuelve la canción elegida al formulario y cierra esta pantalla.
+            actualizarPantalla() habilita este botón cuando hay una elección y ha terminado la importación.
+        -->
+        <Button
+            android:id="@+id/musica_confirmar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/musica_usar"
+            android:textAllCaps="false"
+            android:textColor="@color/marfil"
+            android:textSize="16sp"
+            android:background="@drawable/musica_fondo_boton"
+            android:backgroundTint="@null"
+            android:stateListAnimator="@null" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

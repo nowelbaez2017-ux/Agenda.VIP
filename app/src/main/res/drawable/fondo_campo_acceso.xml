@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- selector escoge el borde de los campos de acceso. Así el usuario reconoce en qué campo está escribiendo. -->
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- state_focused se cumple cuando el campo está listo para recibir lo que escribe el usuario. -->
+    <item
+        android:state_focused="true">
+
+        <!-- shape crea el rectángulo del campo; solid rellena el interior, stroke dibuja el borde y corners redondea las esquinas. -->
+        <shape
+            android:shape="rectangle">
+
+            <solid
+                android:color="@color/fondo_campo" />
+
+            <stroke
+                android:width="2dp"
+                android:color="@color/ciruela" />
+
+            <corners
+                android:radius="@dimen/radio_campo" />
+
+        </shape>
+
+    </item>
+
+    <!-- Este borde más fino aparece cuando no se está escribiendo en el campo. -->
+    <item>
+
+        <shape
+            android:shape="rectangle">
+
+            <solid
+                android:color="@color/fondo_campo" />
+
+            <stroke
+                android:width="1dp"
+                android:color="@color/borde_campo" />
+
+            <corners
+                android:radius="@dimen/radio_campo" />
+
+        </shape>
+
+    </item>
+
+</selector>

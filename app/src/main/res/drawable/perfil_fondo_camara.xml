@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ripple muestra una onda al pulsar el botón de cámara; el contenido es un círculo ciruela. -->
+<ripple
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/onda_marfil">
+
+    <item>
+
+        <shape
+            android:shape="oval">
+
+            <solid
+                android:color="@color/ciruela" />
+
+            <stroke
+                android:width="3dp"
+                android:color="@color/marfil" />
+
+        </shape>
+
+    </item>
+
+</ripple>

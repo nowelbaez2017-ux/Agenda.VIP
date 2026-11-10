@@ -1,0 +1,14 @@
+<!-- vector permite guardar un dibujo mediante líneas. Esta casa acompaña al botón Inicio de pantalla_agenda.xml. -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- path dibuja la casa y fillColor rellena su interior con el color ciruela indicado aquí. -->
+    <path
+        android:fillColor="#351546"
+        android:pathData="M12,3L2,12h3v9h5v-6h4v6h5v-9h3z" />
+
+</vector>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- resources agrupa los recursos de este archivo. Cada string guarda un texto con nombre: los layouts lo usan mediante @string/nombre y Kotlin mediante R.string.nombre. -->
+
+    <!-- Estos textos permiten entrar a la agenda sin una cuenta y explican dónde se guardarán las tareas. ActividadAcceso.kt conecta esa opción con la agenda local. -->
+    <string
+        name="agenda_continuar_local">Continuar sin cuenta</string>
+
+    <!-- pantalla_agenda.xml usa estos nombres en sus botones inferiores, en el botón de nueva tarea y en la descripción del avatar. -->
+    <string
+        name="agenda_inicio">Inicio</string>
+    <string
+        name="agenda_agenda">Agenda</string>
+    <string
+        name="agenda_enfoque">Enfoque</string>
+    <string
+        name="agenda_nueva_tarea">+ Nueva tarea</string>
+    <string
+        name="agenda_abrir_menu">Abrir menú personal</string>
+
+    <!-- ActividadAgenda.kt utiliza este aviso y su botón cuando hace falta permitir notificaciones o avisos a la hora elegida. -->
+    <string
+        name="agenda_aviso_permisos">Activa las notificaciones y los avisos a la hora elegida.</string>
+    <string
+        name="agenda_revisar_permisos">Revisar permisos</string>
+
+    <!-- La barra del historial cambia el período consultado sin modificar las tareas. -->
+    <string
+        name="agenda_filtro_dia">Día</string>
+    <string
+        name="agenda_filtro_semana">Semana</string>
+    <string
+        name="agenda_filtro_mes">Mes</string>
+    <string
+        name="agenda_periodo_anterior">Período anterior</string>
+    <string
+        name="agenda_periodo_siguiente">Período siguiente</string>
+    <string
+        name="agenda_hoy">Hoy</string>
+    <string
+        name="agenda_ir_fecha">Ir a fecha</string>
+
+    <!-- Estos textos explican los resultados reales de la consulta y sus estados. -->
+    <string
+        name="agenda_historial_vacio">Tu agenda tiene espacio aquí</string>
+    <string
+        name="agenda_historial_vacio_ayuda">No hay recordatorios ni actividades de Enfoque en este período. Puedes consultar otra fecha o volver a Hoy.</string>
+    <string
+        name="agenda_estado_pendiente">Pendiente</string>
+    <string
+        name="agenda_estado_completada">Completada</string>
+    <string
+        name="agenda_aviso_planificado">Aviso planificado: %1$s</string>
+    <string
+        name="agenda_cargando">Consultando tu agenda…</string>
+    <string
+        name="agenda_error_consulta">No se pudo consultar este período. Vuelve a intentarlo desde sus controles.</string>
+
+    <!-- Inicio comparte una fila entre este título a la izquierda y Nueva tarea a la derecha. -->
+    <string
+        name="agenda_de_hoy">Agenda de hoy</string>
+
+</resources>
+
+
+

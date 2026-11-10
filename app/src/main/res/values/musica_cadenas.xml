@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- resources agrupa los textos del selector musical. Un string guarda un texto con nombre; musica_pantalla_selector.xml lo pide con @string/nombre y Kotlin con R.string.nombre. -->
+<resources>
+
+    <!-- La cabecera y las pestañas usan estos textos. En musica_para, %1$s es el espacio que ActividadSelectorMusica.kt sustituye por el título de la tarea. -->
+    <string
+        name="musica_titulo">Elegir música</string>
+    <string
+        name="musica_para">Para: %1$s</string>
+    <string
+        name="musica_tarea">Tu tarea</string>
+    <string
+        name="musica_regresar">Regresar sin cambiar la música</string>
+    <string
+        name="musica_canciones">Canciones</string>
+    <string
+        name="musica_carpetas">Carpetas</string>
+    <string
+        name="musica_buscar">Buscar música local</string>
+
+    <!-- AdaptadorMusica.kt usa estos textos en la fila que permite elegir una tarea sin canción. -->
+    <string
+        name="musica_sin">Sin música</string>
+    <string
+        name="musica_sin_detalle">La tarea no tendrá una canción</string>
+
+    <!-- Los botones permiten importar un archivo o pedir acceso a la biblioteca. Los avisos explican qué hacer si el permiso falta o no se pueden leer los audios. -->
+    <string
+        name="musica_importar">Importar canción</string>
+    <string
+        name="musica_permitir">Permitir biblioteca</string>
+    <string
+        name="musica_permiso">Permite ver tus audios o importa una canción del teléfono. También puedes elegir Sin música.</string>
+    <string
+        name="musica_permiso_denegado">Puedes continuar sin permiso: importa una canción del teléfono o elige Sin música.</string>
+    <string
+        name="musica_biblioteca_error">No pudimos leer la biblioteca. Puedes volver a permitir el acceso o importar una canción.</string>
+
+    <!-- actualizarPantalla() elige estos mensajes para informar de la carga de audios o de una búsqueda sin resultados. -->
+    <string
+        name="musica_conexion">Música del teléfono · sin conexión</string>
+    <string
+        name="musica_cargando">Buscando tus audios…</string>
+    <string
+        name="musica_vacio">No hay audios visibles aquí. Puedes importar una canción del teléfono.</string>
+    <string
+        name="musica_sin_resultados">No encontramos coincidencias. Prueba otro nombre.</string>
+
+    <!-- Estos textos identifican la carpeta actual y las acciones para subir o abrir otra carpeta. %1$s se sustituye por el nombre de la carpeta. -->
+    <string
+        name="musica_biblioteca">Biblioteca</string>
+    <string
+        name="musica_subir">Subir una carpeta</string>
+    <string
+        name="musica_abrir_carpeta">Abrir carpeta %1$s</string>
+
+    <!-- plurals permite elegir una frase según la cantidad. Cada item es una variante: one para un audio y other para varios; %1$d se sustituye por la cantidad que muestra AdaptadorMusica.kt. -->
+    <plurals
+        name="musica_detalle_carpeta">
+        <item
+            quantity="one">%1$d audio</item>
+        <item
+            quantity="other">%1$d audios</item>
+    </plurals>
+
+    <!-- Estos nombres de apoyo se muestran cuando el archivo de audio no informa de su artista, título o duración. -->
+    <string
+        name="musica_artista">Artista desconocido</string>
+    <string
+        name="musica_nombre">Audio sin título</string>
+    <string
+        name="musica_duracion_desconocida">Duración desconocida</string>
+
+    <!-- Los botones de muestra anuncian estas acciones. actualizarPreescucha() usa los mensajes de estado; %1$s recibe el nombre de la canción y %2$d los segundos transcurridos. -->
+    <string
+        name="musica_preescuchar">Escuchar muestra de %1$s</string>
+    <string
+        name="musica_pausar">Pausar muestra de %1$s</string>
+    <string
+        name="musica_reanudar">Reanudar muestra de %1$s</string>
+    <string
+        name="musica_preparando">Preparando muestra…</string>
+    <string
+        name="musica_muestra">Preescucha · %1$s · %2$ds de hasta 30s</string>
+    <string
+        name="musica_pausa">Muestra en pausa · %1$s · %2$ds</string>
+    <string
+        name="musica_ayuda_muestra">El botón de reproducción permite escuchar hasta 30 segundos.</string>
+
+    <!-- ActividadSelectorMusica.kt muestra estas explicaciones si la muestra o la importación no pueden completarse. -->
+    <string
+        name="musica_error_muestra">No se pudo escuchar este audio. Puede que ya no esté disponible o esté en uso.</string>
+    <string
+        name="musica_error_importar">No se pudo abrir ese audio local. Elige otro archivo disponible en el teléfono.</string>
+    <string
+        name="musica_acceso_temporal">Android no permite conservar el acceso a este audio para la tarea. Elige otro archivo.</string>
+    <string
+        name="musica_solo_audio">Elige un archivo de audio disponible en el teléfono.</string>
+
+    <!-- El bloque inferior del selector muestra la elección y permite confirmarla. El último mensaje aparece mientras se abre un audio importado. -->
+    <string
+        name="musica_seleccionado">Seleccionado</string>
+    <string
+        name="musica_elegir">Elige una canción o Sin música</string>
+    <string
+        name="musica_usar">Usar esta canción</string>
+    <string
+        name="musica_seleccionar">Seleccionar %1$s</string>
+    <string
+        name="musica_cargar_documento">Abriendo tu canción…</string>
+    <!-- Mensajes de actualización, búsqueda preparada y comprobación de la elección. -->
+    <string
+        name="musica_actualizar">Actualizar biblioteca</string>
+    <string
+        name="musica_limpiar_busqueda">Borrar búsqueda</string>
+    <string
+        name="musica_reintentar">Reintentar lectura</string>
+    <string
+        name="musica_error_busqueda">No se pudo preparar la búsqueda. Vuelve a intentarlo.</string>
+    <string
+        name="musica_comprobando">Comprobando que la canción sigue disponible…</string>
+    <string
+        name="musica_no_disponible">La canción elegida ya no está disponible. Elige otra canción o Sin música.</string>
+    <plurals
+        name="musica_cantidad_biblioteca">
+        <item
+            quantity="one">%1$d canción · sin conexión</item>
+        <item
+            quantity="other">%1$d canciones · sin conexión</item>
+    </plurals>
+</resources>
+

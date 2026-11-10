@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Textos de la conexión opcional con la PC. La pantalla usa las tarjetas compartidas de Configuración. -->
+<resources>
+
+    <string name="conexion_pc_titulo">Mi computadora</string>
+    <string name="conexion_pc_reconectar_qr">Reconectar con QR</string>
+    <string name="conexion_pc_buscar_vinculada">Buscar mi PC de nuevo</string>
+    <string name="conexion_pc_reconectando">Recuperando la conexión con tu PC…</string>
+    <string name="conexion_pc_qr_otra_pc">Este QR pertenece a otra computadora. Si quieres cambiar de servidor, desvincula primero esta cuenta.</string>
+    <string name="conexion_pc_escanear">Escanear QR del panel</string>
+    <string name="conexion_pc_escanear_ayuda">Apunta al QR de vinculación que muestra el panel de tu computadora.</string>
+    <string name="conexion_pc_qr_invalido">Ese QR no contiene una vinculación válida de Agenda.VIP.</string>
+    <string name="conexion_pc_qr_sin_camara">No se pudo abrir la cámara. Puedes permitirla desde los ajustes de la app o usar el código manual.</string>
+    <string name="conexion_pc_qr_cancelado">Escaneo cancelado. Puedes volver a intentarlo cuando quieras.</string>
+    <string name="conexion_pc_vinculada">Computadora vinculada</string>
+    <string name="conexion_pc_buscar">Buscar mi PC</string>
+    <string name="conexion_pc_buscando">Buscando en esta Wi-Fi…</string>
+    <string name="conexion_pc_sincronizar">Sincronizar ahora</string>
+    <string name="conexion_pc_sincronizando">Intercambiando cambios con tu PC…</string>
+    <string name="conexion_pc_desconectar">Desvincular esta cuenta</string>
+    <string name="conexion_pc_desconectando">Retirando la conexión de esta cuenta…</string>
+    <string name="conexion_pc_encontrar_titulo">Conecta tu agenda</string>
+    <string name="conexion_pc_encontrar_detalle">Inicia el servidor en tu computadora y conecta ambos equipos a la misma Wi-Fi. Escanea el QR del panel para completar la dirección y el código. También puedes buscar la PC o escribir los datos manualmente.</string>
+    <string name="conexion_pc_direccion">Dirección de la PC</string>
+    <string name="conexion_pc_direccion_ayuda">https://192.168.1.20:8443</string>
+    <string name="conexion_pc_codigo">Código de vinculación del panel</string>
+    <string name="conexion_pc_codigo_ayuda">Pega aquí el código AVIP1…</string>
+    <string name="conexion_pc_codigo_invalido">Copia el código completo que empieza por AVIP1 desde el panel de tu PC.</string>
+    <string name="conexion_pc_vincular">Vincular esta cuenta</string>
+    <string name="conexion_pc_vinculando">Vinculando esta cuenta con tu computadora…</string>
+    <string name="conexion_pc_confirmar_titulo">¿Conectar esta cuenta?</string>
+    <string name="conexion_pc_confirmar_detalle">Autorizarás al panel de %1$s para ver y administrar las tareas y el perfil de esta cuenta.
+
+También podrá solicitar una copia de tus datos de Agenda.VIP, incluido el historial, Enfoque, preferencias y foto de perfil. La copia excluye contraseñas, canciones y modelos de voz.
+
+Podrás retirar la conexión desde esta pantalla.</string>
+    <string name="conexion_pc_cancelar">Cancelar</string>
+    <string name="conexion_pc_desconectar_titulo">¿Desvincular esta cuenta?</string>
+    <string name="conexion_pc_desconectar_detalle">La agenda seguirá guardada en el celular. Se detendrá el intercambio de cambios. Las copias que ya guardaste en la PC se administran desde su panel.</string>
+    <string name="conexion_pc_funcionamiento_detalle">La vinculación pertenece a la cuenta abierta. Con la PC apagada, tus tareas y alarmas continúan en el teléfono. Los cambios del panel se aplican cuando el celular logra sincronizar. Android puede retrasar esa conexión en segundo plano.</string>
+    <string name="conexion_pc_sin_vinculo">La conexión es opcional. Tu agenda permanece en el teléfono.</string>
+    <string name="conexion_pc_ultima">Última sincronización %1$s</string>
+    <string name="conexion_pc_primera_pendiente">La primera sincronización está pendiente.</string>
+    <string name="conexion_pc_error">No se pudo completar la conexión. Vuelve a intentarlo.</string>
+
+    <string name="conexion_pc_datos_incorrectos">No se pudo leer la conexión guardada de esta cuenta.</string>
+    <string name="conexion_pc_recuperar_vinculo">Puedes desvincularla y pegar un código nuevo. Tus tareas permanecen guardadas.</string>
+
+</resources>

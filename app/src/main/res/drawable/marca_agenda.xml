@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vector dibuja la marca de Agenda.VIP que aparece en cabecera_acceso.xml y pantalla_agenda.xml. El calendario y el amanecer identifican la aplicación. -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="72dp"
+    android:height="72dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- path contiene el dibujo completo. strokeLineCap y strokeLineJoin redondean los extremos y las uniones de sus líneas. -->
+    <path
+        android:fillColor="@color/transparente"
+        android:strokeColor="@color/melocoton"
+        android:strokeWidth="2.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M10,51V15a5,5 0,0 1,5 -5h34a5,5 0,0 1,5 5v36M20,4v13M44,4v13M10,24h44M18,53h28M23,53a9,9 0,0 1,18 0M32,34v4M18,39l3,3M46,39l-3,3M14,50h4M46,50h4" />
+
+</vector>

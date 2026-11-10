@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        Cada string da un nombre a un texto del formulario.
+        El diseño lo usa con @string y FormularioTarea.kt lo obtiene mediante R.string.
+    -->
+
+    <!-- Las etiquetas identifican los campos aunque ya tengan un valor escrito. -->
+    <string
+        name="tarea_etiqueta_titulo">¿Qué tienes que hacer?</string>
+
+    <string
+        name="tarea_etiqueta_fecha">Fecha</string>
+
+    <string
+        name="tarea_etiqueta_hora">Hora</string>
+
+    <string
+        name="tarea_etiqueta_periodo">Momento</string>
+
+    <string
+        name="tarea_etiqueta_repetir">Repetir</string>
+
+    <string
+        name="tarea_etiqueta_voz">Aviso por voz</string>
+
+    <string
+        name="tarea_etiqueta_mensaje">Mensaje por voz</string>
+
+    <string
+        name="tarea_etiqueta_musica">Música</string>
+
+    <string
+        name="tarea_etiqueta_seguimiento">Seguimiento</string>
+
+    <string
+        name="tarea_etiqueta_intervalo">Intervalo entre avisos</string>
+
+    <string
+        name="tarea_etiqueta_limite">Límite total de avisos</string>
+
+    <string
+        name="tarea_etiqueta_mensaje_seguimiento">Mensaje de seguimiento (opcional)</string>
+
+    <!-- Estas ayudas explican cómo escribir los datos y cómo se reproducen los avisos. -->
+    <string
+        name="tarea_ayuda_titulo">Escribe tu tarea</string>
+
+    <string
+        name="tarea_ayuda_fecha">dd/mm/aaaa</string>
+
+    <string
+        name="tarea_ayuda_hora">5:30</string>
+
+    <string
+        name="tarea_ayuda_mensaje">Escribe tu mensaje; vacío utilizará el título</string>
+
+    <string
+        name="tarea_ayuda_musica">Al sonar, elegirá una canción del teléfono. Requiere acceso a música. Primero la voz si la activaste.</string>
+
+    <string
+        name="tarea_ayuda_intervalo">Minutos entre avisos (1 a 1440)</string>
+
+    <string
+        name="tarea_ayuda_limite">1 a 20</string>
+
+    <string
+        name="tarea_ayuda_mensaje_seguimiento">Opcional: escribe un mensaje distinto</string>
+
+    <string
+        name="tarea_ayuda_seguimiento">Si activas la voz y dejas el mensaje vacío, la agenda dirá «Sigue pendiente» y el nombre de la tarea. El primer aviso cuenta para el límite. Al completar la tarea se detienen los avisos. Con el ahorro de batería, Android puede retrasar los intervalos cortos.</string>
+
+    <!-- Los nombres cortos caben en los controles; las descripciones aclaran su significado. -->
+    <string
+        name="tarea_am">a. m.</string>
+
+    <string
+        name="tarea_pm">p. m.</string>
+
+    <string
+        name="tarea_am_descripcion">a. m., antes del mediodía</string>
+
+    <string
+        name="tarea_pm_descripcion">p. m., desde el mediodía</string>
+
+    <string
+        name="tarea_intervalo_cinco">5 min</string>
+
+    <string
+        name="tarea_intervalo_diez">10 min</string>
+
+    <string
+        name="tarea_intervalo_otro">Otro</string>
+
+    <string
+        name="tarea_intervalo_cinco_descripcion">Cada 5 minutos</string>
+
+    <string
+        name="tarea_intervalo_diez_descripcion">Cada 10 minutos</string>
+
+    <!-- Estas acciones nombran los botones de voz, canción y guardado. -->
+    <string
+        name="tarea_accion_escuchar">Escuchar muestra de voz</string>
+
+    <string
+        name="tarea_accion_cancion">Elegir canción</string>
+
+    <string
+        name="tarea_accion_guardar">Guardar tarea</string>
+
+    <!-- FormularioTarea.kt muestra estos mensajes antes de aceptar la fecha y la hora. -->
+    <string
+        name="tarea_error_fecha">Escribe una fecha real con dd/mm/aaaa, por ejemplo 28/10/2026.</string>
+
+    <string
+        name="tarea_error_hora">Escribe una hora de 1 a 12 y minutos de 00 a 59, por ejemplo 5 o 5:30. Elige a. m. o p. m.</string>
+
+    <!-- El modo inicial usa la biblioteca al sonar; una decisión de Sin música se guarda aparte. -->
+    <string
+        name="tarea_musica_aleatoria">Música aleatoria · Cambiar</string>
+
+    <string
+        name="tarea_musica_sin">Elegir canción · Sin música</string>
+
+    <string
+        name="tarea_musica_seleccionada">Canción seleccionada</string>
+
+    <!-- ActividadEditarTarea usa estos textos en la ventana con sus dos botones. -->
+    <string
+        name="tarea_dialogo_musica_titulo">Música del recordatorio</string>
+
+    <string
+        name="tarea_dialogo_musica_aleatoria">Se elegirá una canción de tu teléfono al sonar el aviso. Puedes quitar la música o elegir una concreta.</string>
+
+    <string
+        name="tarea_dialogo_musica_sin">Este recordatorio no reproducirá canciones. El mensaje por voz se mantiene si lo activaste.</string>
+
+    <string
+        name="tarea_dialogo_musica_seleccionada">Canción actual: %1$s. Puedes cambiarla o quitar la música sin desactivar el mensaje por voz.</string>
+
+    <string
+        name="tarea_opcion_seleccionar_musica">Seleccionar música</string>
+
+    <!-- Guardar explica un permiso denegado sin impedir que se conserven tarea, voz y avisos. -->
+    <string
+        name="tarea_guardada">Tarea guardada.</string>
+
+    <string
+        name="tarea_guardada_sin_permiso_musica">Tarea guardada. Para la música aleatoria falta acceso a tus canciones.</string>
+
+    <string
+        name="tarea_revisar_permisos">Revisa los permisos para recibir y escuchar los avisos a la hora elegida.</string>
+
+    <!-- El enlace devuelve el borrador al modo inicial sin añadir otro botón a la ventana musical. -->
+    <string
+        name="tarea_musica_restablecer_aleatoria">Usar música aleatoria</string>
+
+    <string
+        name="tarea_musica_cambiar_descripcion">Cambiar música. Actual: %1$s</string>
+
+    <string
+        name="tarea_ayuda_musica_sin">Sin canciones. La voz se mantiene si activaste Aviso por voz.</string>
+
+    <string
+        name="tarea_ayuda_musica_seleccionada">Primero la voz, si la activaste, y después esta canción completa.</string>
+
+</resources>

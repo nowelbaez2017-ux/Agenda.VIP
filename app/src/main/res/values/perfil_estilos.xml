@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- resources reúne propiedades que se repiten en las tarjetas, campos y acciones de Perfil. -->
+<resources>
+
+    <!-- La tarjeta deja juntos los elementos que pertenecen al mismo tema. -->
+    <style name="PerfilTarjeta">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:background">@drawable/configuracion_fondo_grupo</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">14dp</item>
+    </style>
+
+    <!-- El título marca el inicio de una tarjeta para la persona y el lector de pantalla. -->
+    <style name="PerfilTituloSeccion">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:accessibilityHeading">true</item>
+        <item name="android:textColor">@color/ciruela</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Cada fila de lectura pone la etiqueta pequeña arriba del valor guardado. -->
+    <style name="PerfilFilaLectura">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <!-- PerfilEtiqueta indica el nombre de un campo o dato con un texto de apoyo discreto. -->
+    <style name="PerfilEtiqueta">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/texto_secundario</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <!-- El valor tiene más contraste y puede ocupar varias líneas si el dato es largo. -->
+    <style name="PerfilValor">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ciruela</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- PerfilEntrada da a cada EditText un borde y espacio para escribir con comodidad. -->
+    <style name="PerfilEntrada">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">14dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:background">@drawable/perfil_fondo_campo</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingTop">11dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:paddingBottom">11dp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/ciruela</item>
+        <item name="android:textColorHint">@color/texto_secundario</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- Editar, Copiar y Cancelar comparten un fondo suave y espacio para tocar con el dedo. -->
+    <style name="PerfilAccionSecundaria">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:background">@drawable/perfil_fondo_etiqueta</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:clipToOutline">true</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/ciruela</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Guardar destaca por su color melocotón y por ocupar el ancho disponible. -->
+    <style
+        name="PerfilAccionPrincipal"
+        parent="PerfilAccionSecundaria">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:background">@drawable/perfil_fondo_guardar</item>
+        <item name="android:textSize">16sp</item>
+
+    </style>
+
+</resources>

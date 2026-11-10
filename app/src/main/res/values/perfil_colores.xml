@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- resources reúne los colores exclusivos del avatar, su etiqueta y el botón Guardar cambios. -->
+<resources>
+
+    <color name="perfil_avatar_exterior">#F9E4D9</color>
+    <color name="perfil_avatar_interior">#EDB79F</color>
+    <color name="perfil_etiqueta_fondo">#E5DDE9</color>
+    <color name="perfil_guardar_presionado">#DDA68F</color>
+
+</resources>

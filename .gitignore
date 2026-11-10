@@ -1,0 +1,52 @@
+# Archivos generados por Android Studio y Gradle.
+.idea/
+.gradle/
+.kotlin/
+**/build/
+*.iml
+*.apk
+*.aab
+.externalNativeBuild/
+.cxx/
+
+# Preferencias y archivos locales.
+local.properties
+/AGENTS.md
+.env
+.env.*
+.venv/
+__pycache__/
+*.py[cod]
+
+# Claves, certificados y archivos de firma.
+keystore.properties
+*.keystore
+*.jks
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+
+# Datos de usuarios, respaldos y exportaciones.
+AgendaVIPServidor/
+configuracion.json
+proceso-servidor.txt
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+*.avip
+*.avip.*
+AgendaVIP_recordatorios*.xml
+Agenda_VIP_*.xml
+
+# Modelos locales, registros y archivos temporales.
+ggml-*.bin
+*.gguf
+*.log
+*.log.*
+.DS_Store
+Thumbs.db

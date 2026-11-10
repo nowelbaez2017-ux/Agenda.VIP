@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LinearLayout coloca la identidad, el usuario de acceso y los datos personales en una columna.
+    ControladorPerfil conecta estos elementos con los datos guardados de la cuenta activa.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true">
+
+    <!-- La cabecera junta el avatar y el nombre, con una tarjeta en color melocotón suave. -->
+    <LinearLayout
+        style="@style/PerfilTarjeta"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/perfil_fondo_identidad">
+
+        <!-- FrameLayout coloca el botón de cámara encima de una esquina del avatar. -->
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+
+            <!-- ImageView muestra la foto circular o el icono inicial y abre sus opciones al tocarla. -->
+            <ImageView
+                android:id="@+id/perfil_foto"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="top|start"
+                android:background="@drawable/perfil_fondo_avatar"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icono_usuario"
+                android:clickable="true"
+                android:longClickable="true"
+                android:focusable="true"
+                android:contentDescription="@string/perfil_foto_vacia_descripcion" />
+
+            <!-- El botón abre las opciones de la foto. Cambiar foto abre la galería del teléfono. -->
+            <ImageButton
+                android:id="@+id/perfil_camara"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="bottom|end"
+                android:background="@drawable/perfil_fondo_camara"
+                android:padding="14dp"
+                android:src="@drawable/perfil_icono_camara"
+                android:tint="@color/marfil"
+                android:contentDescription="@string/perfil_acciones_foto" />
+
+        </FrameLayout>
+
+        <!-- El peso ocupa el espacio a la derecha del avatar y permite que un nombre largo se parta en líneas. -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:orientation="vertical">
+
+            <!-- Este rótulo indica que los datos de la persona se guardan en su dispositivo. -->
+            <TextView
+                style="@style/PerfilEtiqueta"
+                android:text="@string/perfil_etiqueta_local" />
+
+            <!-- El controlador escribe aquí el nombre completo que usa la agenda en sus saludos. -->
+            <TextView
+                android:id="@+id/perfil_nombre_completo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:accessibilityHeading="true"
+                android:fontFamily="serif"
+                android:text="@string/perfil_nombre_sin_datos"
+                android:textColor="@color/ciruela"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- La tarjeta de acceso separa el usuario de entrada de los datos personales editables. -->
+    <LinearLayout
+        style="@style/PerfilTarjeta">
+
+        <!-- TextView identifica el dato que se escribe en la pantalla de inicio de sesión. -->
+        <TextView
+            style="@style/PerfilTituloSeccion"
+            android:text="@string/perfil_usuario_titulo" />
+
+        <!-- Esta fila muestra el usuario registrado y permite copiarlo para recordarlo. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- El controlador lee el usuario de la cuenta activa. El modo invitado muestra su propia etiqueta. -->
+            <TextView
+                android:id="@+id/perfil_usuario_acceso"
+                style="@style/PerfilValor"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:accessibilityLiveRegion="polite"
+                android:text="@string/perfil_usuario_cargando" />
+
+            <!-- Copiar pone únicamente el nombre de usuario en el portapapeles de Android. -->
+            <Button
+                android:id="@+id/perfil_copiar_usuario"
+                style="@style/PerfilAccionSecundaria"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/perfil_usuario_copiar_descripcion"
+                android:text="@string/perfil_usuario_copiar"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Esta explicación distingue las credenciales de acceso de los campos editables. -->
+        <TextView
+            android:id="@+id/perfil_usuario_ayuda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/perfil_usuario_ayuda"
+            android:textColor="@color/texto_secundario"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- La tarjeta de datos alterna entre una ficha de lectura y el formulario de edición. -->
+    <LinearLayout
+        style="@style/PerfilTarjeta">
+
+        <!-- La cabecera deja visible Editar junto al nombre de esta sección. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- El título comparte el ancho con el botón de edición. -->
+            <TextView
+                style="@style/PerfilTituloSeccion"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/perfil_datos_personales" />
+
+            <!-- Al tocar Editar, el controlador sustituye la ficha por los campos del formulario. -->
+            <Button
+                android:id="@+id/perfil_editar"
+                style="@style/PerfilAccionSecundaria"
+                android:layout_marginStart="8dp"
+                android:text="@string/perfil_editar" />
+
+        </LinearLayout>
+
+        <!-- Esta ficha presenta lo que ya está guardado. Aquí el teclado permanece cerrado. -->
+        <LinearLayout
+            android:id="@+id/perfil_datos_lectura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:divider="@drawable/configuracion_separador">
+
+            <!-- Esta fila muestra el dato guardado para Nombre; el texto de ayuda aparece si falta. -->
+            <LinearLayout
+                style="@style/PerfilFilaLectura">
+
+                <TextView
+                    style="@style/PerfilEtiqueta"
+                    android:text="@string/perfil_nombre_etiqueta" />
+
+                <TextView
+                    android:id="@+id/perfil_valor_nombre"
+                    style="@style/PerfilValor" />
+
+            </LinearLayout>
+
+            <!-- Esta fila muestra el dato guardado para Apellido; el texto de ayuda aparece si falta. -->
+            <LinearLayout
+                style="@style/PerfilFilaLectura">
+
+                <TextView
+                    style="@style/PerfilEtiqueta"
+                    android:text="@string/perfil_apellido_etiqueta" />
+
+                <TextView
+                    android:id="@+id/perfil_valor_apellido"
+                    style="@style/PerfilValor" />
+
+            </LinearLayout>
+
+            <!-- Esta fila muestra el dato guardado para Correo; el texto de ayuda aparece si falta. -->
+            <LinearLayout
+                style="@style/PerfilFilaLectura">
+
+                <TextView
+                    style="@style/PerfilEtiqueta"
+                    android:text="@string/perfil_correo_etiqueta" />
+
+                <TextView
+                    android:id="@+id/perfil_valor_correo"
+                    style="@style/PerfilValor" />
+
+            </LinearLayout>
+
+            <!-- Esta fila muestra el dato guardado para Celular; el texto de ayuda aparece si falta. -->
+            <LinearLayout
+                style="@style/PerfilFilaLectura">
+
+                <TextView
+                    style="@style/PerfilEtiqueta"
+                    android:text="@string/perfil_celular_etiqueta" />
+
+                <TextView
+                    android:id="@+id/perfil_valor_celular"
+                    style="@style/PerfilValor" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- El formulario comienza oculto y aparece cuando la persona decide editar sus datos. -->
+        <LinearLayout
+            android:id="@+id/perfil_formulario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- La etiqueta indica qué se escribe. labelFor conecta el texto con su entrada. -->
+            <TextView
+                style="@style/PerfilEtiqueta"
+                android:labelFor="@id/perfil_nombre"
+                android:text="@string/perfil_nombre_etiqueta" />
+
+            <!-- EditText permite escribir. Nombre identifica a la persona en los saludos de la agenda. -->
+            <EditText
+                android:id="@+id/perfil_nombre"
+                style="@style/PerfilEntrada"
+                android:hint="@string/perfil_nombre_indicacion"
+                android:inputType="textPersonName|textCapWords"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/perfil_apellido"
+                android:autofillHints="personGivenName" />
+
+            <!-- La etiqueta indica qué se escribe. labelFor conecta el texto con su entrada. -->
+            <TextView
+                style="@style/PerfilEtiqueta"
+                android:labelFor="@id/perfil_apellido"
+                android:text="@string/perfil_apellido_etiqueta" />
+
+            <!-- EditText permite escribir. Apellido es opcional y se muestra junto al nombre en el perfil. -->
+            <EditText
+                android:id="@+id/perfil_apellido"
+                style="@style/PerfilEntrada"
+                android:hint="@string/perfil_apellido_indicacion"
+                android:inputType="textPersonName|textCapWords"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/perfil_correo"
+                android:autofillHints="personFamilyName" />
+
+            <!-- La etiqueta indica qué se escribe. labelFor conecta el texto con su entrada. -->
+            <TextView
+                style="@style/PerfilEtiqueta"
+                android:labelFor="@id/perfil_correo"
+                android:text="@string/perfil_correo_etiqueta" />
+
+            <!-- EditText permite escribir. El correo opcional usa el teclado con arroba y punto. -->
+            <EditText
+                android:id="@+id/perfil_correo"
+                style="@style/PerfilEntrada"
+                android:hint="@string/perfil_correo_indicacion"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/perfil_celular"
+                android:autofillHints="emailAddress"
+                android:maxLength="254" />
+
+            <!-- La etiqueta indica qué se escribe. labelFor conecta el texto con su entrada. -->
+            <TextView
+                style="@style/PerfilEtiqueta"
+                android:labelFor="@id/perfil_celular"
+                android:text="@string/perfil_celular_etiqueta" />
+
+            <!-- EditText permite escribir. El celular opcional usa el teclado de teléfono para escribir el número. -->
+            <EditText
+                android:id="@+id/perfil_celular"
+                style="@style/PerfilEntrada"
+                android:hint="@string/perfil_celular_indicacion"
+                android:inputType="phone"
+                android:imeOptions="actionDone"
+                android:autofillHints="phoneNumber"
+                android:maxLength="40" />
+
+            <!-- Guardar revisa los campos y muestra de nuevo la ficha cuando los datos son válidos. -->
+            <Button
+                android:id="@+id/perfil_guardar"
+                style="@style/PerfilAccionPrincipal"
+                android:text="@string/perfil_guardar" />
+
+            <!-- Cancelar devuelve a la ficha con los últimos datos guardados. -->
+            <Button
+                android:id="@+id/perfil_cancelar_edicion"
+                style="@style/PerfilAccionSecundaria"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/perfil_cancelar" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

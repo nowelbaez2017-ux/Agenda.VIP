@@ -1,0 +1,8 @@
+# El entorno del servidor se instala separado del proyecto de Android.
+fastapi>=0.115,<1
+pydantic>=2.10,<3
+uvicorn>=0.34,<1
+cryptography>=45,<52
+zeroconf>=0.147,<1
+# Genera el QR en esta computadora mediante SVG, sin servicios externos.
+qrcode>=8,<9

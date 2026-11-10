@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LinearLayout agrupa elementos en una fila o columna. Esta columna deja la barra
+    de la cuenta arriba y el contenido debajo. ActividadCuenta.kt carga esta pantalla.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cuenta_raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Esta fila mantiene juntos el botón para volver y el título de la sección personal. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="@color/ciruela">
+
+        <!-- Button es un botón. ActividadCuenta.kt conecta cuenta_volver con la acción de regresar. -->
+        <Button
+            android:id="@+id/cuenta_volver"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="‹"
+            android:textSize="32sp"
+            android:textColor="@color/marfil"
+            android:background="@drawable/fondo_enlace_acceso"
+            android:contentDescription="Volver" />
+
+        <!--
+            TextView muestra texto. Kotlin escribe aquí Perfil, Configuración o Créditos.
+            El ancho 0dp y el peso 1 reservan para el título el espacio libre junto al botón.
+            @color/marfil toma el color guardado en values/colores.xml.
+        -->
+        <TextView
+            android:id="@+id/cuenta_titulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/marfil" />
+
+    </LinearLayout>
+
+    <!--
+        ScrollView permite desplazarse verticalmente cuando el contenido no cabe.
+        Aquí desplaza la sección personal sin mover la barra superior.
+        El peso 1 ocupa la altura restante de la pantalla.
+    -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:background="@color/marfil">
+
+        <!--
+            Esta columna empieza vacía: ActividadCuenta.kt añade los campos del perfil,
+            los ajustes o los créditos según la opción elegida en el menú personal.
+        -->
+        <LinearLayout
+            android:id="@+id/cuenta_contenido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp" />
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LinearLayout separa la barra superior, el formulario y el botón fijo para guardar. -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/enfoque_editar_raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Esta fila conserva la flecha y el título al desplazarse por el formulario. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="@color/ciruela">
+
+        <Button
+            android:id="@+id/enfoque_editar_volver"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="‹"
+            android:textSize="28sp"
+            android:textColor="@color/marfil"
+            android:background="@drawable/fondo_enlace_acceso"
+            android:contentDescription="Volver a Enfoque" />
+
+        <TextView
+            android:id="@+id/enfoque_editar_titulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nueva sesión"
+            android:textSize="25sp"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textColor="@color/marfil" />
+
+    </LinearLayout>
+
+    <!-- ScrollView permite escribir con el teclado abierto sin perder el botón Guardar. -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:background="@color/marfil">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                style="@style/TareaEtiqueta"
+                android:layout_marginTop="0dp"
+                android:text="¿En qué vas a trabajar?"
+                android:labelFor="@id/enfoque_campo_titulo" />
+
+            <!-- EditText recibe el nombre de la actividad. Esta sesión pertenece solo a Enfoque. -->
+            <EditText
+                android:id="@+id/enfoque_campo_titulo"
+                style="@style/TareaCampo"
+                android:hint="Por ejemplo, hacer la tarea de inglés"
+                android:inputType="textCapSentences"
+                android:maxLength="160"
+                android:singleLine="true" />
+
+            <TextView
+                style="@style/TareaEtiqueta"
+                android:text="¿Cuándo te lo recuerdo?" />
+
+            <!-- La fecha se escribe directamente con día, mes y año; no abre un calendario grande. -->
+            <EditText
+                android:id="@+id/enfoque_campo_fecha"
+                style="@style/TareaCampoCompacto"
+                android:hint="dd/mm/aaaa"
+                android:inputType="date"
+                android:digits="0123456789/"
+                android:maxLength="10"
+                android:singleLine="true" />
+
+            <!-- Hora y período comparten una fila. a. m. / p. m. mantienen el formato de doce horas. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/enfoque_campo_hora"
+                    style="@style/TareaCampoCompacto"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:hint="5 o 5:30"
+                    android:inputType="time"
+                    android:digits="0123456789:"
+                    android:maxLength="5"
+                    android:singleLine="true" />
+
+                <RadioGroup
+                    android:id="@+id/enfoque_periodo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/enfoque_periodo_am"
+                        style="@style/TareaOpcion"
+                        android:text="a. m." />
+
+                    <RadioButton
+                        android:id="@+id/enfoque_periodo_pm"
+                        style="@style/TareaOpcion"
+                        android:text="p. m." />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TareaAyuda"
+                android:layout_marginTop="6dp"
+                android:text="El aviso te invita a comenzar. El tiempo de trabajo empieza cuando elijas Comenzar." />
+
+            <TextView
+                style="@style/TareaEtiqueta"
+                android:text="¿Cuántos minutos le dedicarás?"
+                android:labelFor="@id/enfoque_campo_duracion" />
+
+            <EditText
+                android:id="@+id/enfoque_campo_duracion"
+                style="@style/TareaCampo"
+                android:hint="De 1 a 480 minutos"
+                android:inputType="number"
+                android:digits="0123456789"
+                android:maxLength="3"
+                android:singleLine="true" />
+
+            <TextView
+                style="@style/TareaEtiqueta"
+                android:text="Música durante la sesión (opcional)" />
+
+            <!-- El selector musical ya existente devuelve la canción elegida; no la reproduce al guardar. -->
+            <Button
+                android:id="@+id/enfoque_elegir_musica"
+                style="@style/TareaBoton"
+                android:text="Elegir canción · Sin música" />
+
+            <TextView
+                style="@style/TareaAyuda"
+                android:layout_marginTop="8dp"
+                android:text="Al terminar, Agenda preguntará: «Dime, ¿ya terminaste o continuamos?». Tú decides si completas la actividad o agregas más tiempo." />
+
+            <TextView
+                style="@style/TareaAyuda"
+                android:layout_marginTop="16dp"
+                android:text="Esta actividad no aparecerá en Inicio. Sus avisos y resultados se consultan en Enfoque y en el historial de Agenda." />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Este botón queda fuera del desplazamiento para mantener Guardar al alcance de la mano. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@color/marfil">
+
+        <Button
+            android:id="@+id/enfoque_guardar"
+            style="@style/TareaGuardar"
+            android:text="Guardar sesión" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+<!-- vector es un dibujo que Android puede ampliar o reducir. Esta diana identifica el botón Enfoque de pantalla_agenda.xml. -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- pathData contiene las instrucciones que dibujan los círculos y la flecha; strokeWidth indica el grosor de sus líneas. -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#351546"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round"
+        android:pathData="M12,3a9,9 0,1 0,9 9M12,7a5,5 0,1 0,5 5M12,12l9,-9M18,3h3v3" />
+
+</vector>

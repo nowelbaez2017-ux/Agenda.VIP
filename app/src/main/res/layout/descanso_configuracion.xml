@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LinearLayout apila la cabecera, los ajustes desplazables y el botón fijo Guardar. -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/descanso_raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/marfil">
+
+    <!-- include reutiliza la cabecera con el botón Volver. -->
+    <include
+        layout="@layout/tarea_cabecera" />
+
+    <!-- ScrollView permite recorrer los ajustes cuando no caben en la pantalla. -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+
+        <!-- Esta columna contiene los ajustes de la cuenta abierta. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
+
+            <!-- El estado de carga desaparece cuando ya se puede editar la rutina. -->
+            <TextView
+                style="@style/DescansoNota"
+                android:id="@+id/descanso_estado_carga"
+                android:text="@string/descanso_cargando"
+                android:accessibilityLiveRegion="polite" />
+
+            <!-- ActividadDescanso muestra este formulario cuando termina de leer la rutina. -->
+            <LinearLayout
+                android:id="@+id/descanso_formulario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- El primer grupo indica si la rutina está activa y cuándo llega el aviso previo. -->
+                <LinearLayout
+                    style="@style/DescansoTarjeta"
+                    android:layout_marginTop="0dp">
+
+                    <!-- El interruptor prepara el cambio. Guardar aplica la elección. -->
+                    <Switch
+                        style="@style/DescansoInterruptor"
+                        android:id="@+id/descanso_activado"
+                        android:text="@string/descanso_activar" />
+
+                    <!-- La nota explica cuándo llega el aviso previo. -->
+                    <TextView
+                        style="@style/DescansoNota"
+                        android:text="@string/descanso_explicacion" />
+
+                </LinearLayout>
+
+                <!-- Esta tarjeta reúne las horas y los días para editar todo el horario en un lugar. -->
+                <LinearLayout
+                    style="@style/DescansoTarjeta">
+
+                    <!-- TextView nombra el grupo para encontrarlo al recorrer la pantalla. -->
+                    <TextView
+                        style="@style/DescansoSeccionTitulo"
+                        android:text="@string/descanso_horario_titulo" />
+
+                    <!-- labelFor vincula el texto con el campo que recibe la hora. -->
+                    <TextView
+                        style="@style/TareaEtiquetaCompacta"
+                        android:text="@string/descanso_inicio_etiqueta"
+                        android:labelFor="@id/descanso_inicio_hora"
+                        android:layout_marginTop="8dp" />
+
+                    <!-- LinearLayout alinea la hora y el período en una fila. -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- EditText permite escribir, por ejemplo, 8:30. FormularioDescanso comprueba la hora al guardar. -->
+                        <EditText
+                            style="@style/TareaCampoCompacto"
+                            android:id="@+id/descanso_inicio_hora"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:hint="@string/descanso_hora_ayuda"
+                            android:digits="0123456789:"
+                            android:inputType="time"
+                            android:maxLength="5"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext" />
+
+                        <!-- RadioGroup permite elegir un solo período para esta hora. -->
+                        <RadioGroup
+                            android:id="@+id/descanso_inicio_periodo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:orientation="horizontal">
+
+                            <!-- Elige las horas de antes del mediodía. -->
+                            <RadioButton
+                                style="@style/TareaOpcion"
+                                android:id="@+id/descanso_inicio_am"
+                                android:text="@string/descanso_am" />
+
+                            <!-- Elige las horas de después del mediodía. -->
+                            <RadioButton
+                                style="@style/TareaOpcion"
+                                android:id="@+id/descanso_inicio_pm"
+                                android:layout_marginStart="6dp"
+                                android:text="@string/descanso_pm" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <!-- labelFor vincula el texto con el campo que recibe la hora. -->
+                    <TextView
+                        style="@style/TareaEtiquetaCompacta"
+                        android:text="@string/descanso_fin_etiqueta"
+                        android:labelFor="@id/descanso_fin_hora"
+                        android:layout_marginTop="12dp" />
+
+                    <!-- LinearLayout alinea la hora y el período en una fila. -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- EditText permite escribir, por ejemplo, 8:30. FormularioDescanso comprueba la hora al guardar. -->
+                        <EditText
+                            style="@style/TareaCampoCompacto"
+                            android:id="@+id/descanso_fin_hora"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:hint="@string/descanso_hora_ayuda"
+                            android:digits="0123456789:"
+                            android:inputType="time"
+                            android:maxLength="5"
+                            android:singleLine="true"
+                            android:imeOptions="actionDone" />
+
+                        <!-- RadioGroup permite elegir un solo período para esta hora. -->
+                        <RadioGroup
+                            android:id="@+id/descanso_fin_periodo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:orientation="horizontal">
+
+                            <!-- Elige las horas de antes del mediodía. -->
+                            <RadioButton
+                                style="@style/TareaOpcion"
+                                android:id="@+id/descanso_fin_am"
+                                android:text="@string/descanso_am" />
+
+                            <!-- Elige las horas de después del mediodía. -->
+                            <RadioButton
+                                style="@style/TareaOpcion"
+                                android:id="@+id/descanso_fin_pm"
+                                android:layout_marginStart="6dp"
+                                android:text="@string/descanso_pm" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <!-- La línea separa la hora de las casillas de los días. -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/borde_campo"
+                        android:importantForAccessibility="no" />
+                    <!-- Esta etiqueta indica qué día cuenta cuando el horario cruza medianoche. -->
+                    <TextView
+                        style="@style/TareaEtiquetaCompacta"
+                        android:text="@string/descanso_dias_etiqueta"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="0dp" />
+
+                    <!-- La nota aclara qué madrugada pertenece a cada noche. -->
+                    <TextView
+                        style="@style/DescansoNota"
+                        android:text="@string/descanso_dias_ayuda" />
+
+                    <!-- FormularioDescanso añade una casilla para cada día. -->
+                    <LinearLayout
+                        android:id="@+id/descanso_dias"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                </LinearLayout>
+
+                <!-- Los controles y el permiso de restricción quedan juntos. -->
+                <LinearLayout
+                    style="@style/DescansoTarjeta">
+
+                    <!-- TextView nombra el grupo para encontrarlo al recorrer la pantalla. -->
+                    <TextView
+                        style="@style/DescansoSeccionTitulo"
+                        android:text="@string/descanso_aplicaciones_etiqueta" />
+
+                    <!-- El interruptor decide si la rutina debe restringir las aplicaciones elegidas. -->
+                    <Switch
+                        style="@style/DescansoInterruptor"
+                        android:id="@+id/descanso_restriccion"
+                        android:text="@string/descanso_restringir" />
+
+                    <!-- Este botón abre el selector de aplicaciones. -->
+                    <Button
+                        style="@style/DescansoAccion"
+                        android:id="@+id/descanso_aplicaciones"
+                        android:text="@string/descanso_aplicaciones" />
+
+                    <!-- Este texto resume la selección pendiente de guardar. -->
+                    <TextView
+                        style="@style/DescansoNota"
+                        android:id="@+id/descanso_resumen_aplicaciones"
+                        android:layout_marginTop="6dp" />
+
+                    <!-- La línea distingue la selección del acceso que concede Android. -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/borde_campo"
+                        android:importantForAccessibility="no" />
+
+                    <!-- El estado se actualiza al regresar de los ajustes de Android. -->
+                    <TextView
+                        style="@style/DescansoNota"
+                        android:id="@+id/descanso_estado_permisos"
+                        android:layout_marginTop="10dp"
+                        android:accessibilityLiveRegion="polite" />
+
+                    <!-- El botón explica el acceso y abre los ajustes del teléfono. -->
+                    <Button
+                        style="@style/DescansoAccion"
+                        android:id="@+id/descanso_accesibilidad"
+                        android:text="@string/descanso_accesibilidad"
+                        android:layout_marginTop="8dp" />
+
+                </LinearLayout>
+
+                <!-- Estos botones se muestran si queda pendiente un permiso para los avisos. -->
+                <LinearLayout
+                    style="@style/DescansoTarjeta"
+                    android:id="@+id/descanso_permisos_avisos"
+                    android:visibility="gone">
+
+                    <!-- TextView nombra el grupo para encontrarlo al recorrer la pantalla. -->
+                    <TextView
+                        style="@style/DescansoSeccionTitulo"
+                        android:text="@string/descanso_permisos_titulo" />
+
+                    <!-- Este botón solicita permiso para mostrar la notificación. -->
+                    <Button
+                        style="@style/DescansoAccion"
+                        android:id="@+id/descanso_notificaciones"
+                        android:text="@string/descanso_notificaciones"
+                        android:layout_marginTop="8dp" />
+
+                    <!-- Este botón abre el ajuste de Android para programar avisos exactos. -->
+                    <Button
+                        style="@style/DescansoAccion"
+                        android:id="@+id/descanso_alarmas"
+                        android:text="@string/descanso_alarmas"
+                        android:layout_marginTop="8dp" />
+
+                </LinearLayout>
+
+                <!-- Esta tarjeta agrupa lo que se verá, se escuchará y se podrá hacer durante el descanso. -->
+                <LinearLayout
+                    style="@style/DescansoTarjeta">
+
+                    <!-- TextView nombra el grupo para encontrarlo al recorrer la pantalla. -->
+                    <TextView
+                        style="@style/DescansoSeccionTitulo"
+                        android:text="@string/descanso_aviso_titulo" />
+
+                    <!-- La etiqueta explica que el mensaje es opcional. -->
+                    <TextView
+                        style="@style/TareaEtiquetaCompacta"
+                        android:text="@string/descanso_mensaje_etiqueta"
+                        android:labelFor="@id/descanso_mensaje"
+                        android:layout_marginTop="10dp" />
+
+                    <!-- EditText guarda el texto personal en el borrador mientras se escribe. -->
+                    <EditText
+                        style="@style/TareaCampo"
+                        android:id="@+id/descanso_mensaje"
+                        android:hint="@string/descanso_mensaje_ayuda"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:minLines="2"
+                        android:maxLength="500"
+                        android:gravity="top|start" />
+
+                    <!-- Activa la lectura con la voz instalada en el teléfono. -->
+                    <Switch
+                        style="@style/DescansoInterruptor"
+                        android:id="@+id/descanso_voz"
+                        android:text="@string/descanso_voz" />
+
+                    <!-- Habilita una pausa excepcional por noche. -->
+                    <Switch
+                        style="@style/DescansoInterruptor"
+                        android:id="@+id/descanso_pausa"
+                        android:text="@string/descanso_pausa" />
+
+                    <!-- El botón muestra cómo quedaría el aviso y permite oír una muestra. -->
+                    <Button
+                        style="@style/DescansoAccion"
+                        android:id="@+id/descanso_vista_previa"
+                        android:text="@string/descanso_previa" />
+
+                </LinearLayout>
+
+                <!-- El historial queda al final porque se consulta después de preparar la rutina. -->
+                <LinearLayout
+                    style="@style/DescansoTarjeta">
+
+                    <!-- TextView nombra el grupo para encontrarlo al recorrer la pantalla. -->
+                    <TextView
+                        style="@style/DescansoSeccionTitulo"
+                        android:text="@string/descanso_historial_titulo" />
+
+                    <!-- La actividad muestra el uso aproximado de las apps elegidas durante cada noche. -->
+                    <TextView
+                        style="@style/DescansoNota"
+                        android:id="@+id/descanso_historial"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Este pie deja Guardar al alcance aunque se desplace el formulario. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp"
+        android:background="@color/marfil">
+
+        <!-- Guardar valida la rutina, guarda los cambios y reprograma sus avisos. -->
+        <Button
+            style="@style/BotonPrincipalAcceso"
+            android:id="@+id/descanso_guardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="@string/descanso_guardar" />
+
+    </LinearLayout>
+
+</LinearLayout>

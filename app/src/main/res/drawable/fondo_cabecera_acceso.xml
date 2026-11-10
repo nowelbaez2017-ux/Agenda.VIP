@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vector dibuja el fondo de la cabecera compartida por el acceso y la agenda. width y height fijan su tamaño; dp adapta la medida a la densidad de la pantalla. -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="216dp"
+    android:viewportWidth="360"
+    android:viewportHeight="216">
+
+    <!-- Este path crea la base marfil sobre la que se dibuja la zona ciruela. -->
+    <path
+        android:fillColor="@color/marfil"
+        android:pathData="M0,0H360V216H0Z" />
+
+    <!-- Este path dibuja la franja ciruela y su borde curvo inferior, detrás de la marca y el título. -->
+    <path
+        android:fillColor="@color/ciruela"
+        android:pathData="M0,0H360V176Q180,238 0,176Z" />
+
+</vector>

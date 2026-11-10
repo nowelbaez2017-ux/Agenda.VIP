@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LinearLayout organiza sus elementos en una fila o columna. Esta columna agrupa
+    la marca y el nombre que aparecen en los formularios de inicio de sesión y registro.
+    Ambos formularios la insertan mediante include para compartir la misma cabecera.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cabecera_acceso"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/alto_cabecera"
+    android:orientation="vertical"
+    android:gravity="top|center_horizontal"
+    android:paddingTop="20dp"
+    android:paddingBottom="48dp"
+    android:background="@drawable/fondo_cabecera_acceso">
+
+    <!--
+        ImageView muestra una imagen. @drawable/marca_agenda busca el dibujo en drawable.
+        Aquí la marca es decorativa; los botones del formulario están en los otros XML.
+        dp mide tamaños adaptados a la densidad de la pantalla, como estos 72dp de ancho y alto.
+    -->
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/marca_agenda"
+        android:contentDescription="@null"
+        android:importantForAccessibility="no" />
+
+    <!--
+        TextView muestra texto. @string/nombre_aplicacion lee el nombre de values/cadenas.xml
+        y @color/marfil lee su color de values/colores.xml. sp ajusta el tamaño del texto
+        a la preferencia de letra del teléfono.
+    -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:fontFamily="serif"
+        android:text="@string/nombre_aplicacion"
+        android:textColor="@color/marfil"
+        android:textSize="36sp" />
+
+</LinearLayout>

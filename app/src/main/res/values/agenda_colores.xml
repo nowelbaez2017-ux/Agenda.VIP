@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- resources reúne los colores con nombre. Un color guarda un código de color que los layouts leen con @color/nombre y Kotlin con R.color.nombre. -->
+<resources>
+
+    <!-- ActividadAgenda.kt y ActividadDetalleTarea.kt usan estos dos colores para distinguir tareas pendientes y completadas. -->
+    <color
+        name="agenda_pendiente">#B94751</color>
+    <color
+        name="agenda_completada">#2866BA</color>
+
+    <!-- tarea_pantalla_formulario.xml utiliza este fondo suave para destacar el bloque de opciones adicionales. -->
+    <color
+        name="agenda_melocoton_suave">#F7DFD1</color>
+</resources>

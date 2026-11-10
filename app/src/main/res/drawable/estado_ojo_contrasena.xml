@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- selector elige una imagen según el estado del botón. VisibilidadContrasena.kt cambia ese estado al mostrar u ocultar la contraseña. -->
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Cuando la contraseña está visible, el ojo tachado ofrece volver a ocultarla. @drawable busca otro dibujo de esta carpeta. -->
+    <item
+        android:state_selected="true"
+        android:drawable="@drawable/icono_ojo_oculto" />
+
+    <!-- Si no se cumple el estado anterior, el ojo abierto ofrece mostrar la contraseña. -->
+    <item
+        android:drawable="@drawable/icono_ojo" />
+
+</selector>

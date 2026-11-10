@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LinearLayout organiza el visor en una cabecera y una zona amplia para la fotografía.
+    ActividadFotoPerfil lo carga y VentanaAgenda deja espacio para las barras del teléfono.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/perfil_visor_raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Esta fila mantiene visibles la flecha de regreso y el título mientras se lee la imagen. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="@color/ciruela">
+
+        <!-- ImageButton abre el regreso al perfil al tocar la flecha, sin modificar sus campos. -->
+        <ImageButton
+            android:id="@+id/perfil_visor_volver"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            android:background="@drawable/fondo_enlace_acceso"
+            android:src="@drawable/perfil_icono_volver"
+            android:contentDescription="@string/perfil_visor_volver" />
+
+        <!-- TextView presenta el título y ocupa el espacio restante de la fila con layout_weight. -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:fontFamily="serif"
+            android:text="@string/perfil_visor_titulo"
+            android:textColor="@color/marfil"
+            android:textSize="24sp"
+            android:accessibilityHeading="true" />
+
+    </LinearLayout>
+
+    <!-- Esta columna marfil reúne la fotografía y los mensajes de carga o error. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/marfil">
+
+        <!-- FrameLayout permite mostrar un indicador de carga sobre el espacio de la imagen. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <!--
+                ImageView muestra la foto completa. fitCenter conserva su proporción y la encaja
+                dentro del espacio disponible: no la recorta ni la convierte en un círculo.
+            -->
+            <ImageView
+                android:id="@+id/perfil_visor_imagen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/perfil_visor_imagen" />
+
+            <!-- ProgressBar indica que la lectura continúa en un trabajo separado. -->
+            <ProgressBar
+                android:id="@+id/perfil_visor_carga"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/ciruela"
+                android:importantForAccessibility="no" />
+
+        </FrameLayout>
+
+        <!-- El mensaje se anuncia también a lectores de pantalla cuando aparece un problema. -->
+        <TextView
+            android:id="@+id/perfil_visor_estado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="@string/perfil_visor_cargando"
+            android:textColor="@color/texto_secundario"
+            android:textSize="16sp"
+            android:accessibilityLiveRegion="polite" />
+
+    </LinearLayout>
+
+</LinearLayout>

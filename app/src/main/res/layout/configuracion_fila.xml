@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- La fila completa recibe el toque. El fondo cambia al pulsar para que la acción sea visible. -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="60dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:screenReaderFocusable="true"
+    android:paddingStart="12dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="12dp"
+    android:paddingBottom="8dp">
+
+    <!-- ImageView muestra un dibujo decorativo que ayuda a reconocer la opción de un vistazo. -->
+    <ImageView
+        android:id="@+id/configuracion_fila_icono"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/configuracion_fondo_icono"
+        android:padding="8dp"
+        android:tint="@color/ciruela"
+        android:importantForAccessibility="no" />
+
+    <!-- Esta columna toma el espacio disponible entre el icono y la flecha. El texto puede ocupar varias líneas. -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical">
+
+        <!-- El primer texto dice qué se abre al tocar la fila. -->
+        <TextView
+            android:id="@+id/configuracion_fila_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ciruela"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp" />
+
+        <!-- El detalle solo aparece cuando explica la opción o muestra un valor guardado. -->
+        <TextView
+            android:id="@+id/configuracion_fila_detalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/texto_secundario"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- La flecha indica que esta fila abre otra vista o un cuadro de opciones. -->
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/musica_icono_chevron"
+        android:importantForAccessibility="no" />
+
+</LinearLayout>

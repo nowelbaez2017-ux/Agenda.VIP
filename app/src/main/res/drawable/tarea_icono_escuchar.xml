@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    vector dibuja un altavoz con líneas que conservan su nitidez al cambiar de tamaño.
+    tarea_pantalla_formulario.xml lo muestra en el botón que escucha una muestra de voz.
+-->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:autoMirrored="true">
+
+    <!-- path es un recorrido de líneas que dibuja el cuerpo del altavoz y sus ondas. -->
+    <path
+        android:fillColor="@color/transparente"
+        android:strokeColor="@color/ciruela"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M4,9 L8,9 L13,5 L13,19 L8,15 L4,15 Z M16,8 C18,10 18,14 16,16 M19,5 C23,9 23,15 19,19" />
+
+</vector>

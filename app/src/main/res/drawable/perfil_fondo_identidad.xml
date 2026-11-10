@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- shape dibuja el fondo redondeado de la cabecera donde aparecen la foto y el nombre. -->
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- solid toma el melocotón claro que ya utiliza la paleta del avatar de Perfil. -->
+    <solid
+        android:color="@color/perfil_avatar_exterior" />
+
+    <!-- corners suaviza las cuatro esquinas de la tarjeta de identidad. -->
+    <corners
+        android:radius="20dp" />
+
+</shape>

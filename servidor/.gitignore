@@ -1,0 +1,11 @@
+# Python y su entorno local.
+.venv/
+__pycache__/
+*.pyc
+
+# Los datos reales se guardan fuera del proyecto, en LOCALAPPDATA.
+*.sqlite3
+*.sqlite3-*
+*.key
+*.crt
+*.avip

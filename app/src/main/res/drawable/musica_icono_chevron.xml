@@ -1,0 +1,14 @@
+<!-- Este vector dibuja la flecha hacia la derecha que AdaptadorMusica.kt muestra en una fila de carpeta para indicar que se puede entrar en ella. -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- pathData dibuja la flecha y fillColor le da su color interior. -->
+    <path
+        android:fillColor="#351546"
+        android:pathData="M9.3,6.7L14.6,12 9.3,17.3 10.7,18.7 17.4,12 10.7,5.3z" />
+
+</vector>

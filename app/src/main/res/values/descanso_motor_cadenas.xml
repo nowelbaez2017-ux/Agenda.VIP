@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android muestra esta explicación antes de permitir el servicio de accesibilidad. -->
+    <string name="descanso_motor_descripcion">Durante el horario que elijas, Agenda.VIP identifica la aplicación visible y muestra una pantalla de descanso sobre las aplicaciones que tú selecciones. No lee textos, mensajes ni capturas y no envía datos a Internet. Puedes pausar, cancelar por esta noche o desactivar el servicio en cualquier momento. Llamadas, ajustes y aplicaciones esenciales quedan disponibles.</string>
+</resources>

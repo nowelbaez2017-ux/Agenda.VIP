@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- resources agrupa los recursos de este archivo. Cada color tiene un nombre para compartirlo entre layouts, dibujos y Kotlin; por ejemplo, @color/ciruela busca el color llamado ciruela. -->
+
+    <!-- Estos tres colores dan identidad a las pantallas: ciruela para zonas destacadas, marfil para fondos y melocotón para detalles de la marca. -->
+    <color
+        name="ciruela">#351546</color>
+    <color
+        name="marfil">#FAF6F0</color>
+    <color
+        name="melocoton">#EDB79F</color>
+
+    <!-- Los campos y los textos de ayuda usan estos colores para distinguir el borde, el interior y la información secundaria. -->
+    <color
+        name="borde_campo">#D9CCDF</color>
+    <color
+        name="fondo_campo">#FFFCF8</color>
+    <color
+        name="texto_secundario">#776A7E</color>
+
+    <!-- Los fondos de los botones usan estos colores para mostrar cuándo se están pulsando o cuándo están desactivados. -->
+    <color
+        name="ciruela_presionado">#512667</color>
+    <color
+        name="ciruela_deshabilitado">#917D9B</color>
+
+    <!-- Estos colores parcialmente transparentes dan color a la onda que aparece al tocar botones y enlaces. -->
+    <color
+        name="onda_ciruela">#24351546</color>
+    <color
+        name="onda_marfil">#26FAF6F0</color>
+
+    <!-- Este color deja ver lo que hay detrás; los iconos lo usan para mantener vacío el interior del dibujo. -->
+    <color
+        name="transparente">#00000000</color>
+</resources>
+

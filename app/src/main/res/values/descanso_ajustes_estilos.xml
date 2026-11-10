@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Estos estilos comparten medidas entre los grupos de la pantalla Descanso. -->
+<resources>
+
+    <!-- La tarjeta agrupa controles relacionados en un mismo fondo. -->
+    <style
+        name="DescansoTarjeta">
+
+        <item
+            name="android:layout_width">match_parent</item>
+
+        <item
+            name="android:layout_height">wrap_content</item>
+
+        <item
+            name="android:layout_marginTop">12dp</item>
+
+        <item
+            name="android:orientation">vertical</item>
+
+        <item
+            name="android:padding">14dp</item>
+
+        <item
+            name="android:background">@drawable/descanso_fondo_tarjeta</item>
+
+    </style>
+
+    <!-- El encabezado de cada grupo se distingue por tamaño y grosor. -->
+    <style
+        name="DescansoSeccionTitulo"
+        parent="TareaEtiquetaCompacta">
+
+        <item
+            name="android:layout_marginBottom">0dp</item>
+
+        <item
+            name="android:textSize">19sp</item>
+
+        <item
+            name="android:textStyle">bold</item>
+
+    </style>
+
+    <!-- Las notas conservan contraste y crecen con el tamaño de letra del teléfono. -->
+    <style
+        name="DescansoNota"
+        parent="TareaAyuda">
+
+        <item
+            name="android:textSize">14sp</item>
+
+    </style>
+
+    <!-- El interruptor conserva la pista de color que señala si está activado. -->
+    <style
+        name="DescansoInterruptor"
+        parent="TareaInterruptor">
+
+        <item
+            name="android:fontFamily">sans-serif</item>
+
+        <item
+            name="android:textSize">16sp</item>
+
+        <item
+            name="android:showText">false</item>
+
+        <item
+            name="android:paddingTop">6dp</item>
+
+        <item
+            name="android:paddingBottom">6dp</item>
+
+    </style>
+
+    <!-- Los botones secundarios tienen relleno y resaltan al tocarlos. -->
+    <style
+        name="DescansoAccion"
+        parent="TareaBoton">
+
+        <item
+            name="android:gravity">center</item>
+
+        <item
+            name="android:fontFamily">sans-serif-medium</item>
+
+        <item
+            name="android:textSize">15sp</item>
+
+        <item
+            name="android:stateListAnimator">@null</item>
+
+        <item
+            name="android:background">@drawable/descanso_fondo_accion</item>
+
+    </style>
+
+</resources>

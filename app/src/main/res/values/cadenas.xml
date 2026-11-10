@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- resources agrupa los textos de este archivo. Cada string les da un nombre para usarlos desde un layout con @string/nombre o desde Kotlin con R.string.nombre. -->
+
+    <!-- AndroidManifest.xml usa el nombre de la aplicación; las pantallas de acceso usan los títulos y subtítulos que siguen. -->
+    <string
+        name="nombre_aplicacion">Agenda.VIP</string>
+    <string
+        name="titulo_inicio_sesion">Iniciar sesión</string>
+    <string
+        name="subtitulo_inicio_sesion">Entra a tu agenda</string>
+    <string
+        name="titulo_registro">Crear cuenta</string>
+    <string
+        name="subtitulo_registro">Organiza tus días</string>
+
+    <!-- Las etiquetas indican qué escribir en cada campo del registro y del inicio de sesión. -->
+    <string
+        name="etiqueta_nombre">Nombre</string>
+    <string
+        name="etiqueta_usuario">Usuario</string>
+    <string
+        name="etiqueta_contrasena">Contraseña</string>
+    <string
+        name="etiqueta_confirmar_contrasena">Confirmar contraseña</string>
+
+    <!-- Estas ayudas aparecen dentro de los campos cuando todavía están vacíos. -->
+    <string
+        name="ayuda_nombre">Tu nombre</string>
+    <string
+        name="ayuda_usuario">Tu nombre de usuario</string>
+    <string
+        name="ayuda_usuario_registro">Elige tu usuario</string>
+    <string
+        name="ayuda_contrasena">Tu contraseña</string>
+    <string
+        name="ayuda_nueva_contrasena">Crea una contraseña</string>
+    <string
+        name="ayuda_confirmar_contrasena">Repite tu contraseña</string>
+
+    <!-- Estos textos nombran las acciones de acceso. En los enlaces, b marca la parte que Android muestra en negrita. El crédito aparece al pie de las pantallas. -->
+    <string
+        name="accion_entrar">Entrar</string>
+    <string
+        name="accion_crear_cuenta">Crear cuenta</string>
+    <string
+        name="enlace_registro">¿No tienes cuenta? <b>Regístrate</b></string>
+    <string
+        name="enlace_inicio_sesion">¿Ya tienes cuenta? <b>Inicia sesión</b></string>
+    <string
+        name="credito_autor">Creada por Nowel Baez</string>
+
+    <!-- VisibilidadContrasena.kt cambia estas descripciones cuando el botón del ojo pasa de mostrar a ocultar el campo. También permiten que un lector de pantalla anuncie su acción. -->
+    <string
+        name="mostrar_contrasena">Mostrar contraseña</string>
+    <string
+        name="ocultar_contrasena">Ocultar contraseña</string>
+    <string
+        name="mostrar_confirmacion">Mostrar confirmación de contraseña</string>
+    <string
+        name="ocultar_confirmacion">Ocultar confirmación de contraseña</string>
+
+    <!-- ActividadAcceso.kt muestra estos mensajes junto a los campos cuando falta un dato o las dos contraseñas no coinciden. -->
+    <string
+        name="error_nombre_vacio">Escribe tu nombre.</string>
+    <string
+        name="error_usuario_vacio">Escribe tu usuario.</string>
+    <string
+        name="error_contrasena_vacia">Escribe tu contraseña.</string>
+    <string
+        name="error_confirmacion_vacia">Repite tu contraseña.</string>
+    <string
+        name="error_contrasenas_diferentes">Las contraseñas no coinciden.</string>
+    <string
+        name="aceptar">Entendido</string>
+</resources>
+

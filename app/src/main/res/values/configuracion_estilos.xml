@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Un estilo reúne propiedades visuales. Este da el mismo tamaño y margen a todos los encabezados. -->
+    <style
+        name="ConfiguracionTituloGrupo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/ciruela</item>
+        <item name="android:accessibilityHeading">true</item>
+    </style>
+
+    <!-- El fondo redondeado y las líneas finas juntan las opciones del mismo tema en una tarjeta. -->
+    <style
+        name="ConfiguracionGrupo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/configuracion_fondo_grupo</item>
+        <item name="android:clipToOutline">true</item>
+        <item name="android:divider">@drawable/configuracion_separador</item>
+        <item name="android:dividerPadding">12dp</item>
+        <item name="android:showDividers">middle</item>
+    </style>
+
+    <!-- Los cuadros cortos usan botones con texto y flecha cuando abren opciones adicionales. -->
+    <style
+        name="ConfiguracionAccionPanel"
+        parent="android:style/Widget.Material.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:drawableEnd">@drawable/musica_icono_chevron</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:textColor">@color/ciruela</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+</resources>

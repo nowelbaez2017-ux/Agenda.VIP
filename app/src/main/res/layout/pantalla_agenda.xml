@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LinearLayout coloca los elementos en columna: la zona desplazable y la navegación.
+    ActividadAgenda carga este diseño para Inicio, Agenda y Enfoque.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/agenda_raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/marfil">
+
+    <!-- ScrollView permite ver todo el contenido con letras grandes o pantallas pequeñas. -->
+    <ScrollView
+        android:id="@+id/agenda_desplazamiento"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:background="@color/marfil">
+
+        <!-- El desplazamiento reúne la cabecera, las tareas y el crédito del autor. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--
+                Inicio conserva su cabecera curva. En Agenda, Kotlin reduce el espacio
+                y usa una franja ciruela con el título pequeño y el mismo menú personal.
+            -->
+            <LinearLayout
+                android:id="@+id/agenda_cabecera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:background="@drawable/fondo_cabecera_acceso">
+
+                <!-- Esta fila comparte el ancho entre la marca y el avatar que abre el menú. -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <!-- Kotlin oculta esta imagen en Agenda para dejar una cabecera compacta. -->
+                    <ImageView
+                        android:id="@+id/agenda_logotipo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/marca_agenda"
+                        android:importantForAccessibility="no" />
+
+                    <!-- El peso 1 ocupa el espacio disponible; el texto puede crecer en varias líneas. -->
+                    <TextView
+                        android:id="@+id/agenda_nombre"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/nombre_aplicacion"
+                        android:fontFamily="serif"
+                        android:textStyle="bold"
+                        android:textColor="@color/melocoton"
+                        android:textSize="27sp" />
+
+                    <!-- El avatar sigue accesible en todas las secciones y abre el menú personal. -->
+                    <ImageButton
+                        android:id="@+id/agenda_avatar"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:padding="10dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/icono_usuario"
+                        android:tint="@color/melocoton"
+                        android:background="@drawable/fondo_control_visibilidad"
+                        android:contentDescription="@string/agenda_abrir_menu" />
+
+                </LinearLayout>
+
+                <!-- Inicio muestra el saludo. Agenda y Enfoque muestran su nombre en la fila superior compacta. -->
+                <TextView
+                    android:id="@+id/agenda_saludo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:textSize="34sp"
+                    android:fontFamily="serif"
+                    android:textStyle="bold"
+                    android:textColor="@color/marfil"
+                    android:accessibilityHeading="true" />
+
+                <!-- La fecha de hoy acompaña al saludo; el rango de Agenda va en sus controles. -->
+                <TextView
+                    android:id="@+id/agenda_fecha_cabecera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="16sp"
+                    android:fontFamily="serif"
+                    android:textColor="@color/marfil" />
+
+            </LinearLayout>
+
+            <!--
+                Kotlin añade aquí el resumen y las tarjetas de Inicio, las filas del historial
+                o las actividades y sesiones propias de Enfoque. Agenda no incluye creación de tareas.
+            -->
+            <LinearLayout
+                android:id="@+id/agenda_contenido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@color/marfil" />
+
+            <!-- El crédito se conserva al final de la parte desplazable. -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="@string/credito_autor"
+                android:textSize="12sp"
+                android:fontFamily="serif"
+                android:textColor="@color/texto_secundario"
+                android:background="@color/marfil" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Esta línea fina separa el contenido de los tres destinos inferiores. -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/borde_campo"
+        android:importantForAccessibility="no" />
+
+    <!-- Los pesos iguales mantienen Inicio, Agenda y Enfoque visibles con el mismo ancho. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/marfil">
+
+        <!-- El fondo melocotón indica que Inicio está seleccionado. -->
+        <Button
+            android:id="@+id/agenda_nav_inicio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minWidth="0dp"
+            android:minHeight="64dp"
+            android:padding="8dp"
+            android:text="@string/agenda_inicio"
+            android:textSize="14sp"
+            android:fontFamily="serif"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/agenda_icono_inicio"
+            android:drawablePadding="4dp"
+            android:background="@drawable/agenda_fondo_navegacion"
+            android:backgroundTint="@null"
+            android:textColor="@color/ciruela" />
+
+        <!-- Este destino abre la lista de consulta con filtros Día, Semana y Mes. -->
+        <Button
+            android:id="@+id/agenda_nav_calendario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:minWidth="0dp"
+            android:minHeight="64dp"
+            android:padding="8dp"
+            android:text="@string/agenda_agenda"
+            android:textSize="14sp"
+            android:fontFamily="serif"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/agenda_icono_calendario"
+            android:drawablePadding="4dp"
+            android:background="@drawable/agenda_fondo_navegacion"
+            android:backgroundTint="@null"
+            android:textColor="@color/ciruela" />
+
+        <!-- Enfoque abre actividades propias con aviso, duración y decisiones al terminar. -->
+        <Button
+            android:id="@+id/agenda_nav_enfoque"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:minWidth="0dp"
+            android:minHeight="64dp"
+            android:padding="8dp"
+            android:text="@string/agenda_enfoque"
+            android:textSize="14sp"
+            android:fontFamily="serif"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/agenda_icono_enfoque"
+            android:drawablePadding="4dp"
+            android:background="@drawable/agenda_fondo_navegacion"
+            android:backgroundTint="@null"
+            android:textColor="@color/ciruela" />
+
+    </LinearLayout>
+
+</LinearLayout>

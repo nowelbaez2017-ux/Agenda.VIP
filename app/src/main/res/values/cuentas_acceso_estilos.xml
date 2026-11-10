@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Las dos pantallas usan esta ayuda bajo los campos y la casilla de copia. -->
+    <style
+        name="AyudaCuentasAcceso">
+        <item
+            name="android:layout_width">match_parent</item>
+        <item
+            name="android:layout_height">wrap_content</item>
+        <item
+            name="android:layout_marginTop">6dp</item>
+        <item
+            name="android:textSize">13sp</item>
+        <item
+            name="android:textColor">@color/texto_secundario</item>
+    </style>
+
+    <!-- La región accesible anuncia errores sin abrir un cuadro encima del formulario. -->
+    <style
+        name="EstadoCuentasAcceso"
+        parent="AyudaCuentasAcceso">
+        <item
+            name="android:layout_marginTop">16dp</item>
+        <item
+            name="android:textColor">@color/ciruela</item>
+        <item
+            name="android:accessibilityLiveRegion">polite</item>
+        <item
+            name="android:visibility">gone</item>
+        <item
+            name="android:saveEnabled">false</item>
+    </style>
+
+</resources>

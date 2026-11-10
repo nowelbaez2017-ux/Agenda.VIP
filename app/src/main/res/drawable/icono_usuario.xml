@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Este vector dibuja una persona. Identifica los campos de usuario y sirve de avatar cuando no hay una foto, como indica FotoPerfil.kt. -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- path dibuja la cabeza y los hombros. fillColor transparente deja vacío el interior y strokeWidth fija el grosor de la línea. -->
+    <path
+        android:fillColor="@color/transparente"
+        android:strokeColor="@color/ciruela"
+        android:strokeWidth="1.7"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M12,11a4,4 0,1 0,0 -8a4,4 0,0 0,0 8M4,21v-2a5,5 0,0 1,5 -5h6a5,5 0,0 1,5 5v2Z" />
+
+</vector>

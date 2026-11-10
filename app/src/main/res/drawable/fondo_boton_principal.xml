@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ripple dibuja una onda al tocar los botones principales de acceso. Su color se toma de colores.xml mediante @color. -->
+<ripple
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/onda_marfil">
+
+    <item>
+        <!-- selector cambia el fondo según el botón esté desactivado, pulsado o en reposo. Android utiliza la primera opción que corresponda. -->
+        <selector>
+
+            <!-- Este fondo permite reconocer un botón que todavía no se puede pulsar. -->
+            <item
+                android:state_enabled="false">
+
+                <!-- shape crea una forma; solid la rellena y corners redondea las esquinas con la medida de dimensiones.xml. -->
+                <shape
+                    android:shape="rectangle">
+
+                    <solid
+                        android:color="@color/ciruela_deshabilitado" />
+
+                    <corners
+                        android:radius="@dimen/radio_boton" />
+
+                </shape>
+
+            </item>
+
+            <!-- Este color aparece mientras el dedo mantiene pulsado el botón. -->
+            <item
+                android:state_pressed="true">
+
+                <shape
+                    android:shape="rectangle">
+
+                    <solid
+                        android:color="@color/ciruela_presionado" />
+
+                    <corners
+                        android:radius="@dimen/radio_boton" />
+
+                </shape>
+
+            </item>
+
+            <!-- La última opción es el aspecto habitual del botón. -->
+            <item>
+
+                <shape
+                    android:shape="rectangle">
+
+                    <solid
+                        android:color="@color/ciruela" />
+
+                    <corners
+                        android:radius="@dimen/radio_boton" />
+
+                </shape>
+
+            </item>
+
+        </selector>
+
+    </item>
+
+</ripple>

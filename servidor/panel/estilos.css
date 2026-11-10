@@ -1,0 +1,1114 @@
+/* Los colores conservan la identidad de Agenda.VIP y se comparten entre todos los controles. */
+:root {
+    --ciruela: #351546;
+    --ciruela-suave: #512667;
+    --marfil: #faf6f0;
+    --papel: #fffcf8;
+    --melocoton: #edb79f;
+    --melocoton-suave: #f7dfd1;
+    --borde: #ded3e2;
+    --secundario: #776a7e;
+    --azul: #2866ba;
+    --rojo: #a33946;
+    --verde: #30745a;
+    --radio: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    background: var(--marfil);
+    color: var(--ciruela);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+h1, h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(1.9rem, 3vw, 2.65rem);
+    letter-spacing: -0.035em;
+}
+
+h2 {
+    font-size: 1.55rem;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: wait;
+    opacity: .56;
+}
+
+input, select, textarea {
+    width: 100%;
+    min-height: 45px;
+    padding: 10px 13px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    color: var(--ciruela);
+    background: var(--papel);
+}
+
+input[type="checkbox"] {
+    width: 19px;
+    min-height: 19px;
+    height: 19px;
+    accent-color: var(--ciruela);
+    flex: 0 0 auto;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--secundario);
+}
+
+textarea {
+    resize: vertical;
+}
+
+label, legend {
+    display: block;
+    font-size: .88rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+:focus-visible {
+    outline: 3px solid var(--azul);
+    outline-offset: 3px;
+}
+
+.boton {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 17px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    font-weight: 600;
+    font-size: .89rem;
+    text-decoration: none;
+}
+
+.principal {
+    background: var(--ciruela);
+    color: var(--marfil);
+}
+
+.principal:hover {
+    background: var(--ciruela-suave);
+}
+
+.secundario {
+    background: var(--papel);
+    color: var(--ciruela);
+    border-color: var(--borde);
+}
+
+.secundario:hover, .discreto:hover {
+    background: var(--melocoton-suave);
+}
+
+.discreto {
+    color: var(--secundario);
+    background: transparent;
+}
+
+.peligro {
+    color: white;
+    background: var(--rojo);
+}
+
+.boton-icono {
+    display: inline-grid;
+    min-width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 0;
+    border-radius: 10px;
+    background: var(--melocoton-suave);
+    color: var(--ciruela);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.enlace {
+    border: 0;
+    padding: 8px 0;
+    background: none;
+    color: var(--ciruela);
+    font-size: .86rem;
+    text-align: left;
+}
+
+.enlace:hover {
+    text-decoration: underline;
+}
+
+.sobrelinea {
+    font-size: .69rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: var(--secundario);
+}
+
+.texto-suave {
+    color: var(--secundario);
+    font-size: .91rem;
+}
+
+.nota {
+    color: var(--secundario);
+    font-size: .79rem;
+    line-height: 1.55;
+}
+
+.credito {
+    color: var(--secundario);
+    font-size: .72rem;
+    text-align: center;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: bold 1.45rem Georgia, serif;
+    letter-spacing: -.04em;
+}
+
+.simbolo {
+    display: inline-grid;
+    width: 35px;
+    height: 40px;
+    place-items: center;
+    border: 1.5px solid var(--melocoton);
+    border-radius: 11px 11px 6px 6px;
+    color: var(--melocoton);
+    background: var(--ciruela);
+    font-size: 1.4rem;
+}
+
+/* El acceso ocupa la altura disponible y conserva márgenes en pantallas pequeñas. */
+.acceso {
+    display: grid;
+    min-height: 100dvh;
+    place-items: center;
+    padding: 28px 16px;
+    background:
+        radial-gradient(ellipse at 0 0, #edb79f55, transparent 48%),
+        radial-gradient(ellipse at 100% 100%, #35154613, transparent 48%),
+        var(--marfil);
+}
+
+.tarjeta-acceso {
+    width: min(100%, 460px);
+    padding: 36px;
+    border: 1px solid var(--borde);
+    border-radius: 24px;
+    background: var(--papel);
+    box-shadow: 0 20px 70px #3515460c;
+}
+
+.marca-acceso {
+    margin-bottom: 38px;
+}
+
+.tarjeta-acceso h1 {
+    font-size: 2.3rem;
+    margin: 12px 0 16px;
+}
+
+.tarjeta-acceso form {
+    margin: 30px 0 14px;
+}
+
+.tarjeta-acceso .principal {
+    width: 100%;
+    margin-top: 14px;
+}
+
+.tarjeta-acceso .credito {
+    margin-top: 28px;
+}
+
+/* La distribución de escritorio deja el menú fijo y desplaza únicamente el contenido principal. */
+.aplicacion {
+    display: grid;
+    grid-template-columns: 265px minmax(0, 1fr);
+    min-height: 100dvh;
+}
+
+.lateral {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px 22px;
+    background: #f2ebe7;
+    border-right: 1px solid var(--borde);
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    overflow-y: auto;
+}
+
+.etiqueta-servidor {
+    margin: 8px 0 35px 45px;
+    color: var(--secundario);
+    font-size: .61rem;
+    letter-spacing: .15em;
+}
+
+.encabezado-lateral {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.encabezado-lateral h2 {
+    font: 600 .78rem "Segoe UI", sans-serif;
+    color: var(--secundario);
+}
+
+.lista-cuentas {
+    display: grid;
+    gap: 7px;
+}
+
+.cuenta {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    width: 100%;
+    padding: 12px 10px;
+    text-align: left;
+    border: 1px solid transparent;
+    border-radius: 13px;
+    background: transparent;
+    color: var(--ciruela);
+}
+
+.cuenta:hover {
+    background: #ffffff88;
+}
+
+.cuenta.seleccionada {
+    background: var(--papel);
+    border-color: var(--borde);
+    box-shadow: 0 3px 8px #35154606;
+}
+
+.iniciales {
+    display: grid;
+    place-items: center;
+    width: 37px;
+    height: 37px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    font-size: .85rem;
+    font-weight: 700;
+    background: var(--melocoton-suave);
+}
+
+.cuenta-texto {
+    min-width: 0;
+}
+
+.cuenta-texto strong, .cuenta-texto span {
+    display: block;
+    overflow-wrap: anywhere;
+}
+
+.cuenta-texto strong {
+    font-size: .86rem;
+    font-weight: 600;
+}
+
+.cuenta-texto span {
+    color: var(--secundario);
+    font-size: .72rem;
+}
+
+.pie-lateral {
+    display: grid;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 35px;
+}
+
+.pie-lateral p {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--secundario);
+    font-size: .78rem;
+}
+
+.pie-lateral small {
+    font-size: .66rem;
+    color: var(--secundario);
+}
+
+.punto {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--verde);
+    flex: 0 0 auto;
+}
+
+.contenido {
+    padding: 26px clamp(22px, 4vw, 58px) 60px;
+    max-width: 1460px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.barra-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 22px;
+    margin-bottom: 28px;
+}
+
+.barra-superior p {
+    color: var(--secundario);
+    font-size: .85rem;
+    margin-top: 3px;
+}
+
+.tarjeta {
+    background: var(--papel);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+}
+
+.bienvenida {
+    margin-top: 50px;
+    padding: clamp(26px, 5vw, 60px);
+    max-width: 760px;
+}
+
+.bienvenida h1 {
+    margin: 14px 0;
+}
+
+.bienvenida p:not(.sobrelinea) {
+    color: var(--secundario);
+    max-width: 570px;
+}
+
+.bienvenida .principal {
+    margin-top: 28px;
+}
+
+.ilustracion {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    border-radius: 19px;
+    background: var(--melocoton-suave);
+    font-size: 3rem;
+    margin-bottom: 28px;
+}
+
+.cabecera-cuenta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.cabecera-cuenta h1 {
+    margin: 7px 0;
+    overflow-wrap: anywhere;
+}
+
+.resumen {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.6fr;
+    gap: 14px;
+    margin: 25px 0 27px;
+}
+
+.cifra {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 21px;
+}
+
+.cifra strong {
+    font-size: 1.85rem;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+.cifra-conexion strong {
+    font-size: 1rem;
+    margin: 10px 0 4px;
+}
+
+.pestanas {
+    display: flex;
+    gap: 22px;
+    border-bottom: 1px solid var(--borde);
+    margin-bottom: 28px;
+    overflow-x: auto;
+}
+
+.pestana {
+    border: 0;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    color: var(--secundario);
+    padding: 0 2px 12px;
+    white-space: nowrap;
+    font-size: .9rem;
+}
+
+.pestana.activa {
+    color: var(--ciruela);
+    border-bottom-color: var(--ciruela);
+    font-weight: 600;
+}
+
+.titulo-seccion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.titulo-seccion p {
+    margin-top: 4px;
+}
+
+.aviso-inline {
+    font-size: .79rem;
+    color: var(--secundario);
+    margin-bottom: 17px;
+}
+
+.lista-tareas {
+    display: grid;
+    gap: 12px;
+}
+
+.fila-tarea, .fila-registro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 19px 21px;
+}
+
+.hora-tarea {
+    color: var(--ciruela);
+    font-size: 1rem;
+    font-weight: 700;
+    min-width: 99px;
+    white-space: nowrap;
+}
+
+.datos-tarea {
+    flex: 1;
+    min-width: 0;
+}
+
+.datos-tarea h3, .fila-registro h3 {
+    font-size: .98rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.datos-tarea p, .fila-registro p {
+    font-size: .78rem;
+    color: var(--secundario);
+    margin-top: 4px;
+    overflow-wrap: anywhere;
+}
+
+.acciones-fila {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.acciones-fila .boton {
+    min-height: 36px;
+    font-size: .77rem;
+    padding: 6px 10px;
+}
+
+.estado {
+    display: inline-block;
+    color: var(--secundario);
+    background: #eee7f0;
+    padding: 4px 9px;
+    border-radius: 7px;
+    font-size: .72rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.estado-pendiente {
+    background: #f7e9d9;
+    color: #765225;
+}
+
+.estado-aplicada, .estado-listo {
+    background: #e2efe8;
+    color: #286047;
+}
+
+.estado-conflicto, .estado-error {
+    background: #f7e5e8;
+    color: #9d3140;
+}
+
+.vacio {
+    padding: 34px 22px;
+    color: var(--secundario);
+    text-align: center;
+    font-size: .87rem;
+}
+
+.mensaje {
+    padding: 13px 16px;
+    border: 1px solid #b9d9ca;
+    border-radius: 12px;
+    background: #edf6ef;
+    color: #285d44;
+    font-size: .86rem;
+    margin-bottom: 22px;
+    overflow-wrap: anywhere;
+}
+
+.mensaje.error {
+    background: #fceef0;
+    color: #9d3140;
+    border-color: #e7c2c9;
+}
+
+/* Los diálogos quedan centrados, se desplazan por dentro y mantienen visibles sus acciones. */
+dialog {
+    width: min(590px, calc(100% - 30px));
+    max-height: calc(100dvh - 44px);
+    padding: 0;
+    border: 1px solid var(--borde);
+    border-radius: 22px;
+    color: var(--ciruela);
+    background: var(--papel);
+    box-shadow: 0 24px 90px #1e0b3955;
+}
+
+dialog::backdrop {
+    background: #1b102b88;
+    backdrop-filter: blur(3px);
+}
+
+.contenido-dialogo {
+    padding: 27px;
+}
+
+.encabezado-dialogo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.encabezado-dialogo h2 {
+    margin-top: 6px;
+}
+
+.contenido-dialogo > input,
+.contenido-dialogo > select,
+.contenido-dialogo > textarea {
+    margin-bottom: 16px;
+}
+
+.contenido-dialogo > p {
+    margin-bottom: 16px;
+}
+
+.contenido-dialogo > h2 {
+    margin-bottom: 14px;
+}
+
+.acciones-dialogo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    padding-top: 18px;
+}
+
+.campos-horario {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr .9fr;
+    gap: 12px;
+    margin-bottom: 7px;
+}
+
+.dos-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.dias {
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 16px;
+}
+
+.dias label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: .83rem;
+    margin: 0;
+}
+
+.fila-interruptor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    min-height: 48px;
+    margin-bottom: 14px;
+    font-size: .92rem;
+}
+
+.opciones-avanzadas {
+    padding: 13px 0;
+    border-top: 1px solid var(--borde);
+    border-bottom: 1px solid var(--borde);
+    margin-top: 18px;
+}
+
+.opciones-avanzadas summary {
+    cursor: pointer;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.opciones-avanzadas[open] summary {
+    margin-bottom: 18px;
+}
+
+.pasos {
+    padding-left: 20px;
+    margin: 0 0 22px;
+    font-size: .88rem;
+}
+
+.pasos li + li {
+    margin-top: 8px;
+}
+
+#codigo-vinculacion {
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: .77rem;
+    background: var(--marfil);
+    word-break: break-all;
+}
+
+.seleccionable {
+    overflow-wrap: anywhere;
+}
+
+/* El QR queda negro sobre blanco y conserva un margen para que la cámara lo reconozca. */
+.qr-vinculacion {
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+    margin: 18px 0 10px;
+    padding: 18px;
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: 18px;
+    text-align: center;
+}
+
+.qr-vinculacion img {
+    display: block;
+    width: min(304px, 100%);
+    height: auto;
+    aspect-ratio: 1;
+}
+
+.qr-vinculacion img[hidden] {
+    display: none;
+}
+
+.qr-vinculacion .nota {
+    margin: 0;
+}
+
+.caducidad-qr {
+    text-align: center;
+    font-weight: 600;
+}
+
+/* La alternativa manual se abre al solicitarla. Las letras largas respetan el ancho del cuadro. */
+#vinculacion-manual label {
+    margin-top: 16px;
+}
+
+#vinculacion-manual textarea {
+    width: 100%;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+#vinculacion-manual .nota {
+    margin-bottom: 12px;
+}
+
+/* En pantallas pequeñas las cuentas pasan arriba y las acciones conservan el tamaño táctil. */
+@media (max-width: 850px) {
+    .aplicacion {
+        grid-template-columns: 1fr;
+    }
+
+    .lateral {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--borde);
+        padding: 18px 20px;
+    }
+
+    .etiqueta-servidor {
+        display: none;
+    }
+
+    .encabezado-lateral {
+        margin: 18px 0 8px;
+    }
+
+    .lista-cuentas {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 3px;
+    }
+
+    .cuenta {
+        width: auto;
+        min-width: 190px;
+    }
+
+    .pie-lateral {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding-top: 14px;
+    }
+
+    .pie-lateral small {
+        display: none;
+    }
+
+    .contenido {
+        padding: 23px 20px 40px;
+    }
+
+    .bienvenida {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 560px) {
+    .tarjeta-acceso {
+        padding: 28px 23px;
+    }
+
+    .barra-superior .sobrelinea {
+        font-size: .6rem;
+    }
+
+    .barra-superior p {
+        display: none;
+    }
+
+    .resumen {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .cifra-conexion {
+        grid-column: 1 / -1;
+    }
+
+    .cifra {
+        padding: 14px 16px;
+    }
+
+    .fila-tarea {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 11px 15px;
+        padding: 16px;
+    }
+
+    .hora-tarea {
+        min-width: auto;
+        font-size: .87rem;
+    }
+
+    .acciones-fila {
+        grid-column: 1 / -1;
+        justify-content: flex-end;
+    }
+
+    .fila-registro {
+        align-items: flex-start;
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .titulo-seccion h2 {
+        font-size: 1.27rem;
+    }
+
+    .titulo-seccion {
+        align-items: flex-start;
+    }
+
+    .titulo-seccion .boton {
+        padding: 9px 12px;
+        white-space: nowrap;
+    }
+
+    .cabecera-cuenta h1 {
+        font-size: 1.9rem;
+    }
+
+    .campos-horario {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .campos-horario > div:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .contenido-dialogo {
+        padding: 23px 20px;
+    }
+
+    .pestanas {
+        gap: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .boton, .cuenta {
+        transition: background .15s ease, border-color .15s ease;
+    }
+}
+
+/* Los accesos del XML comparten el espacio de las acciones de tareas y se ajustan al ancho. */
+.acciones-tareas {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* El editor necesita más ancho para leer las etiquetas sin comprimir los datos. */
+.dialogo-xml {
+    width: min(990px, calc(100% - 30px));
+}
+
+.barra-editor-xml {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 8px;
+}
+
+.barra-editor-xml > div {
+    flex: 1 1 260px;
+}
+
+.barra-editor-xml input[type="file"] {
+    padding: 8px;
+    min-height: 44px;
+    font-size: .82rem;
+}
+
+.editor-xml {
+    min-height: 250px;
+    max-height: 55dvh;
+    margin-top: 5px;
+    color: #302338;
+    background: #f8f4f0;
+    font: .86rem/1.6 ui-monospace, Consolas, monospace;
+    tab-size: 4;
+    white-space: pre;
+    overflow: auto;
+}
+
+.ejemplo-xml {
+    margin: 14px 0 0;
+    padding: 16px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    overflow: auto;
+    background: var(--marfil);
+    color: var(--ciruela);
+    font: .78rem/1.6 ui-monospace, Consolas, monospace;
+}
+
+.vista-previa-xml {
+    display: grid;
+    gap: 12px;
+    padding: 18px;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    background: var(--marfil);
+    margin-top: 16px;
+}
+
+.vista-previa-xml h3 {
+    font-size: 1rem;
+}
+
+#resumen-xml {
+    font-weight: 600;
+    font-size: .88rem;
+}
+
+.lista-cambios-xml {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.cambio-xml {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--borde);
+    font-size: .85rem;
+}
+
+.cambio-xml:last-child {
+    border-bottom: 0;
+}
+
+.cambio-xml > div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.cambio-xml .nota {
+    margin-top: 4px;
+}
+
+.cambio-xml-nuevo .estado {
+    color: var(--verde);
+    background: #e2efe8;
+}
+
+.cambio-xml-eliminado .estado {
+    color: var(--rojo);
+    background: #f7e5e8;
+}
+
+.notas-xml {
+    margin: 0;
+    padding-left: 19px;
+    color: var(--secundario);
+    font-size: .82rem;
+}
+
+.acciones-editor-xml {
+    position: sticky;
+    bottom: -27px;
+    margin-top: 14px;
+    padding-bottom: 18px;
+    background: var(--papel);
+    border-top: 1px solid var(--borde);
+}
+
+/* En un teléfono cada grupo queda en su propia fila para conservar botones cómodos. */
+@media (max-width: 560px) {
+    #vista-tareas > .titulo-seccion {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .acciones-tareas {
+        justify-content: flex-start;
+    }
+
+    .barra-editor-xml {
+        align-items: stretch;
+    }
+
+    .barra-editor-xml .boton {
+        width: 100%;
+    }
+
+    .editor-xml {
+        font-size: .78rem;
+    }
+
+    .acciones-editor-xml {
+        bottom: -23px;
+    }
+}
+
+
+.dialogo-xml .encabezado-dialogo > div {
+    min-width: 0;
+}
+
+#cuenta-xml {
+    overflow-wrap: anywhere;
+}

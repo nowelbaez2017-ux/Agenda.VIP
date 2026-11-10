@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Android 9 o posterior puede anunciar este texto como encabezado al usar un lector
+         de pantalla. El tamaño, la letra y los colores se conservan desde TituloAccesoBase. -->
+    <style
+        name="TituloAcceso"
+        parent="@style/TituloAccesoBase">
+
+        <item
+            name="android:accessibilityHeading">true</item>
+
+    </style>
+
+</resources>

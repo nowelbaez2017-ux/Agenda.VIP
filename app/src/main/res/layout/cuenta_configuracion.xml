@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- LinearLayout ordena las secciones de Configuración de arriba abajo. ActividadCuenta aporta el desplazamiento. -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="4dp">
+
+    <!-- TextView identifica el grupo. Los lectores de pantalla lo anuncian como encabezado. -->
+    <TextView
+        style="@style/ConfiguracionTituloGrupo"
+        android:text="@string/configuracion_recordatorios" />
+
+    <!-- Esta tarjeta recibe las filas de voz, seguimiento y entrega desde ControladorConfiguracion. -->
+    <LinearLayout
+        android:id="@+id/configuracion_grupo_recordatorios"
+        style="@style/ConfiguracionGrupo" />
+
+    <!-- Este grupo reúne las herramientas para descansar y limitar distracciones. -->
+    <TextView
+        style="@style/ConfiguracionTituloGrupo"
+        android:layout_marginTop="20dp"
+        android:text="@string/configuracion_bienestar" />
+
+    <LinearLayout
+        android:id="@+id/configuracion_grupo_bienestar"
+        style="@style/ConfiguracionGrupo" />
+
+    <!-- Seguridad y copias comparten una tarjeta para que se encuentren desde el mismo lugar. -->
+    <TextView
+        style="@style/ConfiguracionTituloGrupo"
+        android:layout_marginTop="20dp"
+        android:text="@string/configuracion_privacidad" />
+
+    <LinearLayout
+        android:id="@+id/configuracion_grupo_privacidad"
+        style="@style/ConfiguracionGrupo" />
+
+    <!-- En la tarjeta de cuenta, la fila de salida muestra quién tiene la sesión abierta. -->
+    <TextView
+        style="@style/ConfiguracionTituloGrupo"
+        android:layout_marginTop="20dp"
+        android:text="@string/configuracion_cuenta_local" />
+
+    <LinearLayout
+        android:id="@+id/configuracion_grupo_cuenta"
+        style="@style/ConfiguracionGrupo" />
+
+</LinearLayout>

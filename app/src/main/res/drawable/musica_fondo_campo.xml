@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- shape crea el fondo de los campos del selector musical. El color interior, las esquinas y el borde se dibujan juntos para que los campos compartan el mismo aspecto. -->
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- solid rellena el interior usando el color guardado en colores.xml. -->
+    <solid
+        android:color="@color/fondo_campo" />
+
+    <!-- corners redondea las esquinas. dp adapta esta medida a la densidad de la pantalla. -->
+    <corners
+        android:radius="14dp" />
+
+    <!-- stroke dibuja el borde fino que separa el campo del resto de la pantalla. -->
+    <stroke
+        android:width="1dp"
+        android:color="@color/borde_campo" />
+
+</shape>

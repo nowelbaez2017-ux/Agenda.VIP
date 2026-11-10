@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- La cabecera queda fija y el resto de los detalles se puede desplazar verticalmente. -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/enfoque_detalle_raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:background="@color/ciruela">
+
+        <Button
+            android:id="@+id/enfoque_detalle_volver"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="‹"
+            android:textSize="28sp"
+            android:textColor="@color/marfil"
+            android:background="@drawable/fondo_enlace_acceso"
+            android:contentDescription="Volver a Enfoque" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tu sesión"
+            android:textSize="23sp"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textColor="@color/marfil" />
+
+        <!-- Editar y Eliminar siguen visibles aunque se recorra el contenido. -->
+        <Button
+            android:id="@+id/enfoque_detalle_editar"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Editar"
+            android:textAllCaps="false"
+            android:textSize="13sp"
+            android:textColor="@color/marfil"
+            android:background="@drawable/fondo_enlace_acceso" />
+
+        <Button
+            android:id="@+id/enfoque_detalle_eliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Eliminar"
+            android:textAllCaps="false"
+            android:textSize="13sp"
+            android:textColor="@color/marfil"
+            android:background="@drawable/fondo_enlace_acceso" />
+
+    </LinearLayout>
+
+    <!-- Kotlin añade estado, cuenta atrás y acciones según la etapa de esta actividad. -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:background="@color/marfil">
+
+        <LinearLayout
+            android:id="@+id/enfoque_detalle_contenido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp" />
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vector describe con líneas el dibujo de cámara que abre el menú de fotografía. -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <path
+        android:fillColor="@color/transparente"
+        android:strokeColor="@color/marfil"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M8,5L9.5,3.5L14.5,3.5L16,5L20,5C21.1,5 22,5.9 22,7L22,19C22,20.1 21.1,21 20,21L4,21C2.9,21 2,20.1 2,19L2,7C2,5.9 2.9,5 4,5Z" />
+
+    <path
+        android:fillColor="@color/transparente"
+        android:strokeColor="@color/marfil"
+        android:strokeWidth="1.8"
+        android:pathData="M16.5,12.5A4.5,4.5 0,1 1,7.5 12.5A4.5,4.5 0,1 1,16.5 12.5" />
+
+</vector>

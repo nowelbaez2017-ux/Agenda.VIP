@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    inset deja espacio alrededor del dibujo original. Ese margen permite que el
+    lanzador del teléfono recorte el icono como círculo o cuadrado sin cortar el calendario.
+-->
+<inset
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/icono_agenda"
+    android:inset="16dp" />

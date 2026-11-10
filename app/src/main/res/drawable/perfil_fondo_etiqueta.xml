@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Este rectángulo de esquinas muy redondeadas forma la etiqueta Perfil local. -->
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid
+        android:color="@color/perfil_etiqueta_fondo" />
+
+    <corners
+        android:radius="20dp" />
+
+</shape>

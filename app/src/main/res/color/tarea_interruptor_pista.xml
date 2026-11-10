@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Este selector da melocotón a un interruptor activo y un tono suave al desactivado. -->
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- state_checked corresponde al interruptor encendido. -->
+    <item
+        android:state_checked="true"
+        android:color="@color/melocoton" />
+
+    <!-- El estado apagado conserva el color tenue de los bordes del formulario. -->
+    <item
+        android:color="@color/borde_campo" />
+
+</selector>

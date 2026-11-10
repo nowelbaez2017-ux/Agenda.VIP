@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    accessibility-service explica a Android el alcance del permiso que se activa manualmente.
+    Solo recibe el nombre de la aplicación cuya ventana cambió; no solicita leer sus textos,
+    capturas ni mensajes. La capa pertenece a Agenda.VIP y se usa únicamente en apps elegidas.
+-->
+<accessibility-service
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:notificationTimeout="100"
+    android:canRetrieveWindowContent="false"
+    android:isAccessibilityTool="false"
+    android:description="@string/descanso_motor_descripcion" />

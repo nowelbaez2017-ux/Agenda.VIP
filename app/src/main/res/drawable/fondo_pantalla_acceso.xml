@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- shape crea el fondo rectangular de las pantallas de acceso. También cubre el espacio que rodea al formulario junto a las barras de Android. -->
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- gradient mezcla colores de arriba abajo: comienza en ciruela y llega al marfil del formulario. centerY indica dónde se sitúa el color intermedio. -->
+    <gradient
+        android:angle="270"
+        android:startColor="@color/ciruela"
+        android:centerColor="@color/marfil"
+        android:centerY="0.20"
+        android:endColor="@color/marfil" />
+
+</shape>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- selector elige un borde según el campo esté seleccionado o recibiendo un toque. -->
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- El borde ciruela identifica el campo donde se está escribiendo. -->
+    <item
+        android:state_focused="true">
+
+        <!-- shape dibuja el campo; solid rellena, stroke marca el borde y corners lo redondea. -->
+        <shape
+            android:shape="rectangle">
+
+            <solid
+                android:color="@color/fondo_campo" />
+
+            <stroke
+                android:width="2dp"
+                android:color="@color/ciruela" />
+
+            <corners
+                android:radius="7dp" />
+
+        </shape>
+
+    </item>
+
+    <!-- Un toque en repetición, música o voz deja ver un tono suave mientras se pulsa. -->
+    <item
+        android:state_pressed="true">
+
+        <shape
+            android:shape="rectangle">
+
+            <solid
+                android:color="@color/agenda_melocoton_suave" />
+
+            <stroke
+                android:width="1dp"
+                android:color="@color/borde_campo" />
+
+            <corners
+                android:radius="7dp" />
+
+        </shape>
+
+    </item>
+
+    <!-- El estado normal conserva un borde fino y el fondo claro de la página. -->
+    <item>
+
+        <shape
+            android:shape="rectangle">
+
+            <solid
+                android:color="@color/fondo_campo" />
+
+            <stroke
+                android:width="1dp"
+                android:color="@color/borde_campo" />
+
+            <corners
+                android:radius="7dp" />
+
+        </shape>
+
+    </item>
+
+</selector>

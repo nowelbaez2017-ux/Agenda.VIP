@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- resources agrupa el tema y los estilos. Un style reúne propiedades visuales y cada item asigna un valor a una propiedad. Los layouts aplican estos grupos con @style/nombre. -->
+
+    <!-- AndroidManifest.xml asigna este tema a la aplicación. parent parte de un tema claro de Android sin barra de título; estos item eligen la letra, el fondo y los colores de las barras del teléfono. -->
+    <style
+        name="TemaBaseAgendaVip"
+        parent="android:style/Theme.Material.Light.NoActionBar">
+        <item
+            name="android:fontFamily">sans</item>
+        <item
+            name="android:windowBackground">@color/marfil</item>
+        <item
+            name="android:colorAccent">@color/ciruela</item>
+        <item
+            name="android:statusBarColor">@color/ciruela</item>
+        <item
+            name="android:windowLightStatusBar">false</item>
+        <item
+            name="android:navigationBarColor">@color/marfil</item>
+    </style>
+
+    <!-- pantalla_inicio_sesion.xml y pantalla_registro.xml comparten los estilos siguientes, de modo que sus títulos, campos y botones conserven el mismo aspecto. -->
+    <!-- El título principal usa una letra grande y centrada. textSize se expresa en sp para respetar el tamaño de texto que el usuario eligió en su teléfono. -->
+    <style
+        name="TituloAccesoBase">
+        <item
+            name="android:layout_width">match_parent</item>
+        <item
+            name="android:layout_height">wrap_content</item>
+        <item
+            name="android:fontFamily">serif</item>
+        <item
+            name="android:textSize">32sp</item>
+        <item
+            name="android:textStyle">bold</item>
+        <item
+            name="android:textColor">@color/ciruela</item>
+        <item
+            name="android:gravity">center</item>
+    </style>
+
+    <!-- Este texto centrado acompaña al título y utiliza el color secundario para distinguirlo del encabezado principal. -->
+    <style
+        name="SubtituloAcceso">
+        <item
+            name="android:layout_width">match_parent</item>
+        <item
+            name="android:layout_height">wrap_content</item>
+        <item
+            name="android:layout_marginTop">4dp</item>
+        <item
+            name="android:textSize">16sp</item>
+        <item
+            name="android:textColor">@color/texto_secundario</item>
+        <item
+            name="android:gravity">center</item>
+    </style>
+
+    <!-- Las etiquetas de los campos usan este estilo para indicar si se debe escribir un nombre, un usuario o una contraseña. Los márgenes dejan espacio antes y después. -->
+    <style
+        name="EtiquetaAcceso">
+        <item
+            name="android:layout_width">match_parent</item>
+        <item
+            name="android:layout_height">wrap_content</item>
+        <item
+            name="android:layout_marginTop">12dp</item>
+        <item
+            name="android:layout_marginBottom">6dp</item>
+        <item
+            name="android:fontFamily">serif</item>
+        <item
+            name="android:textSize">15sp</item>
+        <item
+            name="android:textColor">@color/ciruela</item>
+    </style>
+
+    <!-- Este estilo organiza en una fila el icono, el campo y, cuando corresponde, el botón del ojo. addStatesFromChildren permite que el borde destaque cuando se escribe en el campo interior. -->
+    <style
+        name="FilaCampoAcceso">
+        <item
+            name="android:layout_width">match_parent</item>
+        <item
+            name="android:layout_height">wrap_content</item>
+        <item
+            name="android:minHeight">@dimen/alto_control</item>
+        <item
+            name="android:orientation">horizontal</item>
+        <item
+            name="android:gravity">center_vertical</item>
+        <item
+            name="android:background">@drawable/fondo_campo_acceso</item>
+        <item
+            name="android:addStatesFromChildren">true</item>
+        <item
+            name="android:paddingStart">12dp</item>
+        <item
+            name="android:paddingEnd">4dp</item>
+    </style>
+
+    <!-- Los EditText de acceso usan este espacio para escribir. El ancho 0dp junto al peso 1 toma el espacio que sobra en la fila después del icono y del botón del ojo. padding deja aire entre el texto y los bordes. -->
+    <style
+        name="EntradaAcceso">
+        <item
+            name="android:layout_width">0dp</item>
+        <item
+            name="android:layout_height">wrap_content</item>
+        <item
+            name="android:layout_weight">1</item>
+        <item
+            name="android:minHeight">@dimen/alto_control</item>
+        <item
+            name="android:background">@null</item>
+        <item
+            name="android:paddingStart">12dp</item>
+        <item
+            name="android:paddingEnd">8dp</item>
+        <item
+            name="android:paddingTop">12dp</item>
+        <item
+            name="android:paddingBottom">12dp</item>
+        <item
+            name="android:textSize">16sp</item>
+        <item
+            name="android:textColor">@color/ciruela</item>
+        <item
+            name="android:textColorHint">@color/texto_secundario</item>
+        <item
+            name="android:singleLine">true</item>
+        <item
+            name="android:selectAllOnFocus">false</item>
+    </style>
+
+    <!-- Los dibujos de usuario y candado comparten este tamaño. Son decorativos porque la etiqueta del campo ya explica qué dato se pide. dp adapta su medida a la densidad de la pantalla. -->
+    <style
+        name="IconoCampoAcceso">
+        <item
+            name="android:layout_width">24dp</item>
+        <item
+            name="android:layout_height">24dp</item>
+        <item
+            name="android:tint">@color/texto_secundario</item>
+        <item
+            name="android:importantForAccessibility">no</item>
+        <item
+            name="android:contentDescription">@null</item>
+    </style>
+
+    <!-- Este estilo prepara el botón del ojo con un área cómoda para tocar. VisibilidadContrasena.kt cambia su estado y su descripción para mostrar u ocultar la contraseña; el selector de drawable cambia la imagen. -->
+    <style
+        name="VisibilidadContrasena">
+        <item
+            name="android:layout_width">@dimen/objetivo_tactil</item>
+        <item
+            name="android:layout_height">@dimen/objetivo_tactil</item>
+        <item
+            name="android:padding">12dp</item>
+        <item
+            name="android:background">@drawable/fondo_control_visibilidad</item>
+        <item
+            name="android:src">@drawable/estado_ojo_contrasena</item>
+        <item
+            name="android:tint">@color/ciruela</item>
+        <item
+            name="android:contentDescription">@string/mostrar_contrasena</item>
+    </style>
+
+    <!-- Entrar y Crear cuenta usan este botón ancho. El fondo propio dibuja sus estados y @null evita que Android añada otro color encima. ActividadAcceso.kt conecta sus pulsaciones con la revisión del formulario. -->
+    <style
+        name="BotonPrincipalAcceso"
+        parent="android:style/Widget.Material.Button">
+        <item
+            name="android:layout_width">match_parent</item>
+        <item
+            name="android:layout_height">wrap_content</item>
+        <item
+            name="android:layout_marginTop">24dp</item>
+        <item
+            name="android:minHeight">@dimen/alto_control</item>
+        <item
+            name="android:background">@drawable/fondo_boton_principal</item>
+        <item
+            name="android:backgroundTint">@null</item>
+        <item
+            name="android:stateListAnimator">@null</item>
+        <item
+            name="android:paddingStart">20dp</item>
+        <item
+            name="android:paddingEnd">20dp</item>
+        <item
+            name="android:paddingTop">12dp</item>
+        <item
+            name="android:paddingBottom">12dp</item>
+        <item
+            name="android:fontFamily">serif</item>
+        <item
+            name="android:textSize">19sp</item>
+        <item
+            name="android:textColor">@color/marfil</item>
+        <item
+            name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Los botones que cambian entre inicio de sesión y registro usan este estilo de enlace. Su base Borderless permite mostrar el texto sin el fondo de un botón principal. -->
+    <style
+        name="EnlaceAcceso"
+        parent="android:style/Widget.Material.Button.Borderless">
+        <item
+            name="android:layout_width">match_parent</item>
+        <item
+            name="android:layout_height">wrap_content</item>
+        <item
+            name="android:layout_marginTop">12dp</item>
+        <item
+            name="android:minHeight">@dimen/objetivo_tactil</item>
+        <item
+            name="android:background">@drawable/fondo_enlace_acceso</item>
+        <item
+            name="android:backgroundTint">@null</item>
+        <item
+            name="android:stateListAnimator">@null</item>
+        <item
+            name="android:fontFamily">serif</item>
+        <item
+            name="android:textSize">16sp</item>
+        <item
+            name="android:textColor">@color/ciruela</item>
+        <item
+            name="android:textAllCaps">false</item>
+        <item
+            name="android:padding">8dp</item>
+        <item
+            name="android:gravity">center</item>
+    </style>
+    <!-- Estos nombres públicos conservan las referencias del manifiesto y los formularios.
+         Las carpetas values-v27 y values-v28 añaden solo propiedades que esas versiones entienden. -->
+    <style
+        name="Tema.AgendaVip"
+        parent="@style/TemaBaseAgendaVip" />
+
+    <style
+        name="TituloAcceso"
+        parent="@style/TituloAccesoBase" />
+
+</resources>
+

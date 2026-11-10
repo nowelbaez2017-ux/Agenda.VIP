@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fondo melocotón del botón de muestra y acciones de la opción 1; mantiene contraste ciruela. -->
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/melocoton" />
+    <corners android:radius="16dp" />
+
+</shape>

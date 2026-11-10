@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ScrollView permite mover el contenido cuando no cabe dentro del cuadro. -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Esta columna agrupa los valores que se proponen al programar tareas nuevas. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="24dp">
+
+        <!-- Switch es un interruptor. Guarda si Nueva tarea debe empezar con seguimiento. -->
+        <Switch
+            android:id="@+id/cuenta_seguimiento_predeterminado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/configuracion_seguimiento_activar"
+            android:textColor="@color/ciruela"
+            android:textSize="16sp" />
+
+        <!-- Estos botones muestran el valor y abren un cuadro para cambiarlo. -->
+        <Button
+            android:id="@+id/cuenta_intervalo"
+            style="@style/ConfiguracionAccionPanel" />
+
+        <Button
+            android:id="@+id/cuenta_limite"
+            style="@style/ConfiguracionAccionPanel" />
+
+        <!-- Una sola línea de ayuda explica el alcance de las tres opciones. -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/configuracion_seguimiento_ayuda"
+            android:textColor="@color/texto_secundario"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</ScrollView>

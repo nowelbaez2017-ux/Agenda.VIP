@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Un vector es un dibujo que Android puede ampliar sin perder nitidez.
+    La barra de notificaciones usa solo la silueta: por eso este calendario
+    tiene líneas blancas y fondo transparente, en lugar del cuadrado del icono de inicio.
+-->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- path dibuja el calendario y el amanecer sin rellenar el fondo. -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@android:color/white"
+        android:strokeWidth="3.4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M12,51V17a5,5 0,0 1,5 -5h30a5,5 0,0 1,5 5v34M22,7v12M42,7v12M12,26h40M20,51h24M24,51a8,8 0,0 1,16 0M32,34v4M19,39l3,3M45,39l-3,3" />
+
+</vector>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vector guarda el icono de Agenda.VIP como un dibujo. AndroidManifest.xml lo asigna a la aplicación para que Android pueda mostrarlo. -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Este path rellena el fondo cuadrado con el color ciruela de colores.xml. -->
+    <path
+        android:fillColor="@color/ciruela"
+        android:pathData="M0,0h64v64h-64Z" />
+
+    <!-- Este path dibuja el calendario y el amanecer. El interior transparente deja ver el fondo y strokeColor da color a las líneas. -->
+    <path
+        android:fillColor="@color/transparente"
+        android:strokeColor="@color/melocoton"
+        android:strokeWidth="2.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M12,51V17a5,5 0,0 1,5 -5h30a5,5 0,0 1,5 5v34M22,7v12M42,7v12M12,26h40M20,51h24M24,51a8,8 0,0 1,16 0M32,34v4M19,39l3,3M45,39l-3,3" />
+
+</vector>

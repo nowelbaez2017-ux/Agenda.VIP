@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ripple dibuja una onda de color al tocar una fila; no añade un recuadro permanente. -->
+<ripple
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/onda_ciruela">
+
+    <!-- La máscara limita la onda al contorno del elemento que recibe el toque. -->
+    <item
+        android:id="@android:id/mask">
+        <shape
+            android:shape="rectangle">
+            <solid
+                android:color="@color/marfil" />
+            <corners
+                android:radius="8dp" />
+        </shape>
+    </item>
+
+</ripple>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- selector elige el fondo de los botones del selector musical según puedan pulsarse, se estén pulsando o estén en reposo. -->
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Esta opción da al botón el aspecto desactivado. -->
+    <item
+        android:state_enabled="false">
+
+        <!-- shape crea la forma de fondo; solid pone el color y corners redondea sus esquinas. -->
+        <shape>
+
+            <solid
+                android:color="@color/ciruela_deshabilitado" />
+
+            <corners
+                android:radius="14dp" />
+
+        </shape>
+
+    </item>
+
+    <!-- Esta opción aparece mientras el usuario mantiene pulsado el botón. -->
+    <item
+        android:state_pressed="true">
+
+        <shape>
+
+            <solid
+                android:color="@color/ciruela_presionado" />
+
+            <corners
+                android:radius="14dp" />
+
+        </shape>
+
+    </item>
+
+    <!-- La última opción da al botón su aspecto habitual. -->
+    <item>
+
+        <shape>
+
+            <solid
+                android:color="@color/ciruela" />
+
+            <corners
+                android:radius="14dp" />
+
+        </shape>
+
+    </item>
+
+</selector>

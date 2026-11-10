@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Estos textos se muestran en las tarjetas de Configuración y en sus cuadros de opciones. -->
+    <string name="configuracion_recordatorios">Recordatorios</string>
+    <string name="configuracion_bienestar">Bienestar y enfoque</string>
+    <string name="configuracion_privacidad">Privacidad y datos</string>
+    <string name="configuracion_cuenta_local">Cuenta en este teléfono</string>
+    <string name="configuracion_sonido">Voz y volumen</string>
+    <string name="configuracion_volumen">Volumen de los avisos</string>
+    <string name="configuracion_escuchar">Escuchar muestra</string>
+    <string name="configuracion_seguimiento">Seguimiento</string>
+    <string name="configuracion_seguimiento_activar">Activar en tareas nuevas</string>
+    <string name="configuracion_seguimiento_ayuda">Estos valores se pueden cambiar en cada tarea nueva.</string>
+    <string name="configuracion_voz_valor">Voz: %1$s</string>
+    <string name="configuracion_intervalo_valor">Intervalo: %1$d min</string>
+    <string name="configuracion_limite_valor">Límite de avisos: %1$d</string>
+    <string name="configuracion_volumen_valor">Volumen de los avisos: %1$d%%</string>
+    <string name="configuracion_resumen_sonido">%1$s · %2$d%%</string>
+    <plurals name="configuracion_seguimiento_activo">
+        <item quantity="one">Cada %1$d min · hasta %2$d aviso</item>
+        <item quantity="other">Cada %1$d min · hasta %2$d avisos</item>
+    </plurals>
+    <string name="configuracion_seguimiento_inactivo">Desactivado en tareas nuevas</string>
+
+</resources>
